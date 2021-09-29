@@ -115,7 +115,7 @@ body{
     font-size: 20px;
 }
 .main .rating .danhgia{
-    height: 250px;  
+    height: 300px;  
 }
 .main .rating .danhgia .icon{
     display: flex; 
@@ -150,33 +150,84 @@ body{
 .main .rating .xephang .row{
     line-height: 50px;
     position: relative;
+    padding: 0 20px ;
 }
 .main .rating .xephang .row .xyz{
     position: absolute;
     right: 50px;
 }
+
 .main .info {
     float: right;
-    background-color: #fff;
     width: 68%;
     height: 650px;
+}
+.main .info h2{
+    font-size: 20px;
 }
 .main .img{
     float: right;
     background-color: #fff;
-    
+    width: 100%;
+    max-height: 400px;
+    padding: 5px;
+    position: relative;
+    display: flex;
 }
+.main .img img{
+    padding: 2px;
+    opacity: 0.7;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 0 5px rgb(31, 31, 32));
+}
+.main .img img:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+.main .img .img-container{
+    float: left;
+    width: 70%;
+}
+.main .img div{
+    width: 30%;
+    display: block;
+}
+.main .img .img-small{
+    height: 33.3%;
+    width: 100%;
+}
+.main .img .photo-librari{
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+}
+.main .img .photo-librari:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
 .main .address{
+    padding: 5px 20px;
+    margin-top: 10px;
     width: 48%;
     height: 45%;
     float: right;
     background-color: #fff;
-}.main .detail{
+}
+.main .address img{
+    width: 100%;
+}
+.main .detail{
+    padding: 5px 20px;
+    margin-top: 10px;
     width: 48%;
     height: 45%;
     float: left;
     background-color: #fff;
 }
+
+
 
 
 
