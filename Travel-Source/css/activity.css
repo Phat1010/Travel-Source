@@ -175,7 +175,7 @@ body{
     height: 100%;
     border-radius: 10px;
 }
-.slide .btn-prev{
+.info  .btn-prev{
     width: 30px;
     height: 30px;
     margin: 0 auto;
@@ -187,15 +187,15 @@ body{
     border: none;
     opacity: 0.8;
 }
-.slide .btn-prev i{
+.info  .btn-prev i{
     opacity: 0.6;
 }
-.slide .btn-prev:hover{
+.info  .btn-prev:hover{
     cursor: pointer;
     background: #8f8f8f;
 
 }
-.slide .btn-next{
+.info  .btn-next{
     width: 30px;
     height: 30px;
     margin: 0 auto;
@@ -206,10 +206,10 @@ body{
     border: none;
     opacity: 0.8;
 }
-.slide .btn-next i{
+.info  .btn-next i{
     opacity: 0.6;
 }
-.slide .btn-next:hover{
+.info .btn-next:hover{
     cursor: pointer;
     background: #8f8f8f;
 
