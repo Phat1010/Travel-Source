@@ -226,6 +226,10 @@ body{
     height: 100%;
     padding-left: 5px;
     border-radius: 10px;
+    opacity: 0.6;
+}
+.img-items img:hover{
+    opacity: 1;
 }
 
 
