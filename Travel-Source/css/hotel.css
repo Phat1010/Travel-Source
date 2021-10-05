@@ -154,7 +154,8 @@ body{
 }
 .btn-price button{
     border-radius: 10px;
-    width: 80%;
+    width: 70%;
+    height: 40px;
     background-color: yellow;
 }
 .btn-price :hover{
