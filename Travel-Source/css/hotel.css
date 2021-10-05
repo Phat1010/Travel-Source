@@ -130,7 +130,7 @@ body{
     width: 100%;
     height: 200px;
     display: flex;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
     background-color: white;
 }
 .item-img{
