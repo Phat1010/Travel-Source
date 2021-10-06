@@ -99,6 +99,7 @@ nav .login{
 .content{
     padding: 30px 30px;
     background-color: #fff;
+    height: auto;
 }
 .content .menu{
     margin-top: 80px;

@@ -83,7 +83,7 @@
         <div class="menu">
             <ul >
                 <li class="menu-item active" >
-                    <a href="activity_page.php">  
+                    <a href="travel.php">  
                         <span><i class="fas fa-plane-departure"></i></span>
                         <span class="text"> Du lịch</span>
                     </a>
@@ -95,7 +95,7 @@
                     </a>
                 </li>
                 <li class="menu-item" >
-                    <a href="food-page.php"> 
+                    <a href="res_page.php"> 
                         <span><i class="fas fa-glass-martini"> </i></span>
                         <span class="text">Nhà hàng</span>
                     </a>

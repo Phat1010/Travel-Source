@@ -254,4 +254,13 @@ body{
     .row1 h2{
         font-size: 26px;
     }
+  }.rating-box {margin-left: 20%;}
+
+  .list-cmt {
+      margin-left: 20%;
+  }
+  
+  
+  .comment h4 {
+      margin-left: 20%;
   }

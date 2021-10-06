@@ -158,3 +158,13 @@ meter::-webkit-meter-bar{
     text-decoration: underline;
 }
 
+.rating-box {margin-left: 20%;}
+
+.list-cmt {
+    margin-left: 20%;
+}
+
+
+.comment h4 {
+    margin-left: 20%;
+}
