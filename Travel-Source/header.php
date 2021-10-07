@@ -54,7 +54,7 @@
 <nav>
     <span><a href="./index.php">VIVU .VN</a></span>
     <div class="input">
-        <input type="text" placeholder="Nhập địa điểm ...">
+        <input type="text" placeholder="Nhập địa điểm ..." >
         <span>
             <i class="fa fa-search" aria-hidden="true"></i>
         </span>

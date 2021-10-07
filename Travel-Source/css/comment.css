@@ -167,4 +167,9 @@ meter::-webkit-meter-bar{
 
 .comment h4 {
     margin-left: 20%;
+}.header{
+    width: 100%;
+    min-height: auto;
+    /* background-color: #fff; */
+    padding: 0 30px;
 }
