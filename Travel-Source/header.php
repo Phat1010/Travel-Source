@@ -82,34 +82,34 @@
     <div class="content">
         <div class="menu">
             <ul >
-                <li class="menu-item active" >
-                    <a href="travel.php">  
+                <li class="menu-item ">
+                    <a href="index.php">    
+                        <span><i class="fas fa-comment-alt"></i></span>
+                        <span class="text">Trang chủ</span>
+                    </a>
+                </li>
+                <li class="menu-item " >
+                    <a   data-toggle="modal" data-target="#myModal1">  
                         <span><i class="fas fa-plane-departure"></i></span>
                         <span class="text"> Du lịch</span>
                     </a>
                 </li>
                 <li class="menu-item" >
-                <a href="hotel_page.php">  
+                <a href="hotel_page.php" data-toggle="modal" data-target="#myModal2">  
                         <span><i class="fas fa-hotel"></i></span>
                         <span class="text">Khách sạn</span>
                     </a>
                 </li>
                 <li class="menu-item" >
-                    <a href="res_page.php"> 
+                    <a href="res_page.php" data-toggle="modal" data-target="#myModal3"> 
                         <span><i class="fas fa-glass-martini"> </i></span>
                         <span class="text">Nhà hàng</span>
                     </a>
                 </li>
-                <li class="menu-item" >
+                <li class="menu-item" data-toggle="modal" data-target="#myModal4">
                     <a href="entertain.php">
                         <span><i class="fas fa-gopuram"></i></span>
                         <span class="text">Hoạt động giải trí</span>
-                    </a>
-                </li>
-                <li class="menu-item" >
-                    <a href="">    
-                        <span><i class="fas fa-comment-alt"></i></span>
-                        <span class="text">Bài viết</span>
                     </a>
                 </li>
             </ul>
@@ -117,18 +117,139 @@
     </div>
 
 
+<!--------------------------------------------->
+  
+<!--------------------------------------------->
+  
+<div class="container">
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title ">Địa điểm du lịch</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="input">
+              <input type="text" placeholder="Nhập địa điểm ..." >
+              <span>
+                  <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-default" >
+              <a href="travel.php"> Tìm kiếm </a>
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<!--------------------------------------------->
+<!--------------------------------------------->
+  
+<div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Khách sạn</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          <div class="input">
+                <input type="text" placeholder="Nhập địa điểm ..." >
+                <span>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Tìm kiếm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<!--------------------------------------------->
+<!--------------------------------------------->
+  
+<div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Nhà hàng</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          <div class="input">
+                <input type="text" placeholder="Nhập địa điểm ..." >
+                <span>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Tìm kiếm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<!--------------------------------------------->
+<!--------------------------------------------->
+<div class="container">
+
+<!-- Modal -->
+<div class="modal fade" id="myModal4" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Hoạt động giải trí</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="input">
+              <input type="text" placeholder="Nhập địa điểm ..." >
+              <span>
+                  <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" >Tìm kiếm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<!--------------------------------------------->
 
 
-
-
-
-
-
-
-    
-    <!--Login --><!--Login -->
-
-<!--Modal: Login / Register Form-->
+    <!--Modal: Login / Register Form-->
 <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog cascading-modal" role="document">
     <!--Content-->
@@ -141,11 +262,11 @@
         <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
-              Login</a>
+              Đăng nhập</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
-              Register</a>
+              Đăng kí</a>
           </li>
         </ul>
 
@@ -159,25 +280,25 @@
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
                 <input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
-                <label data-error="wrong" data-success="right" for="modalLRInput10">Your email</label>
+                <label data-error="wrong" data-success="right" for="modalLRInput10">Email</label>
               </div>
 
               <div class="md-form form-sm mb-4">
                 <i class="fas fa-lock prefix"></i>
                 <input type="password" id="modalLRInput11" class="form-control form-control-sm validate">
-                <label data-error="wrong" data-success="right" for="modalLRInput11">Your password</label>
+                <label data-error="wrong" data-success="right" for="modalLRInput11">Mật khẩu</label>
               </div>
               <div class="text-center mt-2">
-                <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
+                <button class="btn btn-info">Đăng nhập <i class="fas fa-sign-in ml-1"></i></button>
               </div>
             </div>
             <!--Footer-->
             <div class="modal-footer">
               <div class="options text-center text-md-right mt-1">
-                <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
-                <p>Forgot <a href="#" class="blue-text">Password?</a></p>
+                <p>Chưa có tài khoản? <a href="#" class="blue-text">Đăng kí</a></p>
+                <p>Quên mật khẩu <a href="#" class="blue-text">Mật khẩu?</a></p>
               </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Đóng</button>
             </div>
 
           </div>
@@ -191,32 +312,32 @@
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
                 <input type="email" id="modalLRInput12" class="form-control form-control-sm validate">
-                <label data-error="wrong" data-success="right" for="modalLRInput12">Your email</label>
+                <label data-error="wrong" data-success="right" for="modalLRInput12">Nhập email</label>
               </div>
 
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-lock prefix"></i>
                 <input type="password" id="modalLRInput13" class="form-control form-control-sm validate">
-                <label data-error="wrong" data-success="right" for="modalLRInput13">Your password</label>
+                <label data-error="wrong" data-success="right" for="modalLRInput13">Nhập mật khẩu</label>
               </div>
 
               <div class="md-form form-sm mb-4">
                 <i class="fas fa-lock prefix"></i>
                 <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
-                <label data-error="wrong" data-success="right" for="modalLRInput14">Repeat password</label>
+                <label data-error="wrong" data-success="right" for="modalLRInput14">Nhập lại mật khẩu</label>
               </div>
 
               <div class="text-center form-sm mt-2">
-                <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+                <button class="btn btn-info">Đăng kí <i class="fas fa-sign-in ml-1"></i></button>
               </div>
 
             </div>
             <!--Footer-->
             <div class="modal-footer">
               <div class="options text-right">
-                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
+                <p class="pt-1">Bạn đã có tài khoản? <a href="#" class="blue-text">Đăng nhập</a></p>
               </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Đóng</button>
             </div>
           </div>
           <!--/.Panel 8-->
@@ -228,16 +349,7 @@
   </div>
 </div>
 <!--Modal: Login / Register Form-->
-<!--
-<div class="text-center">
-  <a href="" class="btn btn-default btn-rounded my-3" data-toggle="modal" data-target="#modalLRForm">Launch
-    Modal LogIn/Register</a>
-</div>
 
--->
-
-    <!--Login --><!--Login --><!--Login --><!--Login -->
-    
 
     </body>
 </html>
