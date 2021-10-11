@@ -5,7 +5,7 @@ body{
 }
 .container{
     width: 90%;
-    height: 1000px;
+    height: auto;
     padding: 0;
 }
 .head{
@@ -126,7 +126,7 @@ body{
 .right{
     width: 68%;
     height: 100%;
-    background-color: #f2f2f2;
+    /* background-color: #f2f2f2; */
     margin-left: 2%;
 }
 .fa-star{
@@ -179,3 +179,8 @@ body{
     background-color: white;
 }
 
+
+
+.container.p-4.pb-0 {
+    height: auto;
+}

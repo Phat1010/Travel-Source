@@ -155,7 +155,7 @@
 			<a class="show text-center" href="ttravel_detail.php">Xem tất cả</a><br>
 			<div class="row">
 				<div class="col-sm-4 hotel">
-					<div class="place-card">
+					<a href="travel_detail.php" class="place-card">
 						<div class="place-card__img">
 							<img src="./img/pic8.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
 						</div>
@@ -174,10 +174,10 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 				</div>
                 <div class="col-sm-4 park">
-					<div class="place-card">
+					<a href="travel_detail.php" class="place-card">
 						<div class="place-card__img">
 							<img src="./img/pic7.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
 						</div>
@@ -196,11 +196,11 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 				</div>
                 <div class="col-sm-4 hotel">
 				<a href="travel_detail.php">
-					<div class="place-card">
+					<a href="travel_detail.php" class="place-card">
 						<div class="place-card__img">
 							<img src="./img/pic5.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
 						</div>
@@ -219,11 +219,11 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 					</a>
 				</div>
                 <div class="col-sm-4 hotel">
-					<div class="place-card">
+					<a href="travel_detail.php" class="place-card">
 						<div class="place-card__img">
 							<img src="./img/pic6.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
 						</div>
@@ -242,10 +242,10 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 				<div class="col-sm-4 beach">
-					<div class="place-card">
+					<a href="travel_detail.php" class="place-card">
 						<div class="place-card__img">
 							<img src="./img/pic4.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
 						</div>
@@ -264,10 +264,10 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 				<div class="col-sm-4 park">
-					<div class="place-card">
+					<a href="travel_detail.php" class="place-card">
 						<div class="place-card__img">
 							<img src="./img/pic9.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
 						</div>
@@ -286,10 +286,10 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 				<div class="col-sm-4 beach">
-					<div class="place-card">
+					<a href="travel_detail.php" class="place-card">
 						<div class="place-card__img">
 							<img src="./img/pic1.jpg" class="place-card__img-thumbnail" alt="Thumbnail">
 						</div>
@@ -308,10 +308,10 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 				<div class="col-sm-4 beach">
-					<div class="place-card">
+					<a href="travel_detail.php" class="place-card">
 						<div class="place-card__img">
 							<img src="./img/pic3.jpg" class="place-card__img-thumbnail" alt="Thumbnail">
 						</div>
@@ -330,10 +330,10 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 				<div class="col-sm-4 beach">
-					<div class="place-card">
+					<a href="travel_detail.php" class="place-card">
 						<div class="place-card__img">
 							<img src="./img/pic2.jpg" class="place-card__img-thumbnail" alt="Thumbnail">
 						</div>
@@ -352,7 +352,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>

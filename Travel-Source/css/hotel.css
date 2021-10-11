@@ -5,7 +5,7 @@ body{
 }
 .container{
     width: 90%;
-    height: 1000px;
+    height: auto;
     padding: 0;
 }
 .head{
@@ -178,5 +178,8 @@ body{
 .content {
     padding: 30px 30px;
     background-color: #fff;
+    height: auto;
+}
+.container.p-4.pb-0 {
     height: auto;
 }
