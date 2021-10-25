@@ -297,3 +297,10 @@ a.text-dark {
 
 
 
+.col-sm-4.hotel {
+    float: left;
+}
+
+.question {
+    clear: both;
+}

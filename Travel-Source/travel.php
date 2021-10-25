@@ -16,6 +16,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     
 <!-----Link Design----->
     <link rel="stylesheet" href="./css/entertainstyle.css">
@@ -24,10 +25,10 @@
 
 <body>  
     <?php require_once './header.php';?>
-	
-	
+	    <?php require_once './header.php';?>
+
     <span class="infor">
-        <h3>Làm gì ở quy nhơn</h3>
+        <h3>Làm gì ở <?php echo $_GET['findingtravel'] ?> </h3>
         <div class="map">
             <button type="button" class="btn-map" onclick="myFunction()">
                 <i class="fas fa-map-marker-alt"></i>
@@ -151,21 +152,56 @@
     <div class="line"></div>
     <section class="main-entertain">
 		<div class="container">
-			<h1 class="text-center text-uppercase">Các điểm du lịch hàng đầu tại Quy Nhơn</h1>
+			<h1 class="text-center text-uppercase">Các điểm du lịch hàng đầu tại <?php echo $_GET['findingtravel'] ?> </h1>
 			<a class="show text-center" href="ttravel_detail.php">Xem tất cả</a><br>
 			<div class="row">
+
+				
+<?php 
+		$id="";
+
+				  $query = mysqli_query($conn, 'SELECT proviceid FROM `province` WHERE `provice` LIKE "%'.$_GET['findingtravel'].'%"');
+
+
+                 while ($row = mysqli_fetch_assoc($query)) {
+                        
+				$id=$row['proviceid'] ;
+
+                 }
+                 ?>
+                 
+                  </div>
+
+                  <?php 
+		   $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%"');
+		   	
+		   	  while ($row = mysqli_fetch_assoc($query2)) {
+                         
+			
+
+             
+
+
+
+
+		
+		    
+
+		    ?>
+
+		  
 				<div class="col-sm-4 hotel">
 					<a href="travel_detail.php" class="place-card">
 						<div class="place-card__img">
-							<img src="./img/pic8.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
+							<img src="img/pic8.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
 						</div>
 						<div class="place-card__content">
 							<h5 class="place-card__content_header">
-                            <a href="travel_detail.php" class="text-dark">Cano</a> 
+                            <a href="travel_detail.php?id=<?php echo $row['idservice']  ?> " class="text-dark"> <?php echo  $row['servicename']  ?></a> 
                             <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
 							<div class="flex-center">
 								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted">Biển Kỳ Co, Quy Nhơn</span></p>
+                                <span class="text-muted"><?php  echo	$row['address'] ?></span></p>
 								<div class="rating-box">
 									<div class="rating-stars">
 										<img src="./img/grey-star.svg" alt="">
@@ -176,186 +212,15 @@
 						</div>
 					</a>
 				</div>
-                <div class="col-sm-4 park">
-					<a href="travel_detail.php" class="place-card">
-						<div class="place-card__img">
-							<img src="./img/pic7.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
-						</div>
-						<div class="place-card__content">
-							<h5 class="place-card__content_header">
-                            <a href="travel_detail.php" class="text-dark">Cano</a> 
-                            <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted">Biển Kỳ Co, Quy Nhơn</span></p>
-								<div class="rating-box">
-									<div class="rating-stars">
-										<img src="./img/grey-star.svg" alt="">
-										<div class="filled-star" style="width:86%"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-                <div class="col-sm-4 hotel">
-				<a href="travel_detail.php">
-					<a href="travel_detail.php" class="place-card">
-						<div class="place-card__img">
-							<img src="./img/pic5.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
-						</div>
-						<div class="place-card__content">
-							<h5 class="place-card__content_header">
-                            <a href="travel_detail.php" class="text-dark">Cano</a> 
-                            <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted">Biển Kỳ Co, Quy Nhơn</span></p>
-								<div class="rating-box">
-									<div class="rating-stars">
-										<img src="./img/grey-star.svg" alt="">
-										<div class="filled-star" style="width:86%"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-					</a>
-				</div>
-                <div class="col-sm-4 hotel">
-					<a href="travel_detail.php" class="place-card">
-						<div class="place-card__img">
-							<img src="./img/pic6.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
-						</div>
-						<div class="place-card__content">
-							<h5 class="place-card__content_header">
-                            <a href="travel_detail.php" class="text-dark">Cano</a> 
-                            <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted">Biển Kỳ Co, Quy Nhơn</span></p>
-								<div class="rating-box">
-									<div class="rating-stars">
-										<img src="./img/grey-star.svg" alt="">
-										<div class="filled-star" style="width:86%"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-sm-4 beach">
-					<a href="travel_detail.php" class="place-card">
-						<div class="place-card__img">
-							<img src="./img/pic4.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
-						</div>
-						<div class="place-card__content">
-							<h5 class="place-card__content_header">
-                            <a href="travel_detail.php" class="text-dark">Lướt ván</a> 
-                            <a href="travel_detail.php"\><i class="fa fa-heart-o"></i></a></h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker"></i>
-                                 <span class="text-muted">Biển Kỳ Co, Quy Nhơn</span></p>
-								<div class="rating-box">
-									<div class="rating-stars">
-										<img src="./img/grey-star.svg" alt="">
-										<div class="filled-star" style="width:86%"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-sm-4 park">
-					<a href="travel_detail.php" class="place-card">
-						<div class="place-card__img">
-							<img src="./img/pic9.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
-						</div>
-						<div class="place-card__content">
-							<h5 class="place-card__content_header">
-                            <a href="travel_detail.php" class="text-dark">San Hô Xanh</a> 
-                            <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted">Biển Kỳ Co</span></p>
-								<div class="rating-box">
-									<div class="rating-stars">
-										<img src="./img/grey-star.svg" alt="">
-										<div class="filled-star" style="width:86%"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-sm-4 beach">
-					<a href="travel_detail.php" class="place-card">
-						<div class="place-card__img">
-							<img src="./img/pic1.jpg" class="place-card__img-thumbnail" alt="Thumbnail">
-						</div>
-						<div class="place-card__content">
-							<h5 class="place-card__content_header">
-                            <a href="travel_detail.php" class="text-dark">San Hô Xanh</a> 
-                            <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted">Biển Kỳ Co</span></p>
-								<div class="rating-box">
-									<div class="rating-stars">
-										<img src="./img/grey-star.svg" alt="">
-										<div class="filled-star" style="width:86%"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-sm-4 beach">
-					<a href="travel_detail.php" class="place-card">
-						<div class="place-card__img">
-							<img src="./img/pic3.jpg" class="place-card__img-thumbnail" alt="Thumbnail">
-						</div>
-						<div class="place-card__content">
-							<h5 class="place-card__content_header">
-                            <a href="travel_detail.php" class="text-dark">San Hô Xanh</a> 
-                            <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted">Biển Kỳ Co</span></p>
-								<div class="rating-box">
-									<div class="rating-stars">
-										<img src="./img/grey-star.svg" alt="">
-										<div class="filled-star" style="width:86%"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-				<div class="col-sm-4 beach">
-					<a href="travel_detail.php" class="place-card">
-						<div class="place-card__img">
-							<img src="./img/pic2.jpg" class="place-card__img-thumbnail" alt="Thumbnail">
-						</div>
-						<div class="place-card__content">
-							<h5 class="place-card__content_header">
-                            <a href="travel_detail.php" class="text-dark">San Hô Xanh</a> 
-                            <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted">Biển Kỳ Co</span></p>
-								<div class="rating-box">
-									<div class="rating-stars">
-										<img src="./img/grey-star.svg" alt="">
-										<div class="filled-star" style="width:86%"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
+
+				
+
+<?php 
+ 	;}
+ ?>
+
+
+             
 	</section>
 <!----------------------------------menu--------------------------------------->
 

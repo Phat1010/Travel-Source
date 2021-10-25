@@ -50,7 +50,7 @@
     </head>
 
     <body>
-
+  <?php require_once './Connect/Connection.php';?>
 <nav>
     <span><a href="./index.php">VIVU .VN</a></span>
     <div class="input">
@@ -126,7 +126,7 @@
   <!-- Modal -->
   <div class="modal fade" id="myModal1" role="dialog">
     <div class="modal-dialog">
-  
+ <form action="travel.php" method="get">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -135,7 +135,7 @@
         </div>
         <div class="modal-body">
           <div class="input">
-              <input type="text" placeholder="Nhập địa điểm ..." >
+              <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel">
               <span>
                   <i class="fa fa-search" aria-hidden="true"></i>
               </span>
@@ -143,11 +143,19 @@
 
         </div>
         <div class="modal-footer">
-           <button type="button" class="btn btn-default" >
-              <a href="travel.php"> Tìm kiếm </a>
+           <button type="submit" class="btn btn-default" >
+             Tìm kiếm 
             </button>
+            
         </div>
       </div>
+
+        
+</form>
+
+
+
+
     </div>
   </div>
   
