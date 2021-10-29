@@ -53,12 +53,18 @@
   <?php require_once './Connect/Connection.php';?>
 <nav>
     <span><a href="./index.php">VIVU .VN</a></span>
+
+
+
+    <form action="">
     <div class="input">
-        <input type="text" placeholder="Nhập địa điểm ..." >
+        <input type="text" placeholder="Nhập địa điểm ..." name="txt-search-common" >
         <span>
             <i class="fa fa-search" aria-hidden="true"></i>
         </span>
     </div>
+</form>
+
 
     <ul>
         <div>

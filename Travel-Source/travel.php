@@ -28,7 +28,7 @@
 	    <?php require_once './header.php';?>
 
     <span class="infor">
-        <h3>Làm gì ở <?php echo $_GET['findingtravel'] ?> </h3>
+        <h3>Kết quả bạn tìm <?php echo $_GET['findingtravel'] ?> </h3>
         <div class="map">
             <button type="button" class="btn-map" onclick="myFunction()">
                 <i class="fas fa-map-marker-alt"></i>
@@ -42,166 +42,60 @@
 	
 <!----------------------------------Advertisement---------------------------------------> 
     
-    <div class="adver">
-        <div class="adcard">
-            <div class="imgBx">
-                <img src="./img/pic4.jpeg">
-            </div>
-            <div class="contentBx">
-                <div class="content">
-                    <h2>Beach</h2>
-                    <i class="fa fa-map-marker">&nbsp;56 An Duong Vuong - Quy Nhon</i>
-                    <p>This is beautiful and very like</p>
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                </div>
-            </div>
-        </div>
-        <div class="adcard">
-            <div class="imgBx">
-                <img src="./img/pic5.jpeg">
-            </div>
-            <div class="contentBx">
-                <div class="content">
-                    <h2>Beach</h2>
-                    <i class="fa fa-map-marker">&nbsp;56 An Duong Vuong - Quy Nhon</i>
-                    <p>This is beautiful and very like</p>
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                </div>
-            </div>
-        </div>
-        <div class="adcard">
-            <div class="imgBx">
-                <img src="./img/pic6.jpeg">
-            </div>
-            <div class="contentBx">
-                <div class="content">
-                    <h2>Beach</h2>
-                    <i class="fa fa-map-marker">&nbsp;56 An Duong Vuong - Quy Nhon</i>
-                    <p>This is beautiful and very like</p>
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                </div>
-            </div>
-        </div>
-        <div class="adcard">
-            <div class="imgBx">
-                <img src="./img/pic7.jpeg">
-            </div>
-            <div class="contentBx">
-                <div class="content">
-                    <h2>Beach</h2>
-                    <i class="fa fa-map-marker">&nbsp;56 An Duong Vuong - Quy Nhon</i>
-                    <p>This is beautiful and very like</p>
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                </div>
-            </div>
-        </div>
-        <div class="adcard">
-            <div class="imgBx">
-                <img src="./img/pic8.jpeg">
-            </div>
-            <div class="contentBx">
-                <div class="content">
-                    <h2>Beach</h2>
-                    <i class="fa fa-map-marker">&nbsp;56 An Duong Vuong - Quy Nhon</i>
-                    <p>This is beautiful and very like</p>
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                </div>
-            </div>
-        </div>
-        <div class="adcard">
-            <div class="imgBx">
-                <img src="./img/pic9.jpeg">
-            </div>
-            <div class="contentBx">
-                <div class="content">
-                    <h2>Beach</h2>
-                    <i class="fa fa-map-marker">&nbsp;56 An Duong Vuong - Quy Nhon</i>
-                    <p>This is beautiful and very like</p>
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                    <input type="radio" name="html">
-                </div>
-            </div> 
-        </div>
-    </div>
-    
+   
 
 <!----------------------------------Entertain 2--------------------------------------->
-    <div class="line"></div>
-    <section class="main-entertain">
-		<div class="container">
-			<h1 class="text-center text-uppercase">Các điểm du lịch hàng đầu tại <?php echo $_GET['findingtravel'] ?> </h1>
-			<a class="show text-center" href="ttravel_detail.php">Xem tất cả</a><br>
-			<div class="row">
+
 
 				
 <?php 
 		$id="";
 
-				  $query = mysqli_query($conn, 'SELECT proviceid FROM `province` WHERE `provice` LIKE "%'.$_GET['findingtravel'].'%"');
+				  $query = mysqli_query($conn, 'SELECT proviceid,provice FROM `province` WHERE `provice` LIKE "%'.$_GET['findingtravel'].'%"');
 
 
                  while ($row = mysqli_fetch_assoc($query)) {
                         
 				$id=$row['proviceid'] ;
+               
+                   
 
-                 }
+
+                
+        
                  ?>
                  
                   </div>
 
                   <?php 
-		   $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%"');
+
+		   $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="h4"');
 		   	
-		   	  while ($row = mysqli_fetch_assoc($query2)) {
-                         
-			
+		   	  while ($row2 = mysqli_fetch_assoc($query2)) {
 
-             
-
-
-
-
-		
-		    
-
+  
 		    ?>
 
-		  
+		      <div class="line"></div>
+    <section class="main-entertain">
+        <div class="container">
+            <h1 class="text-center text-uppercase">Các điểm du lịch hàng đầu tại <?php echo $row['provice'] ?> </h1>
+         
+            <div class="row">
+
+                <!-- next-->
 				<div class="col-sm-4 hotel">
 					<a href="travel_detail.php" class="place-card">
 						<div class="place-card__img">
-							<img src="img/pic8.jpeg" class="place-card__img-thumbnail" alt="Thumbnail">
+							<img src="img/<?php echo $row2['avatar'] ?>" class="place-card__img-thumbnail" alt="Thumbnail">
 						</div>
 						<div class="place-card__content">
 							<h5 class="place-card__content_header">
-                            <a href="travel_detail.php?id=<?php echo $row['idservice']  ?> " class="text-dark"> <?php echo  $row['servicename']  ?></a> 
+                            <a href="travel_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?> " class="text-dark"> <?php echo  $row2['servicename']  ?></a> 
                             <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
 							<div class="flex-center">
 								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted"><?php  echo	$row['address'] ?></span></p>
+                                <span class="text-muted"><?php  echo	$row2['address'] ?></span></p>
 								<div class="rating-box">
 									<div class="rating-stars">
 										<img src="./img/grey-star.svg" alt="">
@@ -217,6 +111,8 @@
 
 <?php 
  	;}
+  
+     }
  ?>
 
 

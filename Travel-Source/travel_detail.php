@@ -29,7 +29,7 @@ $idservice="";
 
 $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%'. $_GET['id'].'%"');
             
-              while ($row = mysqli_fetch_assoc($query2)) {
+              if ($row = mysqli_fetch_assoc($query2)) {
                    $servicename = $row['servicename'] ;
                    $address = $row['address'] ;
                    $description = $row['description'] ;
@@ -37,6 +37,18 @@ $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%
                    $close = $row['closee'] ;
                    $price = $row['price'] ;
                    $idimage = $row['idimage'] ;
+                 
+
+              }
+
+$query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'. $_GET['idimg'].'%"');
+            
+              if ($row = mysqli_fetch_assoc($query3)) {
+                   $picture1 = $row['picture1'] ;
+                   $picture2 = $row['picture2'] ;
+                   $picture3 = $row['picture3'] ;
+                   $picture4 = $row['picture4'] ;
+    
                  
 
               }
@@ -152,11 +164,11 @@ $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%
             </div>
             <div class="info">
                 <div class="img">
-                    <img src="./img/images.jpg" alt="" class="img-container">
+                    <img src="img/<?php echo $picture1; ?>" alt="" class="img-container">
                     <div>
-                        <img src="./img/images.jpg" alt="" class="img-small">
-                        <img src="./img/img1.jpg" alt="" class="img-small">
-                        <img src="./img/images.jpg" alt="" class="img-small">
+                        <img src="img/<?php echo $picture2; ?>" alt="" class="img-small">
+                        <img src="img/<?php echo $picture3; ?>" alt="" class="img-small">
+                        <img src="img/<?php echo $picture4; ?>" alt="" class="img-small">
                     </div>
                     <div class="photo-librari">
                         <span>
