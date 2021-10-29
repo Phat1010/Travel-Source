@@ -1,3 +1,6 @@
+      <?php
+        session_start();
+      ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,20 +36,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
     </head>
 
     <body>
@@ -73,7 +62,20 @@
                 </a>
             </li>
         </div>
-        <a href="" class="login" data-toggle="modal" data-target="#modalLRForm">Đăng nhập</a>
+
+        
+        <?php 
+       if (isset($_SESSION['username'])){
+           echo $_SESSION['username']."<br/>";
+           echo '<a href="logout.php">Logout</a>';
+       }
+       else{
+           
+           echo '<a href="" class="login" data-toggle="modal" data-target="#modalLRForm">Đăng Nhập</a>';
+       }
+       ?>
+        </a>
+        
     </ul>
 
 </nav>
@@ -282,22 +284,59 @@
         <div class="tab-content">
           <!--Panel 7-->
           <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+          <form action="" method="POST">
+          <?php 
+            require 'database1.class.php';
 
+            $config = [
+                'host' => 'localhost:3308',
+                'user' => 'root',
+                'pass' => '',
+                'nameDB' => 'travels'
+            ];
+            $data = new database1($config);
+         ?> 
+          <?php
+  if(isset($_POST['btn_dangnhap'])){
+    if(empty($_POST['email_login']) || empty($_POST['password_login'])){
+        echo ' <center><p style="color: red;">Thông tin chưa điền đầy đủ!</p></center>';
+    }else{
+      $email = @$_POST['email_login'];
+	    $password = @$_POST['password_login'];
+      $result = $data->ManipulationDB('select * from user where email ="'.$email.'"');
+      $arr = mysqli_fetch_array($result);
+      if($email == @$arr['email']){
+        if($password == $arr['password']){
+          $_SESSION['username'] = $email;
+      }
+      else
+			echo ' <center><p style="color: red;">Sai mat khau!</p></center>';
+    }
+    else
+		echo ' <center><p style="color: red;">Tai khoang chua ton tai!</p></center>';
+  }
+}
+?>
             <!--Body-->
             <div class="modal-body mb-1">
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
+                <input type="email" id="modalLRInput10" class="form-control form-control-sm validate" name="email_login">
                 <label data-error="wrong" data-success="right" for="modalLRInput10">Email</label>
               </div>
 
               <div class="md-form form-sm mb-4">
                 <i class="fas fa-lock prefix"></i>
-                <input type="password" id="modalLRInput11" class="form-control form-control-sm validate">
+                <input type="password" id="modalLRInput11" class="form-control form-control-sm validate" name="password_login">
                 <label data-error="wrong" data-success="right" for="modalLRInput11">Mật khẩu</label>
               </div>
               <div class="text-center mt-2">
-                <button class="btn btn-info">Đăng nhập <i class="fas fa-sign-in ml-1"></i></button>
+                <button class="btn btn-info" type="submit" name="btn_dangnhap" onclick="tai_lai_trang()">Đăng nhập <i class="fas fa-sign-in ml-1"></i></button>
+                      <script>
+                    function tai_lai_trang(){
+                     location.reload();
+                   }
+                   </script>
               </div>
             </div>
             <!--Footer-->
@@ -308,35 +347,92 @@
               </div>
               <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Đóng</button>
             </div>
-
+          </form>
           </div>
           <!--/.Panel 7-->
 
           <!--Panel 8-->
-          <div class="tab-pane fade" id="panel8" role="tabpanel">
 
+
+          <div class="tab-pane fade" id="panel8" role="tabpanel">
+          <form action="#" method="POST">
+          <?php 
+            require 'database.class.php';
+
+            $config = [
+                'host' => 'localhost:3308',
+                'user' => 'root',
+                'pass' => '',
+                'nameDB' => 'travels'
+            ];
+            $data = new database($config);
+         ?> 
+          <?php
+  if(isset($_POST['btn_dangky'])){
+    if(empty($_POST['txtemail']) || empty($_POST['txtusername'])|| empty($_POST['txtpassword'])||empty($_POST['txtconfirmoassword'])){
+        echo ' <center><p style="color: red;">Thông tin chưa điền đầy đủ!</p></center>';
+    }
+    else{
+      $email = @$_POST['txtemail'];
+      $username = @$_POST['txtusername'];
+      $password = @$_POST['txtpassword'];
+      $length_pass = strlen($password);
+      $confirmoassword = @$_POST['txtconfirmoassword'];
+
+      $check = $data->check("select * from user where email ='".$email."' ");
+
+        if($check == true){
+            if($length_pass>=3 && $length_pass<=12){
+
+                if($password != $confirmoassword){
+                    echo ' <center><p style="color: red;">Mật khẩu không khớp!</p></center>';
+                }
+                else{
+                  $insert = $data->ManipulationDB ("INSERT INTO user(email,username,password) VALUES ('$email','$username','$password')");
+                  echo ' <center><p style="color: red;">Đăng ký thành công!</p></center>';
+                }
+            }
+            else
+                echo ' <center><p style="color: red;">Độ dài mật khẩu không hợp lệ!</p></center>';
+        }
+        else{
+            echo ' <center><p style="color: red;">Tài khoản đã tồn tại!</p></center>';
+            
+        }
+    }
+}
+else{
+    echo ' <center><p style="color: blue;">Xin mời nhập thông tin</p></center>';
+}
+?>
             <!--Body-->
             <div class="modal-body">
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="modalLRInput12" class="form-control form-control-sm validate">
+                <input type="email" id="modalLRInput12" class="form-control form-control-sm validate" name="txtemail">
                 <label data-error="wrong" data-success="right" for="modalLRInput12">Nhập email</label>
+              </div>
+                
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-lock prefix"></i>
+                <input type="text" id="modalLRInput13" class="form-control form-control-sm validate" name="txtusername">
+                <label data-error="wrong" data-success="right" for="modalLRInput13">Username</label>
               </div>
 
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-lock prefix"></i>
-                <input type="password" id="modalLRInput13" class="form-control form-control-sm validate">
+                <input type="password" id="modalLRInput13" class="form-control form-control-sm validate" name="txtpassword">
                 <label data-error="wrong" data-success="right" for="modalLRInput13">Nhập mật khẩu</label>
               </div>
 
               <div class="md-form form-sm mb-4">
                 <i class="fas fa-lock prefix"></i>
-                <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
+                <input type="password" id="modalLRInput14" class="form-control form-control-sm validate" name="txtconfirmoassword">
                 <label data-error="wrong" data-success="right" for="modalLRInput14">Nhập lại mật khẩu</label>
               </div>
 
               <div class="text-center form-sm mt-2">
-                <button class="btn btn-info">Đăng kí <i class="fas fa-sign-in ml-1"></i></button>
+                <button class="btn btn-info" name="btn_dangky" type="submit">Đăng kí <i class="fas fa-sign-in ml-1"></i></button>
               </div>
 
             </div>
@@ -347,6 +443,7 @@
               </div>
               <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Đóng</button>
             </div>
+            </form> 
           </div>
           <!--/.Panel 8-->
         </div>
