@@ -2,6 +2,6 @@
  
 if (isset($_SESSION['username'])){
     unset($_SESSION['username']); // xóa session login
-    header('Location: /Travel-Source/Travel-Source/');
+    header('Location: /Travel-Source');
 }
 ?>

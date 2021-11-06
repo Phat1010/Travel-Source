@@ -22,10 +22,33 @@
                     </a>
                 </div>
             </div>
+ 
+   
+            
+
             <div class="head-name">
                 <div class="name-txt">
-                    <h2>Nhà hàng tại Quy Nhơn Bình Định
+
+                <?php 
+		       $id="";
+
+				  $query = mysqli_query($conn, 'SELECT proviceid,provice FROM `province` WHERE `provice` LIKE "%'.$_GET['findingtravel'].'%"');
+
+
+                 if ($row = mysqli_fetch_assoc($query)) {
+                        
+				$id=$row['proviceid'] ;
+               
+                 ?>
+
+                    <h2>Nhà hàng  <?php echo $row['provice'] ?>
                     </h2>
+
+
+                    
+         <?php 
+ 	;}
+ ?>
                 </div>
                 <div class="name-select">
                     <div class="select-colum1">
@@ -40,6 +63,8 @@
                                 </select>
                     </div>
                 </div>
+
+
             </div>
         </div>
         <div class="content">
@@ -82,38 +107,49 @@
                     <div class="border"></div>
                 </div>        
             </div>
+
+
+
+
+
+
+
+
+
             <div class="right">
-                <h5>Có chỗ ngồi ngoài trời</h5>
                 <div class="right-item">
+                               
                     <ul >
+                        
+                <?php 
+		$id="";
+
+				  $query = mysqli_query($conn, 'SELECT proviceid,provice FROM `province` WHERE `provice` LIKE "%'.$_GET['findingtravel'].'%"');
+
+
+                 while ($row = mysqli_fetch_assoc($query)) {
+                        
+				$id=$row['proviceid'] ;
+               
+                   
+                
+        
+                 ?>
+
+                  <?php 
+
+		   $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H2"');
+		   	
+		   	  while ($row2 = mysqli_fetch_assoc($query2)) {
+
+  
+		    ?>
                         <li class="slide-item " >
                             <div class="img">
-                                <img src="./img/images.jpg">
+                            <img src="img/<?php echo $row2['avatar'] ?>">
                             </div>
                             <div class="row1">
-                                <span>Nhà hàng Cây Dừa</span>
-                            </div>
-                            <div class="row1">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <b>   1.321</b>  
-                            </div>
-                            <div class="row3">
-                                <span>Kiểu Á</span>
-                            </div>
-                            <div class="row4">
-                                <a href="restaurant_detail.php"><button>Chi tiết</button></a>
-                            </div>
-                        </li>
-                        <li class="slide-item" >
-                            <div class="img">
-                                <img src="./img/images.jpg">
-                            </div>
-                            <div class="row1">
-                                <span>Nhà hàng Cây Dừa</span>
+                                <span><?php  echo $row2['servicename']   ?></span>
                             </div>
                             <div class="row1">
                                 <i class="fas fa-star"></i>
@@ -127,183 +163,22 @@
                                 <span>Kiểu Á</span>
                             </div>
                             <div class="row4">
-                                <a href="restaurant_detail.php"><button>Chi tiết</button></a>
+                                <a href="restaurant_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>" ><button>Chi tiết</button></a>
                             </div>
+                            
                         </li>
-                        <li class="slide-item" id="last" >
-                            <div class="img">
-                                <img src="./img/images.jpg">
-                            </div>
-                            <div class="row1">
-                                <span>Nhà hàng Cây Dừa</span>
-                            </div>
-                            <div class="row1">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <b>   1.321</b>  
-                            </div>
-                            <div class="row3">
-                                <span>Kiểu Á</span>
-                            </div>
-                            <div class="row4">
-                                <a href="restaurant_detail.php"><button>Chi tiết</button></a>
-                            </div>
-                        </li>
-                        <button class="btn-next">
-                            <i class="fas fa-angle-right"></i>
-                        </button>
-                    </ul> 
-                </div>
-                <h5>Có chỗ ngồi ngoài trời</h5>
-                <div class="right-item">
-                    <ul >
-                        <li class="slide-item " >
-                            <div class="img">
-                                <img src="./img/images.jpg">
-                            </div>
-                            <div class="row1">
-                                <span>Nhà hàng Cây Dừa</span>
-                            </div>
-                            <div class="row1">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <b>   1.321</b>  
-                            </div>
-                            <div class="row3">
-                                <span>Kiểu Á</span>
-                            </div>
-                            <div class="row4">
-                                <a href="restaurant_detail.php"><button>Chi tiết</button></a>
-                            </div>
-                        </li>
-                        <li class="slide-item" >
-                            <div class="img">
-                                <img src="./img/images.jpg">
-                            </div>
-                            <div class="row1">
-                                <span>Nhà hàng Cây Dừa</span>
-                            </div>
-                            <div class="row1">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <b>   1.321</b>  
-                            </div>
-                            <div class="row3">
-                                <span>Kiểu Á</span>
-                            </div>
-                            <div class="row4">
-                                <a href="restaurant_detail.php"><button>Chi tiết</button></a>
-                            </div>
-                        </li>
-                        <li class="slide-item" id="last" >
-                            <div class="img">
-                                <img src="./img/images.jpg">
-                            </div>
-                            <div class="row1">
-                                <span>Nhà hàng Cây Dừa</span>
-                            </div>
-                            <div class="row1">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <b>   1.321</b>  
-                            </div>
-                            <div class="row3">
-                                <span>Kiểu Á</span>
-                            </div>
-                            <div class="row4">
-                                <a href="restaurant_detail.php"><button>Chi tiết</button></a>
-                            </div>
-                        </li>
-                        <button class="btn-next">
-                            <i class="fas fa-angle-right"></i>
-                        </button>
-                    </ul> 
-                </div>
-                <h5>Có chỗ ngồi ngoài trời</h5>
-                <div class="right-item">
-                    <ul >
-                        <li class="slide-item " >
-                            <div class="img">
-                                <img src="./img/images.jpg">
-                            </div>
-                            <div class="row1">
-                                <span>Nhà hàng Cây Dừa</span>
-                            </div>
-                            <div class="row1">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <b>   1.321</b>  
-                            </div>
-                            <div class="row3">
-                                <span>Kiểu Á</span>
-                            </div>
-                            <div class="row4">
-                                <a href="restaurant_detail.php"><button>Chi tiết</button></a>
-                            </div>
-                        </li>
-                        <li class="slide-item" >
-                            <div class="img">
-                                <img src="./img/images.jpg">
-                            </div>
-                            <div class="row1">
-                                <span>Nhà hàng Cây Dừa</span>
-                            </div>
-                            <div class="row1">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <b>   1.321</b>  
-                            </div>
-                            <div class="row3">
-                                <span>Kiểu Á</span>
-                            </div>
-                            <div class="row4">
-                                <a href="restaurant_detail.php"><button>Chi tiết</button></a>
-                            </div>
-                        </li>
-                        <li class="slide-item" id="last" >
-                            <div class="img">
-                                <img src="./img/images.jpg">
-                            </div>
-                            <div class="row1">
-                                <span>Nhà hàng Cây Dừa</span>
-                            </div>
-                            <div class="row1">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <b>   1.321</b>  
-                            </div>
-                            <div class="row3">
-                                <span>Kiểu Á</span>
-                            </div>
-                            <div class="row4">
-                                <a href="restaurant_detail.php"><button>Chi tiết</button></a>
-                            </div>
-                        </li>
-                        <button class="btn-next">
-                            <i class="fas fa-angle-right"></i>
-                        </button>
-                    </ul> 
+                                    
+
+                        <?php 
+ 	;}
+  
+     }
+ ?>           
+                           </ul> 
+
+
+
+                    
                 </div>
             </div>
         </div>

@@ -304,3 +304,7 @@ a.text-dark {
 .question {
     clear: both;
 }
+img {
+    width: 335px;
+    height: 250px;
+}

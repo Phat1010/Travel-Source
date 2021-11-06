@@ -1,4 +1,4 @@
-      <?php
+<?php
         session_start();
       ?>
 <!DOCTYPE html>
@@ -114,8 +114,8 @@
                         <span class="text">Nhà hàng</span>
                     </a>
                 </li>
-                <li class="menu-item" data-toggle="modal" data-target="#myModal4">
-                    <a href="entertain.php">
+                <li class="menu-item">
+                    <a href="entertain.php" data-toggle="modal" data-target="#myModal4">
                         <span><i class="fas fa-gopuram"></i></span>
                         <span class="text">Hoạt động giải trí</span>
                     </a>
@@ -176,7 +176,7 @@
   <!-- Modal -->
   <div class="modal fade" id="myModal2" role="dialog">
     <div class="modal-dialog">
-  
+    <form action="hotel_page.php" method="get">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -186,16 +186,17 @@
         </div>
         <div class="modal-body">
           <div class="input">
-                <input type="text" placeholder="Nhập địa điểm ..." >
+                <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel" >
                 <span>
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Tìm kiếm</button>
+          <button type="submit" class="btn btn-default" >Tìm kiếm</button>
         </div>
       </div>
+      </form>
     </div>
   </div>
   
@@ -208,26 +209,28 @@
   <!-- Modal -->
   <div class="modal fade" id="myModal3" role="dialog">
     <div class="modal-dialog">
-  
+    <form action="res_page.php" method="get">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Nhà hàng</h4>
+          <h4 class="modal-title">Nhà hàng ABC</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           
         </div>
         <div class="modal-body">
           <div class="input">
-                <input type="text" placeholder="Nhập địa điểm ..." >
+                <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel">
                 <span>
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Tìm kiếm</button>
+          <button type="submit" class="btn btn-default">Tìm kiếm</button>
         </div>
       </div>
+
+      </form>
     </div>
   </div>
   
@@ -239,7 +242,7 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal4" role="dialog">
   <div class="modal-dialog">
-
+  <form action="entertain.php" method="get">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -248,16 +251,17 @@
       </div>
       <div class="modal-body">
         <div class="input">
-              <input type="text" placeholder="Nhập địa điểm ..." >
+              <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel">
               <span>
                   <i class="fa fa-search" aria-hidden="true"></i>
               </span>
           </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" >Tìm kiếm</button>
+        <button type="submit" class="btn btn-default" >Tìm kiếm</button>
       </div>
     </div>
+      </form>
   </div>
 </div>
 
@@ -290,14 +294,17 @@
         <div class="tab-content">
           <!--Panel 7-->
           <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+
+          
           <form action="" method="POST">
           <?php 
             require 'database1.class.php';
 
             $config = [
-                'host' => 'localhost:3308',
+                'host' => 'localhost',
                 'user' => 'root',
-                'pass' => '',
+                'pass' => 'phat',
                 'nameDB' => 'travels'
             ];
             $data = new database1($config);
@@ -366,9 +373,9 @@
             require 'database.class.php';
 
             $config = [
-                'host' => 'localhost:3308',
+                'host' => 'localhost',
                 'user' => 'root',
-                'pass' => '',
+                'pass' => 'phat',
                 'nameDB' => 'travels'
             ];
             $data = new database($config);

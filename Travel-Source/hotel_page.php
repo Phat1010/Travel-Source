@@ -23,12 +23,12 @@
             </div>
             <div class="head-name">
                 <div class="name-txt">
-                    <h2>Khách sạn tại Bình Định và địa điểm lưu trú
+                    <h2>Kết quả tìm kiếm khách sạn
                     </h2>
                 </div>
                 <div class="name-select">
                     <div class="select-colum1">
-                        <span>Không có cơ sở kinh doanh nào khác tại Bình Định. Xem kết quả gần đó bên dưới:</span>  
+                        <span>Không có cơ sở kinh doanh nào khác. Xem kết quả gần đó bên dưới:</span>  
                     </div>
                     <div class="select-colum2">
                         <span class="sp1">Sắp xếp theo:</span>
@@ -81,17 +81,46 @@
                     <div class="border"></div>
                 </div>        
             </div>
+
+
+
+
+
+
+
             <div class="right">
+               
+            <?php 
+		$id="";
+
+				  $query = mysqli_query($conn, 'SELECT proviceid FROM `province` WHERE `provice` LIKE "%'.$_GET['findingtravel'].'%"');
+
+
+                 while ($row = mysqli_fetch_assoc($query)) {
+                        
+				$id=$row['proviceid'] ;
+        
+                 ?>
+            
+
+                  <?php 
+
+		   $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H1"');
+		   	
+		   	  while ($row2 = mysqli_fetch_assoc($query2)) {
+
+  
+		    ?>
                 <div class="right-item">
                     <div class="item-img">
-                        <img src="./img/images.jpg">
+                        <img src="img/<?php echo $row2['avatar'] ?>">
                     </div>
                     <div class="item-cv">
                         <div class="cv-note">
-                            <div class="name"><span>Hải Âu Hotel</span></div>
-                            <div class="price"><span>500.000đ-1.500.000đ</span></div>
+                            <div class="name"><span><?php  echo $row2['servicename']   ?></span></div>
+                            <div class="price"><span><?php  echo $row2['price']   ?></span>đ</div>
                             <div class="cv-rate" style="font-size: 20px;"><span>4 <i class="fas fa-star" style="font-size: 15px;"></i></span></div>
-                            <div class="btn-price"><a href="food-page.php"><button>Xem chi tiết</button></a></div>
+                            <div class="btn-price"><a href="food-page.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"  ><button>Xem chi tiết</button></a></div>
                         </div>
                     </div>
                     <div class="item-rate">
@@ -116,82 +145,20 @@
                             <span>Bãi đỗ xe</span>
                         </div>
                     </div>
-                    
+    
                 </div>
-                <div class="right-item">
-                    <div class="item-img">
-                        <img src="./img/images.jpg">
-                    </div>
-                    <div class="item-cv">
-                        <div class="cv-note">
-                            <div class="name"><span>Hải Yến Hotel</span></div>
-                            <div class="price"><span>500.000đ-1.500.000đ</span></div>
-                            <div class="cv-rate" style="font-size: 20px;"><span>4 <i class="fas fa-star" style="font-size: 15px;"></i></span></div>
-                            <div class="btn-price"><a href="food-page.php"><button>Xem chi tiết</button></a></div>
-                        </div>
-                    </div>
-                    <div class="item-rate">
-                        <div class="icon">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <b>   100 đánh giá</b>  
-                        </div>
-                        <div class="row1">
-                            <i class="fas fa-wifi"></i>
-                            <span>Wifi miễn phí</span>
-                        </div>
-                        <div class="row2">
-                            <i class="fas fa-swimmer"></i>
-                            <span>Bể bơi</span>
-                        </div>
-                        <div class="row3">
-                            <i class="fas fa-parking"></i>
-                            <span>Bãi đỗ xe</span>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="right-item">
-                    <div class="item-img">
-                        <img src="./img/images.jpg">
-                    </div>
-                    <div class="item-cv">
-                        <div class="cv-note">
-                            <div class="name"><span>Bình Dương Hotel</span></div>
-                            <div class="price"><span>500.000đ-1.500.000đ</span></div>
-                            <div class="cv-rate" style="font-size: 20px;"><span>4 <i class="fas fa-star" style="font-size: 15px;"></i></span></div>
-                            <div class="btn-price"><a href="food-page.php"><button>Xem chi tiết</button></a></div>
-                        </div>
-                    </div>
-                    <div class="item-rate">
-                        <div class="icon">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <b>   100 đánh giá</b>  
-                        </div>
-                        <div class="row1">
-                            <i class="fas fa-wifi"></i>
-                            <span>Wifi miễn phí</span>
-                        </div>
-                        <div class="row2">
-                            <i class="fas fa-swimmer"></i>
-                            <span>Bể bơi</span>
-                        </div>
-                        <div class="row3">
-                            <i class="fas fa-parking"></i>
-                            <span>Bãi đỗ xe</span>
-                        </div>
-                    </div>
+
+                <?php 
+ 	;}
+  
+     }
+ ?>
                     
                 </div>
             </div>
+            
         </div>
+        
     </div>
     <?php require_once 'footer.php';?>
 </body>

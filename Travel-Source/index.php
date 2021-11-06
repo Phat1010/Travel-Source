@@ -48,20 +48,23 @@
                     </button>
                 
                 <ul >
-                    <li class="slide-item " >
-                        <img src="./img/images.jpg" id="img1">
+                    <li class="slide-item ">
+                    <a href="http://localhost/Travel-Source/Travel-Source/travel_detail.php?id=S1&idimg=Img1">
+                    Chùa một cột
+                         <img alt="Qries" src="./img/anh1.png">
+                    </a>
                     </li>
                     <li class="slide-item" >
-                        <img src="./img/images.jpg" id="img2">
+                        <img src="./img/anh2.png" id="img2">
                     </li>
                     <li class="slide-item" >
-                        <img src="./img/images.jpg" id="img3">
+                        <img src="./img/anh3.png" id="img3">
                     </li>
                     <li class="slide-item" >
-                        <img src="./img/images.jpg" id="img4">
+                        <img src="./img/anh4.png" id="img4">
                     </li>
                     <li class="slide-item" >
-                        <img src="./img/images.jpg" id="img5">
+                        <img src="./img/anh5.png" id="img5">
     
                     </li>   
 
