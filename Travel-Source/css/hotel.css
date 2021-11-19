@@ -111,6 +111,13 @@ body{
     margin-left: 30px;
     font-size: 17px;
 }
+.select-item button{
+    text-align: center;
+    margin-left:30px;
+    background: #000;
+    font-weight: 700;
+    color: #ccc;
+}
 .check input{
     margin-left: 40px;
     float: left;
@@ -153,9 +160,10 @@ body{
     font-size: 20px;
 }
 .cv-note{
-    margin-top: 12%;
+    margin-top: 10%;
 }
 .btn-price button{
+    margin-top: 10px;
     border-radius: 10px;
     width: 70%;
     height: 40px;
@@ -167,13 +175,14 @@ body{
 .item-rate{
     width: 30%;
     height: 100%;
+    padding-left: 20px;
 }
 .fa-star{
     color: #00aa6c;
 }
 .icon{
-    margin-top: 12%;
-    padding-bottom: 20px;
+    margin-top: 10%;
+    padding: 10px 0;
 }
 .content {
     padding: 30px 30px;
