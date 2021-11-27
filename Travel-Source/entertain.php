@@ -76,33 +76,42 @@
                  ?>
 
                   <?php 
+                if($_GET['entertain']){
+                    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H3" AND `entertain` = "'.$_GET['entertain'].'"');
+                }
+                else{
+                    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H3"');
+                }
 
-		   $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H3"');
+		   
 		   	
 		   	  while ($row2 = mysqli_fetch_assoc($query2)) {
 
+                $query14 = mysqli_query($conn, 'SELECT AVG(ratestar) FROM `rate` WHERE `idservice` = "'. $row2['idservice'].'"');
+                if ($row14 = mysqli_fetch_array($query14)) {
+                    $averageratestar =round($row14[0], 1);
   
+                    $averageratestarnotodd =floor($row14[0]);
+                }
 		    ?>
                  
 				<div class="col-sm-4">
-				<a href="entertain_detail.php">	
 					<div class="place-card">
 						<div class="place-card__img">
+                        <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"       class="text-dark">
 						<img src="img/<?php echo $row2['avatar'] ?>"   width="400" height="270">
 						</div>
 						<div class="place-card__content">
 							<h5 class="place-card__content_header">
-                            <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"       class="text-dark"><?php  echo $row2['servicename']   ?></a> 
-                            <a href="#!"         ><i class="fa fa-heart-o"></i></a></h5>
+                            <?php  echo $row2['servicename']   ?>
+                            <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>
+                                   
+                                   </div>
+                            </a> 
+                            </h5>
 							<div class="flex-center">
 								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted">Biển Kỳ Co, Quy Nhơn</span></p>
-								<div class="rating-box">
-									<div class="rating-stars">
-										<img src="./img/grey-star.svg" alt="">
-										<div class="filled-star" style="width:86%"></div>
-									</div>
-								</div>
+                                <span class="text-muted"><?php echo $row['provice'] ?></span></p>
 							</div>
 						</div>
 					</div>
@@ -125,16 +134,37 @@
 
 <!----------------------------------menu--------------------------------------->
 
+
+                 
 	<section class="menu-opion">
 		<ul class="list-option">
-            <li class="list active" data-filter="all">All</li>
-            <li class="list" data-filter="park">Park</li>
-            <li class="list" data-filter="museum">Museum</li>
-            <li class="list" data-filter="beach">Beach</li>
-			<li class="list" data-filter="hotel">Hotel</li>
+            <li class="list active" data-filter="all">
+                <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=">
+                    All
+                </a>
+            </li>
+            <li class="list" data-filter="park">
+                <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=park">    
+                    Park
+                </a>
+            </li>
+            <li class="list" data-filter="museum">
+                <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=beach">    
+                    Beach
+                </a>
+            </li>
+            <li class="list" data-filter="beach">
+                <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=film">    
+                    Film
+                </a>
+            </li>
+			<li class="list" data-filter="hotel">
+                <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=play">    
+                    Play
+                </a>
+            </li>
         </ul>
 	</section>
-
 
 <!----------------------------------Questions--------------------------------------->
 

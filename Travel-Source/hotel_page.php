@@ -10,7 +10,7 @@
 <body>
 <?php require_once 'header.php';?>
 
-    <form id="Form" action="#" method="post">
+    <form id="Form" action="" method="post">
     <div class="container">
         <div class="head">
             <div class="head-map">
@@ -500,11 +500,8 @@
                         <div class="cv-note">
                             <div class="name"><span><?php  echo $row2['servicename']   ?></span></div>
                             <div class="price"><span><?php  echo number_format($row2['price'])   ?></span>đ</div>
-                            <div class="starHotel"><span><?php  echo  $row2['star']    ?>sao</span></div>
-                            <div class="btn-price">
-                                <button class="btn"><a href="restaurant_detail.php?id=<php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>" >Chi tiết</a></button>
-                            </div>
-                            
+                            <div class="starHotel"><span><?php  echo  $row2['star']?>sao</span></div>
+                            <div class="btn-price"><a href="restaurant_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"  ><button>Xem chi tiết</button></a></div>
                         </div>
                     </div>
                     <div class="item-rate">

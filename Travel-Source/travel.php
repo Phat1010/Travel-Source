@@ -127,13 +127,14 @@ $averageratestarnotodd =floor($row14[0]);
                         <div class="place-card__content">
                             <h5 class="place-card__content_header">
                             <a href="travel_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?> " class="text-dark"> <?php echo  $row2['servicename']  ?></a> 
+                            <div class="rating-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>
+                                   
+                                </div>
                             <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
                             <div class="flex-center">
                                 <p class="mb-0"><i class="fa fa-map-marker"></i> 
                                 <span class="text-muted"><?php  echo    $row2['address'] ?></span></p>
-                                <div class="rating-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>
-                                   
-                                </div>
+                                
                             </div>
                         </div>
                     </a>

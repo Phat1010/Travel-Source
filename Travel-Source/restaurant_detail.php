@@ -5,6 +5,7 @@
     <title>Insert title here</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+    <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
     
   
 </head>
@@ -13,10 +14,13 @@
     <link rel="stylesheet" href="./css/food.css">
     <link rel="stylesheet" href="./css/comment.css">
     <link rel="stylesheet" href="./css/comment.fix.css">
+    <link rel="stylesheet" href="./css/star.css">
 
 <?php require_once 'header.php';?>
 
 <?php 
+
+$userid = 0;
 
 $servicename = "";
 $address="";
@@ -26,6 +30,12 @@ $close="";
 $price="";
 $idimage="";
 $idservice="";
+
+$numberrate = 0;
+$averageratestar = 0;
+$averageratestarnotodd = 0;
+
+
 
 $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%'. $_GET['id'].'%"');
             
@@ -53,6 +63,16 @@ $query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'.
 
               }
 
+ $query14 = mysqli_query($conn, 'SELECT AVG(ratestar) FROM `rate` WHERE `idservice` = "'. $_GET['id'].'"');
+              if ($row14 = mysqli_fetch_array($query14)) {
+$averageratestar =round($row14[0], 1);
+
+$averageratestarnotodd =floor($row14[0]);
+
+
+
+    }
+
 
  ?>
     <div class="container">
@@ -77,12 +97,19 @@ $query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'.
 
             <div class="row2">
                 <div class="rate">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <b>   100 đánh giá</b>
+                <?php 
+                               $query10 = mysqli_query($conn, 'SELECT Count(*) FROM `rate` WHERE `idservice` =  "'.@$_GET['id'].'"');
+            
+              if ($row10 = mysqli_fetch_array($query10)) {
+                  
+
+                $numberrate=$row10['Count(*)'];
+
+              
+
+              }
+                     ?>
+                    <b> <?php echo $numberrate?>   đánh giá</b>
                 </div>
                 <div class="type">
                     <span>Địa điểm du lịch hấp dẫn của Việt Nam</span>
@@ -112,17 +139,86 @@ $query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'.
                 <h3>Đánh giá </h3>
                 <div class="danhgia">
                     <div class="icon">
-                        <b class="rate-total">4.0</b>
-                    
+                    <b class="rate-total"><?php echo $averageratestar; ?></b>
+                     <?php 
+                    if($averageratestarnotodd==4){
+
+                   ?>  
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
-                        <b>   100 đánh giá</b>  
+
+
+
+
+                        <?php } ?>
+
+                     <?php 
+                    if($averageratestarnotodd==5){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+
+
+
+
+                        <?php } ?>
+
+
+ <?php 
+                    if($averageratestarnotodd==3){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+
+
+
+
+                        <?php } ?>
+
+
+ <?php 
+                    if($averageratestarnotodd==2){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+
+
+
+
+                        <?php } ?>
+                         <?php 
+                    if($averageratestarnotodd==1){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+
+
+
+
+                        <?php } ?>
+                        <b>   <?php echo $numberrate ?>Danh Gia</b>  
                     </div>
-                    <span> <?php echo $address; ?> </span>
-                    <span> dé : <?php echo $price; ?> VND </span>
+                    <span> Địa Chỉ: <?php echo $address; ?> </span>
+                    <span></span>
                 </div>
                 <div class="border"></div>
                 <div class="xephang">
@@ -249,6 +345,12 @@ $query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'.
             </div>
         </div>
     </div>
+
+
+
+
+
+
         
         
     <!--comment --> <!--comment --> <!--comment --> <!--comment -->
@@ -256,158 +358,223 @@ $query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'.
             <div class="rating-box">
                 <div class="rating-header">
                     <h4>Đánh giá</h4>
-                    <span> 100 đánh giá</span>
+                    <span>  <?php echo $numberrate ?> đánh giá</span>
                     <button class="btn cmt-btn">Viết đánh giá</button>
                 </div>
+
+<!--Handle Code-->
+<form action="" method="post">
+                <div class="stars">
+ 
+    <input class="star star-5" id="star-5" type="radio" name="star" value="5" />
+    <label class="star star-5" for="star-5"></label>
+    <input class="star star-4" id="star-4" type="radio" name="star"  value="4"/>
+    <label class="star star-4" for="star-4"></label>
+    <input class="star star-3" id="star-3" type="radio" name="star"  value="3"/>
+    <label class="star star-3" for="star-3"></label>
+    <input class="star star-2" id="star-2" type="radio" name="star"  value="2"/>
+    <label class="star star-2" for="star-2"></label>
+    <input class="star star-1" id="star-1" type="radio" name="star"  value="1"/>
+    <label class="star star-1" for="star-1"></label>
+ 
+</div>
                 <div class="cmt-input">
-                    <input type="text" placeholder="Viết đánh giá">
-                    <button>
+                    <input type="text" placeholder="Viết đánh giá" name="txt-rate">
+                    <button type="submit">
                         <span>Send</span>
                     </button>
                 </div>
-                <div class="rating-container">
-                    <h5>Xếp hạng của khách du lịch</h5>
-                    <div class="rating">
-                        <ul>
-                            <li>
-                                <span>Tuyệt vời</span>
-                                <meter value="85" min="0" max="100" title=""></meter>
-                                <span>85</span> 
-                            </li>
-                            <li>
-                                <span>Rất tốt</span>
-                                <meter value="10" min="0" max="100" ></meter>
-                                <span>10</span> 
-                            </li>
-                            <li>
-                                <span>Trung bình</span>
-                                <meter value="5" min="0" max="100" ></meter>
-                                <span>5</span> 
-                            </li>
-                            <li>
-                                <span>Tồi</span>
-                                <meter value="0" min="0" max="100" ></meter>
-                                <span>0</span> 
-                            </li>
-                            <li>
-                                <span>Kinh khủng</span>
-                                <meter value="0" min="0" max="100" ></meter>
-                                <span>0</span> 
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
+ 
+
+<?php 
+ 
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if(@$_SESSION['username']==null)
+    {
+         echo '<p class="star-input">đăng nhập trước khi bình luận bạn ei<p/>';
+    }
+
+
+
+ if (empty($_POST['star'])  ){
+               echo '<p class="star-input">Bạn có thể tặng tôi vài ngôi sao<p/>';
+            }
+
+if(!empty($_POST['star']) && @$_SESSION['username']!=null ){
+   
+    $query6 = mysqli_query($conn, 'SELECT * FROM `user` WHERE `email` = "'.@$_SESSION['username'].'"');
+            
+              if ($row6 = mysqli_fetch_assoc($query6)) {
+                  
+                   $userid = $row6['userid'] ;
+                 
+
+              }
+             
+
+   $lenhsql = "INSERT INTO rate VALUES ('".$userid."', '".@$_GET['id']."', '".@$_POST['txt-rate']."','".@$_POST['star']."')";
+    $thucthi=mysqli_query($conn,$lenhsql) or die ("Khong them duoc");
+    if (!$thucthi) {
+        echo " Không bình luận được !";
+    }else{
+        echo " <h3><a href='index.php'>Đánh giá của bạn đã được ghi lại.</a></h3>";
+   
+
+
+     //fix insert when f5
+
+
+
+     
+    }
+}
+}
+
+
+
+
+
+ ?>
+
+<script> // fix insertdata when refresh
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+
+
+</form>
+
+<!--Handle Code-->
+
+
+
+
+
             <div class="comment">
                 <h4>Xem đánh giá</h4>
+                <?php 
+                        $query8 = mysqli_query($conn, 'SELECT * FROM `rate` WHERE `idservice` =  "'.@$_GET['id'].'"');
+            
+              while ($row8 = mysqli_fetch_assoc($query8)) {
+
+
+                  
+                $query9 = mysqli_query($conn, 'SELECT * FROM `user` WHERE `userid` =  "'.$row8['userid'].'"');
+                while ($row9 = mysqli_fetch_assoc($query9)) {
+                    // code...
+            
+
+            
+
+                 ?>
+
+
+
+
+
+
                 <div class="list-cmt">
-						<div class="cmt-item">
-							<div class="user-info">
-								<div class="user-info__img">
-									<img src="./img/avatar.png" alt="User Img">
-								</div>
-								<div class="user-info__basic">
+                        <div class="cmt-item">
+                            <div class="user-info">
+                                <div class="user-info__img">
+                                    <img src="./img/avatar.png" alt="User Img">
+                                </div>
+                                <div class="user-info__basic">
                                     <div class="header">    
-                                        <h5 class="mb-0">Mallothi Susi</h5>
+                                        <h5 class="mb-0"><?php echo $row9['username'];  ?> </h5>
+                                        <?php if($row8['ratestar']=="5" ) {?>
+
                                         <div class="rate">    
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
+                                              <i class="fas fa-star"></i>
                                         </div>
-                                        <div class="time-rate"> <span>Đã đánh giá 8 tháng 7 , 2022</span></div>
+                                    <?php } ?>
+                                    
+                                    <?php if($row8['ratestar']=="4" ) {?>
+
+                                        <div class="rate">    
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                           <i class="far fa-star"></i>
+                                        </div>
+                                    <?php } ?>
+                                    
+                                    <?php if($row8['ratestar']=="3" ) {?>
+
+                                        <div class="rate">    
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                              <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                        </div>
+                                    <?php } ?>
+                                    
+                                    <?php if($row8['ratestar']=="2" ) {?>
+
+                                        <div class="rate">    
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                              <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                        </div>
+                                    <?php } ?>
+                                    
+                                    <?php if($row8['ratestar']=="1" ) {?>
+
+                                        <div class="rate">    
+                                            <i class="fas fa-star"></i>
+                                              <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                  <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                        </div>
+                                    <?php } ?>
+                                    
+
                                     </div>
-									<p class="text-cmt">Điểm du lịch tuyệt vời nhất tôi từng đến!</p>
+                                    <p class="text-cmt"><?php echo $row8['comment'];  ?> </p>
                                     <div class="time">
                                         <strong>Ngày đến thăm : </strong>
                                         <span> tháng 13 năm 2030</span>
                                     </div>
-								</div>
-							</div>
-							<div class="dropdown open">
-								<a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										<i class="fa fa-ellipsis-v"></i>
-								</a>
-								<div class="dropdown-menu" aria-labelledby="triggerId1">
-									<a class="dropdown-item" href="#">
+                                </div>
+                            </div>
+                            <div class="dropdown open">
+                                <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="triggerId1">
+                                    <a class="dropdown-item" href="#">
                                         <i class="fa fa-pencil mr-1"></i>
                                         Báo cáo đánh giá
                                     </a>
-								</div>
-							</div>
+                                </div>
+                            </div>
                         </div>
-						<div class="cmt-item">
-							<div class="user-info">
-								<div class="user-info__img">
-									<img src="./img/pic2.jpg" alt="User Img">
-								</div>
-								<div class="user-info__basic">
-									<h5 class="mb-0">Phat Tran</h5>
-									<p class="text-cmt">Các bạn nên đến một lần!</p>
-                                    <div class="rate">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>   
-								</div>
-							</div>
-							<div class="dropdown open">
-								<a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										<i class="fa fa-ellipsis-v"></i>
-								</a>
-								<div class="dropdown-menu" aria-labelledby="triggerId1">
-									<a class="dropdown-item" href="#">
-                                        <i class="fa fa-pencil mr-1"></i>
-                                        Báo cáo đánh giá
-                                    </a>
-								</div>
-							</div>
-						</div>         
-						<div class="cmt-item">
-							<div class="user-info">
-								<div class="user-info__img">
-									<img src="./img/pic6.jpeg" alt="User Img">
-								</div>
-								<div class="user-info__basic">
-									<h5 class="mb-0">Thành Nguyễn</h5>
-									<p class="text-cmt"></p>
-                                    <div class="rate">      
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>   
-								</div>
-							</div>
-							<div class="dropdown open">
-								<a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true"
-										aria-expanded="false">
-										<i class="fa fa-ellipsis-v"></i>
-								</a>
-								<div class="dropdown-menu" aria-labelledby="triggerId1">
-									<a class="dropdown-item" href="#">
-                                        <i class="fa fa-pencil mr-1"></i>
-                                        Báo cáo đánh giá
-                                    </a>
-								</div>
-							</div>
-						</div> 
-                        <div class="load-more">
-                            <span>Xem thêm bình luận khác</span>
-                        </div>
+                       
                 </div>
+
+            <?php   }} ?>
             </div>
 
         </section>
 
 
 
+        
         
         <script>
         const $ = document.querySelector.bind(document);

@@ -49,10 +49,9 @@
                 
                 <ul >
                     <li class="slide-item ">
-                    <a href="http://localhost/Travel-Source/Travel-Source/travel_detail.php?id=S1&idimg=Img1">
-                    Chùa một cột
-                         <img alt="Qries" src="./img/anh1.png">
+                    <a href="http://localhost/Travel-Source/Travel-Source/travel_detail.php?id=S1&idimg=Img1"><img alt="Qries" src="./img/anh1.png">
                     </a>
+
                     </li>
                     <li class="slide-item" >
                         <img src="./img/anh2.png" id="img2">

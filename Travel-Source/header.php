@@ -69,10 +69,14 @@
             </li>
         </div>
 
+         
         
+
+
         <?php 
        if (isset($_SESSION['username'])){
-           echo $_SESSION['username']."<br/>";
+          $_SESSION['username']."<br/>";
+           echo $_SESSION['name'];
            echo '<a href="logout.php">Logout</a>';
        }
        else{
@@ -226,7 +230,7 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-default">Tìm kiếm</button>
+          <button type="submit" class="btn btn-default" name="idprice">Tìm kiếm</button>
         </div>
       </div>
 
@@ -258,7 +262,7 @@
           </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-default" >Tìm kiếm</button>
+        <button type="submit" class="btn btn-default" name="entertain" >Tìm kiếm</button>
       </div>
     </div>
       </form>
@@ -318,9 +322,12 @@
 	    $password = @$_POST['password_login'];
       $result = $data->ManipulationDB('select * from user where email ="'.$email.'"');
       $arr = mysqli_fetch_array($result);
+      
       if($email == @$arr['email']){
         if($password == $arr['password']){
           $_SESSION['username'] = $email;
+          $_SESSION['name'] = $arr['username'];
+              
       }
       else
 			echo ' <center><p style="color: red;">Sai mat khau!</p></center>';

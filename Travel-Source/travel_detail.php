@@ -456,19 +456,17 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null ){
             <div class="comment">
                 <h4>Xem đánh giá</h4>
                 <?php 
-                        $query8 = mysqli_query($conn, 'SELECT * FROM `rate` WHERE `idservice` =  "'.@$_GET['id'].'"');
+                        $query8 = mysqli_query($conn, 'SELECT * FROM `rate` WHERE `idservice` =  "'.$_GET['id'].'"');
             
-              while ($row8 = mysqli_fetch_assoc($query8)) {
+              while ($row8 = mysqli_fetch_assoc($query8)) { 
+
 
 
                   
-                   $query9 = mysqli_query($conn, 'SELECT * FROM `user` WHERE `email` =  "'.@$_SESSION['username'].'"');
-                   if ($row9 = mysqli_fetch_assoc($query9)) {
+                   $query9 = mysqli_query($conn, 'SELECT * FROM `user` WHERE `userid` =  "'.$row8['userid'].'"');
+                   while ($row9 = mysqli_fetch_assoc($query9)) {
                        // code...
-                 
-            
-
-            
+                        
 
                  ?>
 
