@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./css/comment.css">
     <link rel="stylesheet" href="./css/comment.fix.css">
     <link rel="stylesheet" href="./css/star.css">
+       <link rel="stylesheet" href="./css/commentadded.css">
 <?php require_once 'header.php';?>
 
 <?php 
@@ -361,7 +362,7 @@ $averageratestarnotodd =floor($row14[0]);
                 </div>
 
 <!--Handle Code-->
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
                 <div class="stars">
  
     <input class="star star-5" id="star-5" type="radio" name="star" value="5" />
@@ -377,7 +378,36 @@ $averageratestarnotodd =floor($row14[0]);
  
 </div>
                 <div class="cmt-input">
-                    <input type="text" placeholder="Viết đánh giá" name="txt-rate">
+                    <input type="text" placeholder="Viết đánh giá(Bắt buộc)" name="txt-rate">
+                    <br>
+                    <br>
+                     <input type="text" placeholder="Đặt tiêu đề cho bài đánh giá của bạn(Bắt buộc)" name="txt-rate-title">
+                     <br>
+                    <br>
+                    <h5>Bạn đi khi nào(Bắt buộc)</h5>
+                
+                    <input type="date" name="bday" min="2000-01-02" placeholder="Bạn đi khi nào" ><br><br>
+                    <h5>Bạn đi cùng ai</h5>
+               
+                       
+<select class="browser-default custom-select" name="gowithwho" style="width: 595px;
+    height: 50px;
+    border-radius:10px;">
+                                    <option value="Gia đình(Trẻ nhỏ)" selected ><span>Gia đình(Trẻ nhỏ)</span></option>
+                                    <option value="Cặp đôi" ><span>Cặp đôi</span></option>
+                                    <option value="Gia đình(Thanh thiếu niên)"  >Gia đình(Thanh thiếu niên)<span></span></option>
+                                    <option value="Bạn bè"  >Bạn bè<span></span></option>
+                                    <option value="Doanh nghiệp"  >Doanh nghiệp<span></span></option>
+                                    <option value="Một Mình"  >Một Mình<span></span></option>
+</select>
+
+                
+<br><br>
+                    <h5>Chọn ảnh bạn muốn chia sẻ</h5>
+               
+
+                     <input type="file" name="fileUpload" value="">
+
                     <button type="submit">
                         <span>Send</span>
                     </button>
@@ -386,14 +416,16 @@ $averageratestarnotodd =floor($row14[0]);
  
 
 <?php 
- 
+
+    $checkfile = 0;
+
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if(@$_SESSION['username']==null)
     {
-         echo '<p class="star-input">đăng nhập trước khi bình luận bạn ei<p/>';
+         echo '<p class="star-input">đăng nhập trước khi bình luận bạn ơi<p/>';
     }
 
 
@@ -402,7 +434,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                echo '<p class="star-input">Bạn có thể tặng tôi vài ngôi sao<p/>';
             }
 
-if(!empty($_POST['star']) && @$_SESSION['username']!=null ){
+
+if (empty($_POST['txt-rate-title']&&$_POST['bday']&&$_POST['txt-rate'] )  ){
+               echo '<p class="star-input">Vui lòng điền đầy đủ thông tin<p/>';
+            }
+
+
+
+ ///IMG
+    if ( isset($_FILES['fileUpload'])) {
+
+                $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+        $filename = $_FILES["fileUpload"]["name"];
+        $filetype = $_FILES["fileUpload"]["type"];
+        $filesize = $_FILES["fileUpload"]["size"];
+    
+        // Xác minh phần mở rộng tệp
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    if(!array_key_exists($ext, $allowed)&&@$_FILES["fileUpload"]["name"]!=null)
+        {
+             echo '<p class="star-input"> Vui lòng chọn file hợp lệ!<p/>';
+             $checkfile = 1;
+        }
+
+
+
+  ///IMG
+
+if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-rate-title']&&$_POST['bday']&&$_POST['txt-rate'] )&&$checkfile!=1){
+
+
+ 
    
     $query6 = mysqli_query($conn, 'SELECT * FROM `user` WHERE `email` = "'.@$_SESSION['username'].'"');
             
@@ -414,12 +476,29 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null ){
               }
              
 
-   $lenhsql = "INSERT INTO rate VALUES ('".$userid."', '".@$_GET['id']."', '".@$_POST['txt-rate']."','".@$_POST['star']."')";
+   $lenhsql = "INSERT INTO rate VALUES ('".$userid."', '".@$_GET['id']."', '".@$_POST['txt-rate']."','".@$_POST['star']."', '".@$_POST['txt-rate-title']."', '".@$_POST['gowithwho']."', '".@$_POST['bday']."', '".@$_FILES['fileUpload']['name']."')";
     $thucthi=mysqli_query($conn,$lenhsql) or die ("Khong them duoc");
     if (!$thucthi) {
         echo " Không bình luận được !";
     }else{
-        echo " <h3><a href='index.php'>Đánh giá của bạn đã được ghi lại.</a></h3>";
+
+      
+    
+       move_uploaded_file($_FILES['fileUpload']['tmp_name'], 'img/' . $_FILES['fileUpload']['name']);
+        echo "<p>upload thành công <p><br/>";
+        echo '<p>Dường dẫn: upload/' . $_FILES['fileUpload']['name'] . '<br><p>';
+        echo '<p>Loại file: ' . $_FILES['fileUpload']['type'] . '<br><p>';
+        echo '<p>Dung lượng: ' . ((int)$_FILES['fileUpload']['size'] / 1024) . 'KB<p>';
+    
+       
+            
+            echo " <h3><a href='index.php'>Đánh giá của bạn đã được ghi lại.</a></h3>";
+
+        
+    }
+}
+///IMG
+    
    
 
 
@@ -428,7 +507,7 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null ){
 
 
      
-    }
+    
 }
 }
 
@@ -541,11 +620,39 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null ){
                                     
 
                                     </div>
+                                      <h5 class="text-cmt"><?php echo $row8['title'];  ?> </h5>
                                     <p class="text-cmt"><?php echo $row8['comment'];  ?> </p>
                                     <div class="time">
                                         <strong>Ngày đến thăm : </strong>
-                                        <span> tháng 13 năm 2030</span>
+                                        <span> <?php echo $row8['times'];  ?></span>
+
+
+
                                     </div>
+                                    <?php 
+                                            if($row8['imgshare']!=null)
+                                            {
+
+                                           
+
+                                     ?>
+                                     <p><img src="img/<?php echo $row8['imgshare'];  ?>" alt="Sakura" class="imgshare" style="  width: 150px;
+    height: 150px;    image-rendering: pixelated;
+    object-fit: contain;" /></p>
+ 
+ <?php } ?>
+
+                         <?php 
+                                            if($row8['imgshare']==null)
+                                            {
+
+                                           
+
+                                     ?>
+                                    
+ 
+ <?php } ?>
+
                                 </div>
                             </div>
                             <div class="dropdown open">
