@@ -308,7 +308,7 @@
             $config = [
                 'host' => 'localhost',
                 'user' => 'root',
-                'pass' => 'phat',
+                'pass' => '',
                 'nameDB' => 'travels'
             ];
             $data = new database1($config);
@@ -382,7 +382,7 @@
             $config = [
                 'host' => 'localhost',
                 'user' => 'root',
-                'pass' => 'phat',
+                'pass' => '',
                 'nameDB' => 'travels'
             ];
             $data = new database($config);

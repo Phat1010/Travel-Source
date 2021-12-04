@@ -6,10 +6,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
     <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
-  <style type="text/css">
-
-
-  </style>
+    
+  
 </head>
 <body>
     <link rel="stylesheet" href="./css/index.css">
@@ -17,11 +15,13 @@
     <link rel="stylesheet" href="./css/comment.css">
     <link rel="stylesheet" href="./css/comment.fix.css">
     <link rel="stylesheet" href="./css/star.css">
-       <link rel="stylesheet" href="./css/commentadded.css">
+
 <?php require_once 'header.php';?>
 
 <?php 
-   $userid = 0;
+
+$userid = 0;
+
 $servicename = "";
 $address="";
 $description="";
@@ -30,15 +30,14 @@ $close="";
 $price="";
 $idimage="";
 $idservice="";
+
 $numberrate = 0;
 $averageratestar = 0;
 $averageratestarnotodd = 0;
 
 
 
-
-
-$query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%'. @$_GET['id'].'%"');
+$query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%'. $_GET['id'].'%"');
             
               if ($row = mysqli_fetch_assoc($query2)) {
                    $servicename = $row['servicename'] ;
@@ -52,7 +51,7 @@ $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%
 
               }
 
-$query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'. @$_GET['idimg'].'%"');
+$query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'. $_GET['idimg'].'%"');
             
               if ($row = mysqli_fetch_assoc($query3)) {
                    $picture1 = $row['picture1'] ;
@@ -64,8 +63,7 @@ $query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'.
 
               }
 
-
-$query14 = mysqli_query($conn, 'SELECT AVG(ratestar) FROM `rate` WHERE `idservice` = "'. $_GET['id'].'"');
+ $query14 = mysqli_query($conn, 'SELECT AVG(ratestar) FROM `rate` WHERE `idservice` = "'. $_GET['id'].'"');
               if ($row14 = mysqli_fetch_array($query14)) {
 $averageratestar =round($row14[0], 1);
 
@@ -73,7 +71,7 @@ $averageratestarnotodd =floor($row14[0]);
 
 
 
-              }
+    }
 
 
  ?>
@@ -99,8 +97,7 @@ $averageratestarnotodd =floor($row14[0]);
 
             <div class="row2">
                 <div class="rate">
-                
-                    <?php 
+                <?php 
                                $query10 = mysqli_query($conn, 'SELECT Count(*) FROM `rate` WHERE `idservice` =  "'.@$_GET['id'].'"');
             
               if ($row10 = mysqli_fetch_array($query10)) {
@@ -112,7 +109,7 @@ $averageratestarnotodd =floor($row14[0]);
 
               }
                      ?>
-                   <b>   <?php echo $numberrate?> đánh giá</b>
+                    <b> <?php echo $numberrate?>   đánh giá</b>
                 </div>
                 <div class="type">
                     <span>Địa điểm du lịch hấp dẫn của Việt Nam</span>
@@ -142,8 +139,8 @@ $averageratestarnotodd =floor($row14[0]);
                 <h3>Đánh giá </h3>
                 <div class="danhgia">
                     <div class="icon">
-                        <b class="rate-total"><?php echo $averageratestar; ?></b>
-                  <?php 
+                    <b class="rate-total"><?php echo $averageratestar; ?></b>
+                     <?php 
                     if($averageratestarnotodd==4){
 
                    ?>  
@@ -218,12 +215,10 @@ $averageratestarnotodd =floor($row14[0]);
 
 
                         <?php } ?>
-
-
-                        <b> <?php echo $numberrate ?> đánh giá</b>  
+                        <b>   <?php echo $numberrate ?>Danh Gia</b>  
                     </div>
-                    <span> <?php echo $address; ?> </span>
-                    <span> dé : <?php echo $price; ?> VND </span>
+                    <span> Địa Chỉ: <?php echo $address; ?> </span>
+                    <span></span>
                 </div>
                 <div class="border"></div>
                 <div class="xephang">
@@ -350,6 +345,12 @@ $averageratestarnotodd =floor($row14[0]);
             </div>
         </div>
     </div>
+
+
+
+
+
+
         
         
     <!--comment --> <!--comment --> <!--comment --> <!--comment -->
@@ -485,10 +486,10 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
       
     
        move_uploaded_file($_FILES['fileUpload']['tmp_name'], 'img/' . $_FILES['fileUpload']['name']);
-        // echo "<p>upload thành công <p><br/>";
-        //echo '<p>Dường dẫn: upload/' . $_FILES['fileUpload']['name'] . '<br><p>';
-        //echo '<p>Loại file: ' . $_FILES['fileUpload']['type'] . '<br><p>';
-        //echo '<p>Dung lượng: ' . ((int)$_FILES['fileUpload']['size'] / 1024) . 'KB<p>';
+        echo "<p>upload thành công <p><br/>";
+        echo '<p>Dường dẫn: upload/' . $_FILES['fileUpload']['name'] . '<br><p>';
+        echo '<p>Loại file: ' . $_FILES['fileUpload']['type'] . '<br><p>';
+        echo '<p>Dung lượng: ' . ((int)$_FILES['fileUpload']['size'] / 1024) . 'KB<p>';
     
        
             

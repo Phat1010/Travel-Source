@@ -485,10 +485,10 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
       
     
        move_uploaded_file($_FILES['fileUpload']['tmp_name'], 'img/' . $_FILES['fileUpload']['name']);
-        echo "<p>upload thành công <p><br/>";
-        echo '<p>Dường dẫn: upload/' . $_FILES['fileUpload']['name'] . '<br><p>';
-        echo '<p>Loại file: ' . $_FILES['fileUpload']['type'] . '<br><p>';
-        echo '<p>Dung lượng: ' . ((int)$_FILES['fileUpload']['size'] / 1024) . 'KB<p>';
+        // echo "<p>upload thành công <p><br/>";
+        //echo '<p>Dường dẫn: upload/' . $_FILES['fileUpload']['name'] . '<br><p>';
+        //echo '<p>Loại file: ' . $_FILES['fileUpload']['type'] . '<br><p>';
+        //echo '<p>Dung lượng: ' . ((int)$_FILES['fileUpload']['size'] / 1024) . 'KB<p>';
     
        
             
