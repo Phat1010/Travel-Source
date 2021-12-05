@@ -33,7 +33,7 @@ CREATE TABLE `picture` (
   `picture2` varchar(50) DEFAULT NULL,
   `picture3` varchar(50) DEFAULT NULL,
   `picture4` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `picture`
@@ -79,7 +79,7 @@ INSERT INTO `picture` (`idimage`, `picture1`, `picture2`, `picture3`, `picture4`
 CREATE TABLE `province` (
   `proviceid` varchar(10) NOT NULL,
   `provice` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `province`
@@ -107,11 +107,11 @@ CREATE TABLE `rate` (
   `idservice` varchar(10) NOT NULL,
   `comment` varchar(500) DEFAULT NULL,
   `ratestar` varchar(5) DEFAULT NULL,
-  `title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `goandwho` text,
   `times` text,
   `imgshare` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `rate`
@@ -148,7 +148,7 @@ CREATE TABLE `service` (
   `park` varchar(10) NOT NULL,
   `entertain` varchar(20) NOT NULL,
   `star` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `service`
@@ -194,7 +194,7 @@ INSERT INTO `service` (`idservice`, `servicename`, `avatar`, `address`, `descrip
 CREATE TABLE `servicetype` (
   `idtype` varchar(10) NOT NULL,
   `nametype` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `servicetype`
@@ -217,7 +217,7 @@ CREATE TABLE `user` (
   `email` varchar(50) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user`
