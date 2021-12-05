@@ -120,7 +120,7 @@ $averageratestarnotodd =floor($row14[0]);
 
                 <!-- next-->
                 <div class="col-sm-4 hotel">
-                    <a href="travel_detail.php" class="place-card">
+                <a href="travel_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?> " class="place-card">
                         <div class="place-card__img">
                             <img src="img/<?php echo $row2['avatar'] ?>" class="place-card__img-thumbnail" alt="Thumbnail">
                         </div>
