@@ -104,7 +104,6 @@ meter::-webkit-meter-bar{
 .comment{
     width: 100%;
     min-width: 150px;
-    height: 500px;
     padding:10px 0;
 }
 .comment .cmt-item{
