@@ -20,6 +20,7 @@
     
 <!-----Link Design----->
     <link rel="stylesheet" href="./css/entertainstyle.css">
+        <link rel="stylesheet" href="css/travels.css">
     <script src="./javascript/a.js"></script>
 </head>
 
@@ -82,16 +83,20 @@
                   
                       if ($check!=0)
                       {
+                          echo '<br>';     
+                          echo '  <div class="line"></div>';
+                          echo '<br>';
                           echo '  <h1 class="text-center text-uppercase">Các điểm du lịch hàng đầu tại  '.$row['provice'].'  </h1>';
-
-                      
+                          echo '<br>';
+                          
                   }
                   
                   
                   }
                   ?>
                   
-
+				 <div class="row2" style="float: left">
+				
                   <?php 
 
            $query2 = mysqli_query($conn, 'SELECT * FROM service WHERE proviceid LIKE "%'.$id.'%" AND `idtype`="h4"');
@@ -111,13 +116,12 @@ $averageratestarnotodd =floor($row14[0]);
 
             ?>
 
-              <div class="line"></div>
-    <section class="main-entertain">
-        <div class="container">
+            
+ 
+      
           
          
-            <div class="row">
-
+           
                 <!-- next-->
                 <div class="col-sm-4 hotel">
                 <a href="travel_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?> " class="place-card">
@@ -139,22 +143,22 @@ $averageratestarnotodd =floor($row14[0]);
                         </div>
                     </a>
      </div>
-
+   <!-- next-->
+               
 <?php }
-    ;}
+    
   ?>
                 
 
-        </div>  
+      
   
   <?php 
-    
+  ;} 
+ echo '</div> ';
      }
- ?>
-</div>
+ ?>  
 
-             
-    </section>
+ 
 <!----------------------------------menu--------------------------------------->
 
 

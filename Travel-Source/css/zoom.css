@@ -1,0 +1,14 @@
+#zoom {
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    }
+     
+    #zoom:hover {
+    transform: scale(8,8);
+    -webkit-transform: scale(8,8);
+    -moz-transform: scale(8,8);
+    -o-transform: scale(8,8);
+    -ms-transform: scale(8,8);
+    }

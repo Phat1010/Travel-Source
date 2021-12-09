@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="./css/comment.fix.css">
     <link rel="stylesheet" href="./css/star.css">
        <link rel="stylesheet" href="./css/commentadded.css">
+       <link rel="stylesheet" href="./css/zoom.css">
+       <style>
+
+</style>
 <?php require_once 'header.php';?>
 
 <?php 
@@ -435,7 +439,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
 
-if (empty($_POST['txt-rate-title']&&$_POST['bday']&&$_POST['txt-rate'] )  ){
+if (empty(@$_POST['txt-rate-title']&&@$_POST['bday']&&@$_POST['txt-rate'] )  ){
                echo '<p class="star-input">Vui lòng điền đầy đủ thông tin<p/>';
             }
 
@@ -636,7 +640,7 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
                                            
 
                                      ?>
-                                     <p><img src="img/<?php echo $row8['imgshare'];  ?>" alt="Sakura" class="imgshare" style="  width: 150px;
+                                     <p><img id="zoom" src="img/<?php echo $row8['imgshare'];  ?>" alt="Sakura" class="imgshare" style="  width: 150px;
     height: 150px;    image-rendering: pixelated;
     object-fit: contain;" /></p>
  
