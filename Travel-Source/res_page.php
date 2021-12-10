@@ -56,12 +56,7 @@
                         <span>Không có cơ sở kinh doanh nào khác tại Bình Định. Xem kết quả gần đó bên dưới:</span>  
                     </div>
                     <div class="select-colum2">
-                        <span class="sp1">Sắp xếp theo:</span>
-                                <select name="dropdown">
-                                    <option value="Giá trị tốt nhất" selected><span>Chất lượng</span></option>
-                                    <option value="Được khách du lịch xếp hạng"><span>xếp hạng</span></option>
-                                    <option value="Giá"><span>Giá(thấp đến cao)</span></option>
-                                </select>
+                        
                     </div>
                 </div>
 

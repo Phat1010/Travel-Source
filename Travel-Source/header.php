@@ -32,7 +32,44 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
         <link rel="stylesheet" href="./css/index.css">
         <script type="text/javascript" src="../javascript/index.js"></script>
+        <?php 
+            require 'database1.class.php';
 
+            $config = [
+                'host' => 'localhost',
+                'user' => 'root',
+                'pass' => '',
+                'nameDB' => 'travels'
+            ];
+            $data = new database1($config);
+         ?> 
+        <?php
+         ob_start();
+  if(isset($_POST['btn_dangnhap'])){
+    if(empty($_POST['email_login']) || empty($_POST['password_login'])){
+        echo ' <center><p style="color: red;">Thông tin chưa điền đầy đủ!</p></center>';
+    }else{
+      $email = @$_POST['email_login'];
+	    $password = @$_POST['password_login'];
+      $result = $data->ManipulationDB('select * from user where email ="'.$email.'"');
+      $arr = mysqli_fetch_array($result);
+      
+      if($email == @$arr['email']){
+        if($password == $arr['password']){
+          $_SESSION['username'] = $email;
+          $_SESSION['name'] = $arr['username'];
+          header('location: index.php'); 
+      
+      }
+      else
+			echo ' <center><p style="color: red;">Sai mat khau!</p></center>';
+    }
+    else
+		echo ' <center><p style="color: red;">Tai khoang chua ton tai!</p></center>';
+  }
+}
+ob_end_flush();
+?>
 
 
 
@@ -147,7 +184,7 @@
           <div class="input">
               <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel">
               <span>
-                  <i class="fa fa-search" aria-hidden="true"></i>
+                 
               </span>
           </div>
 
@@ -190,7 +227,7 @@
           <div class="input">
                 <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel" >
                 <span>
-                    <i class="fa fa-search" aria-hidden="true"></i>
+                    
                 </span>
             </div>
         </div>
@@ -223,7 +260,7 @@
           <div class="input">
                 <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel">
                 <span>
-                    <i class="fa fa-search" aria-hidden="true"></i>
+                    
                 </span>
             </div>
         </div>
@@ -255,7 +292,7 @@
         <div class="input">
               <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel">
               <span>
-                  <i class="fa fa-search" aria-hidden="true"></i>
+                  
               </span>
           </div>
       </div>
@@ -300,41 +337,7 @@
 
           
           <form action="" method="POST">
-          <?php 
-            require 'database1.class.php';
-
-            $config = [
-                'host' => 'localhost',
-                'user' => 'root',
-                'pass' => '',
-                'nameDB' => 'travels'
-            ];
-            $data = new database1($config);
-         ?> 
-          <?php
-  if(isset($_POST['btn_dangnhap'])){
-    if(empty($_POST['email_login']) || empty($_POST['password_login'])){
-        echo ' <center><p style="color: red;">Thông tin chưa điền đầy đủ!</p></center>';
-    }else{
-      $email = @$_POST['email_login'];
-	    $password = @$_POST['password_login'];
-      $result = $data->ManipulationDB('select * from user where email ="'.$email.'"');
-      $arr = mysqli_fetch_array($result);
-      
-      if($email == @$arr['email']){
-        if($password == $arr['password']){
-          $_SESSION['username'] = $email;
-          $_SESSION['name'] = $arr['username'];
-              
-      }
-      else
-			echo ' <center><p style="color: red;">Sai mat khau!</p></center>';
-    }
-    else
-		echo ' <center><p style="color: red;">Tai khoang chua ton tai!</p></center>';
-  }
-}
-?>
+        
             <!--Body-->
             <div class="modal-body mb-1">
               <div class="md-form form-sm mb-5">
