@@ -548,7 +548,7 @@ if(!empty($_POST['place']) &&!empty($_POST['service']) &&!empty($_POST['cleanly'
               }
              
 
-   $lenhsql = "INSERT INTO rate VALUES ('".$userid."', '".@$_GET['id']."', '".@$_POST['txt-rate']."','".@$_POST['star']."', '".@$_POST['txt-rate-title']."', '".@$_POST['gowithwho']."', '".@$_POST['bday']."', '".@$_FILES['fileUpload']['name']."','".@$_POST['place']."','".@$_POST['clearly']."','".@$_POST['service']."','".@$_POST['price']."')";
+   $lenhsql = "INSERT INTO rate VALUES ('".$userid."', '".@$_GET['id']."', '".@$_POST['txt-rate']."','".@$_POST['star']."', '".@$_POST['txt-rate-title']."', '".@$_POST['gowithwho']."', '".@$_POST['bday']."', '".@$_FILES['fileUpload']['name']."','".@$_POST['place']."','".@$_POST['cleanly']."','".@$_POST['service']."','".@$_POST['price']."')";
     $thucthi=mysqli_query($conn,$lenhsql) or die ("Khong them duoc");
     if (!$thucthi) {
         echo " Không bình luận được !";
