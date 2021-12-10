@@ -352,3 +352,13 @@ footer .p-3{
         min-width: 45%;
     }
   }
+  
+  button {
+      position: relative;
+  }
+  
+  i.fa.fa-search {
+      position: absolute;
+      top: 0;
+  }
+  

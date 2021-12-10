@@ -105,8 +105,6 @@
                 <div class="select-item">
                     <span>Tiện nghi:</span>
                     <div class="check">
-                       
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=1"><span>Nhà hàng</span></a><br>
                         <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=2"><span>Bãi đậu xe</span></a><br>
                         <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=3"><span>Bể bơi</span></a><br>
                         <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice="><span>Đồ ăn Nhanh</span></a><br>
@@ -172,6 +170,9 @@ if($_GET['idprice']){
 }
 else{
     $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H2"');
+}
+if($_GET['idprice']){
+    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H2" AND `price`= "'.$_GET['idprice'].'"');
 }
  
    while ($row2 = mysqli_fetch_assoc($query2)) {

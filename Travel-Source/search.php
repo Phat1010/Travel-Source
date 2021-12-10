@@ -25,7 +25,7 @@
 
 
     <span class="infor">
-        <h3>Các dịch vụ du lịch tại <?php echo $_GET['myLocation'] ?></h3>
+        <h3>Các dịch vụ du lịch tại <?php echo $_GET['search']; ?></h3>
         <div class="map">
             <button type="button" class="btn-map" onclick="myFunction()">
                 <i class="fas fa-map-marker-alt"></i>
@@ -40,15 +40,13 @@
     <section class="main-entertain">
         <div class="container">
             <h1 class="text-center text-uppercase">Dịch vụ giải trí</h1>
-            <a class="show text-center" href="#">Xem tất cả</a><br>
+            
             <div class="row">
                 <?php
                 $id = "";
 
-                $query = mysqli_query($conn, 'SELECT proviceid,provice FROM `province` WHERE `provice` LIKE "%' . $_GET['myLocation'] . '%"');
-                echo "<pre>";
-                print_r($_GET);
-            echo "</pre>";
+                $query = mysqli_query($conn, 'SELECT proviceid,provice FROM `province` WHERE `provice` LIKE "%' . $_GET['search'] . '%"');
+
 
                 while ($row = mysqli_fetch_assoc($query)) {
 
@@ -115,7 +113,7 @@
     <section class="main-entertain">
         <div class="container">
             <h1 class="text-center text-uppercase">Nha hang</h1>
-            <a class="show text-center" href="#">Xem tất cả</a><br>
+            
             <div class="row">
                 <?php
                 $id = "";
@@ -123,7 +121,7 @@
                 $averageratestar = 0;
                 $averageratestarnotodd = 0;
 
-                $query = mysqli_query($conn, 'SELECT proviceid,provice FROM `province` WHERE `provice` LIKE "%' . $_GET['myLocation'] . '%"');
+                $query = mysqli_query($conn, 'SELECT proviceid,provice FROM `province` WHERE `provice` LIKE "%' . $_GET['search'] . '%"');
 
 
                 while ($row = mysqli_fetch_assoc($query)) {
@@ -191,7 +189,7 @@
     <section class="main-entertain">
         <div class="container">
             <h1 class="text-center text-uppercase">Khach san</h1>
-            <a class="show text-center" href="#">Xem tất cả</a><br>
+            
             <div class="row">
                 <?php
                 $id = "";
@@ -199,7 +197,7 @@
                 $averageratestar = 0;
                 $averageratestarnotodd = 0;
 
-                $query = mysqli_query($conn, 'SELECT proviceid FROM `province` WHERE `provice` LIKE "%' . $_GET['myLocation'] . '%"');
+                $query = mysqli_query($conn, 'SELECT proviceid FROM `province` WHERE `provice` LIKE "%' . $_GET['search'] . '%"');
 
 
                 while ($row = mysqli_fetch_assoc($query)) {
@@ -261,7 +259,7 @@
     <section class="main-entertain">
         <div class="container">
             <h1 class="text-center text-uppercase">Du lich</h1>
-            <a class="show text-center" href="#">Xem tất cả</a><br>
+            
             <div class="row">
                 <?php
                 $id = "";
@@ -269,7 +267,7 @@
                 $averageratestar = 0;
                 $averageratestarnotodd = 0;
 
-                $query = mysqli_query($conn, 'SELECT proviceid,provice FROM province WHERE provice LIKE "%' . $_GET['myLocation'] . '%"');
+                $query = mysqli_query($conn, 'SELECT proviceid,provice FROM province WHERE provice LIKE "%' . $_GET['search'] . '%"');
 
 
                 while ($row = mysqli_fetch_assoc($query)) {

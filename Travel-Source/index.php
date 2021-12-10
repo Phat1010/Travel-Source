@@ -19,7 +19,7 @@
     <!-- Plugin file -->
     <link rel="stylesheet" href="bootstrap/css/addons/datatables.min.css">
     <link rel="stylesheet" href="bootstrap/css/style.css">
-
+    <link rel="stylesheet" href="bootstrap/css/index2.css">
     <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/popper.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
@@ -37,10 +37,12 @@
     <div class="container">
         <h3>Tìm kiếm địa điểm</h3>
         <div class="box">
+        <form name="form" action="search.php" method="get">
             <div class="search">
-                <input type="text" placeholder="Địa điểm">
-                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" placeholder="Địa điểm" name="search">
+                <button type="submit"  class="hiddenbutton" style="width: 0;height: 0;"><i class="fa fa-search" aria-hidden="true" ></i></button>
             </div>
+        </form>
         </div>
         <form name="form" action="suggestion.php" method="get">
             <h3>Các dịch vụ gần tôi</h3>
@@ -66,21 +68,25 @@
 
             <ul>
                 <li class="slide-item ">
-                    <a href="http://localhost/Travel-Source/Travel-Source/travel_detail.php?id=S1&idimg=Img1"><img alt="Qries" src="./img/anh1.png">
+
+                    <a href="search.php?search=Hà+Nội"><img alt="Qries" src="./img/anh1.png">
+                
+                    
                               </a>
 
                 </li>
                 <li class="slide-item">
-                    <img src="./img/anh2.png" id="img2">
+                 
+                    <a href="search.php?search=Bình+Đinh"><img alt="Qries" src="./img/anh8.png">
                 </li>
                 <li class="slide-item">
-                    <img src="./img/anh3.png" id="img3">
+                <a href="search.php?search=Bình+Đinh"><img alt="Qries" src="./img/anh6.png">
                 </li>
                 <li class="slide-item">
-                    <img src="./img/anh4.png" id="img4">
+                <a href="search.php?search=Bình+Đinh"><img alt="Qries" src="./img/anh4.png">
                 </li>
                 <li class="slide-item">
-                    <img src="./img/anh5.png" id="img5">
+                <a href="search.php?search=Bình+Đinh"><img alt="Qries" src="./img/anh7.png">
 
                 </li>
 

@@ -6,9 +6,9 @@
     }
      
     #zoom:hover {
-    transform: scale(8,8);
-    -webkit-transform: scale(8,8);
-    -moz-transform: scale(8,8);
-    -o-transform: scale(8,8);
-    -ms-transform: scale(8,8);
+    transform: scale(2,2);  
+    -webkit-transform: scale(2,2);
+    -moz-transform: scale(2,2);
+    -o-transform: scale(2,2);
+    -ms-transform: scale(2,2);
     }

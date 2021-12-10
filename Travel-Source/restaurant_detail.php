@@ -18,10 +18,6 @@
     <link rel="stylesheet" href="./css/comment.fix.css">
     <link rel="stylesheet" href="./css/star.css">
        <link rel="stylesheet" href="./css/commentadded.css">
-       <link rel="stylesheet" href="./css/zoom.css">
-       <style>
-
-</style>
 <?php require_once 'header.php';?>
 
 <?php 
@@ -37,6 +33,7 @@ $idservice="";
 $numberrate = 0;
 $averageratestar = 0;
 $averageratestarnotodd = 0;
+$hotelservice="";
 
 
 
@@ -52,6 +49,7 @@ $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%
                    $close = $row['closee'] ;
                    $price = $row['price'] ;
                    $idimage = $row['idimage'] ;
+                   $hotelservice=$row['hotelservice'];
                  
 
               }
@@ -227,7 +225,7 @@ $averageratestarnotodd =floor($row14[0]);
                         <b> <?php echo $numberrate ?> đánh giá</b>  
                     </div>
                     <span> <?php echo $address; ?> </span>
-                    <span> dé : <?php echo $price; ?> VND </span>
+                    <span> Dịch vụ đặc biệt: <?php echo $hotelservice; ?></span>
                 </div>
                 <div class="border"></div>
                 <div class="xephang">
@@ -439,7 +437,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
 
-if (empty(@$_POST['txt-rate-title']&&@$_POST['bday']&&@$_POST['txt-rate'] )  ){
+if (empty($_POST['txt-rate-title']&&$_POST['bday']&&$_POST['txt-rate'] )  ){
                echo '<p class="star-input">Vui lòng điền đầy đủ thông tin<p/>';
             }
 
@@ -640,7 +638,7 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
                                            
 
                                      ?>
-                                     <p><img id="zoom" src="img/<?php echo $row8['imgshare'];  ?>" alt="Sakura" class="imgshare" style="  width: 150px;
+                                     <p><img src="img/<?php echo $row8['imgshare'];  ?>" alt="Sakura" class="imgshare" style="  width: 150px;
     height: 150px;    image-rendering: pixelated;
     object-fit: contain;" /></p>
  

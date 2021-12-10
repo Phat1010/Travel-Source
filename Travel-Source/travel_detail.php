@@ -324,8 +324,11 @@ $averageratestarnotodd =floor($row14[0]);
                                         <span>
                                             <div>
                                                 <b>0,2 km</b>
-                                                 
-                                            </div>
+                                                <div class="map">
+
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.669874517994!2d109.1852885152422!3d13.798763790317073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f14ad51189edb%3A0x44d70fcfa35c9f5e!2zxJDhuqFpIGjhu41jIFF1YW5nIFRydW5n!5e0!3m2!1svi!2sus!4v1639140871318!5m2!1svi!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                                </div>
+                                                </div>
                                         </span>
                                     </div>
                                     <div>

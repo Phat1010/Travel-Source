@@ -47,10 +47,8 @@
 
     <form action="">
     <div class="input">
-        <input type="text" placeholder="Nhập địa điểm ..." name="txt-search-common" >
-        <span>
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </span>
+        
+        
     </div>
 </form>
 
