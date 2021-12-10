@@ -46,10 +46,7 @@
                 $id = "";
 
                 $query = mysqli_query($conn, 'SELECT proviceid,provice FROM `province` WHERE `provice` LIKE "%' . $_GET['myLocation'] . '%"');
-                echo "<pre>";
-                print_r($_GET);
-            echo "</pre>";
-
+   
                 while ($row = mysqli_fetch_assoc($query)) {
 
                     $id = $row['proviceid'];

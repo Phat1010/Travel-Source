@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="./css/comment.fix.css">
     <link rel="stylesheet" href="./css/star.css">
        <link rel="stylesheet" href="./css/commentadded.css">
+       <link rel="stylesheet" href="./css/zoom.css">
+       <style>
+
+</style>
 <?php require_once 'header.php';?>
 
 <?php 
@@ -33,7 +37,6 @@ $idservice="";
 $numberrate = 0;
 $averageratestar = 0;
 $averageratestarnotodd = 0;
-$hotelservice="";
 
 
 
@@ -49,7 +52,6 @@ $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%
                    $close = $row['closee'] ;
                    $price = $row['price'] ;
                    $idimage = $row['idimage'] ;
-                   $hotelservice=$row['hotelservice'];
                  
 
               }
@@ -225,7 +227,7 @@ $averageratestarnotodd =floor($row14[0]);
                         <b> <?php echo $numberrate ?> đánh giá</b>  
                     </div>
                     <span> <?php echo $address; ?> </span>
-                    <span> Dịch vụ đặc biệt: <?php echo $hotelservice; ?></span>
+                    <span> Giá : <?php echo $price; ?> VND </span>
                 </div>
                 <div class="border"></div>
                 <div class="xephang">
@@ -322,8 +324,9 @@ $averageratestarnotodd =floor($row14[0]);
                                         <span>
                                             <div>
                                                 <b>0,2 km</b>
-                                                 
-                                            </div>
+                                                <div class="map">
+</div>
+                                                </div>
                                         </span>
                                     </div>
                                     <div>
@@ -437,7 +440,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
 
-if (empty($_POST['txt-rate-title']&&$_POST['bday']&&$_POST['txt-rate'] )  ){
+if (empty(@$_POST['txt-rate-title']&&@$_POST['bday']&&@$_POST['txt-rate'] )  ){
                echo '<p class="star-input">Vui lòng điền đầy đủ thông tin<p/>';
             }
 
@@ -478,7 +481,7 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
               }
              
 
-   $lenhsql = "INSERT INTO rate VALUES ('".$userid."', '".@$_GET['id']."', '".@$_POST['txt-rate']."','".@$_POST['star']."', '".@$_POST['txt-rate-title']."', '".@$_POST['gowithwho']."', '".@$_POST['bday']."', '".@$_FILES['fileUpload']['name']."')";
+   $lenhsql = "INSERT INTO rate VALUES ('".$userid."', '".@$_GET['id']."', '".@$_POST['txt-rate']."','".@$_POST['star']."', '".@$_POST['txt-rate-title']."', '".@$_POST['gowithwho']."', '".@$_POST['bday']."', '".@$_FILES['fileUpload']['name']."', '', '', '', '')";
     $thucthi=mysqli_query($conn,$lenhsql) or die ("Khong them duoc");
     if (!$thucthi) {
         echo " Không bình luận được !";
@@ -493,7 +496,8 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
         //echo '<p>Dung lượng: ' . ((int)$_FILES['fileUpload']['size'] / 1024) . 'KB<p>';
     
        
-            
+       
+      
             echo " <h3><a href='index.php'>Đánh giá của bạn đã được ghi lại.</a></h3>";
 
         
@@ -541,13 +545,12 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
             
               while ($row8 = mysqli_fetch_assoc($query8)) { 
 
-
-
+        
                   
                    $query9 = mysqli_query($conn, 'SELECT * FROM `user` WHERE `userid` =  "'.$row8['userid'].'"');
                    while ($row9 = mysqli_fetch_assoc($query9)) {
                        // code...
-                        
+                   
 
                  ?>
 
@@ -638,7 +641,7 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
                                            
 
                                      ?>
-                                     <p><img src="img/<?php echo $row8['imgshare'];  ?>" alt="Sakura" class="imgshare" style="  width: 150px;
+                                     <p><img id="zoom" src="img/<?php echo $row8['imgshare'];  ?>" alt="Sakura" class="imgshare" style="  width: 150px;
     height: 150px;    image-rendering: pixelated;
     object-fit: contain;" /></p>
  

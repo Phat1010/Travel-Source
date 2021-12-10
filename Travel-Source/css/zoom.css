@@ -11,4 +11,6 @@
     -moz-transform: scale(2,2);
     -o-transform: scale(2,2);
     -ms-transform: scale(2,2);
+    }img#zoom {
+        z-index: 10;
     }

@@ -1,142 +1,182 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoạt động giải trí</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--Link Icon-->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" 
+    integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!--bootstraplongin-->
-    <!--bootstraplongin-->
-    <!--bootstraplongin-->
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bootstrap/css/mdb.min.css">
-    <!-- Plugin file -->
-    <link rel="stylesheet" href="bootstrap/css/addons/datatables.min.css">
-    <link rel="stylesheet" href="bootstrap/css/style.css">
-    <link rel="stylesheet" href="bootstrap/css/index2.css">
-    <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/popper.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/mdb.min.js"></script>
-    <!-- Plugin file -->
-    <script src="./js/addons/datatables.min.js"></script>
-
-    <!--bootstraplongin-->
-    <!--bootstraplongin-->
-    <!--bootstraplongin-->
+    
+<!-----Link Design----->
+    <link rel="stylesheet" href="./css/entertainstyle.css">
+        <link rel="stylesheet" href="css/travels.css">
+    <script src="./javascript/a.js"></script>
 </head>
 
-<body onload="javascript:getLocation()">
-    <?php require_once 'header.php'; ?>
-    <div class="container">
-        <h3>Tìm kiếm địa điểm</h3>
-        <div class="box">
-        <form name="form" action="search.php" method="get">
-            <div class="search">
-                <input type="text" placeholder="Địa điểm" name="search">
-                <button type="submit"  class="hiddenbutton" style="width: 0;height: 0;"><i class="fa fa-search" aria-hidden="true" ></i></button>
-            </div>
-        </form>
-        </div>
-        <form name="form" action="suggestion.php" method="get">
-            <h3>Các dịch vụ gần tôi</h3>
-            <h3>Bạn đang ở <span id="json-result"></span></h3>
-            <input type="hidden" id="myLocation" name="myLocation">
-            <div class="mx-auto" style="width: 200px;">
-                <input style="width: 200px" type="submit" class="btn btn-success" value="Gợi ý địa điểm">
-            </div>
+<body>  
+    <?php require_once './header.php';?>
+        <?php require_once './header.php';?>
+
+    <span class="infor">
+        <h3>Kết quả bạn tìm <?php echo $_GET['findingtravel'] ?> </h3>
+        <div class="map">
+            <button type="button" class="btn-map" onclick="myFunction()">
+                <i class="fas fa-map-marker-alt"></i>
+                <a>&nbsp;Bản đồ</a>
+            </button>
+        </div>     
+    </span>
+    <br>
+    <br>
+<!----------------------------------MapFunction---------------------------------------> 
+    
+<!----------------------------------Advertisement---------------------------------------> 
+    
+   
+
+<!----------------------------------Entertain 2--------------------------------------->
+
+
+                
+<?php 
+        $id="";
+        $check="";
+    $averageratestar = 0;
+    $averageratestarnotodd = 0;
+
+
+
+
+
+
+
+
+
+                  $query = mysqli_query($conn, 'SELECT proviceid,provice FROM province WHERE provice LIKE "%'.$_GET['findingtravel'].'%"');
+
+
+                 while ($row = mysqli_fetch_assoc($query)) {
+                        
+                     
+                $id=$row['proviceid'] ;
+
+                 ?>
+                 
+                  </div>
+                  <?php 
+                  
+                  $query3 = mysqli_query($conn, 'SELECT Count(*) FROM service WHERE proviceid LIKE "%'.$id.'%" AND `idtype`="h4"');
+                  
+                  while ($row4 = mysqli_fetch_array($query3)) {
+                      $check=$row4[0];
+                  
+                      if ($check!=0)
+                      {
+                          echo '<br>';     
+                          echo '  <div class="line"></div>';
+                          echo '<br>';
+                          echo '  <h1 class="text-center text-uppercase">Các điểm du lịch hàng đầu tại  '.$row['provice'].'  </h1>';
+                          echo '<br>';
+                          
+                  }
+                  
+                  
+                  }
+                  ?>
+                  
+				 <div class="row2" style="float: left">
+				
+                  <?php 
+
+           $query2 = mysqli_query($conn, 'SELECT * FROM service WHERE proviceid LIKE "%'.$id.'%" AND `idtype`="h4"');
             
-        </form>
+              while ($row2 = mysqli_fetch_assoc($query2)) {
+
+            
+                        $query14 = mysqli_query($conn, 'SELECT AVG(ratestar) FROM `rate` WHERE `idservice` = "'. $row2['idservice'].'"');
+              if ($row14 = mysqli_fetch_array($query14)) {
+$averageratestar =round($row14[0], 1);
+
+$averageratestarnotodd =floor($row14[0]);
+
+
+              
+
+
+            ?>
+
+            
+ 
+      
+          
+         
+           
+                <!-- next-->
+                <div class="col-sm-4 hotel">
+                <a href="travel_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?> " class="place-card">
+                        <div class="place-card__img">
+                            <img src="img/<?php echo $row2['avatar'] ?>" class="place-card__img-thumbnail" alt="Thumbnail">
+                        </div>
+                        <div class="place-card__content">
+                            <h5 class="place-card__content_header">
+                            <a href="travel_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?> " class="text-dark"> <?php echo  $row2['servicename']  ?></a> 
+                            <div class="rating-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>
+                                   
+                                </div>
+                            <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
+                            <div class="flex-center">
+                                <p class="mb-0"><i class="fa fa-map-marker"></i> 
+                                <span class="text-muted"><?php  echo    $row2['address'] ?></span></p>
+                                
+                            </div>
+                        </div>
+                    </a>
+     </div>
+   <!-- next-->
+               
+<?php }
+    
+  ?>
+                
+
+      
+  
+  <?php 
+  ;} 
+ echo '</div> ';
+     }
+ ?>  
+
+ 
+<!----------------------------------menu--------------------------------------->
 
 
 
-        <h3>Điểm du lịch nổi bật</h3>
+<!----------------------------------Questions--------------------------------------->
 
-        <div class="slide">
-            <button class="btn btn-prev" onclick="next_slide()">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="btn btn-next" onclick="prev_slide()">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-
-            <ul>
-                <li class="slide-item ">
-                    <a href="travel_detail.php?id=S1&idimg=Img1"><img alt="Qries" src="./img/anh1.png">
-                              </a>
- <a href="tr"><img alt="Qries" src="./img/anh1.png">
-                              </a>
-                </li>
-                <li class="slide-item">
-                    <img src="./img/anh2.png" id="img2">
-                </li>
-                <li class="slide-item">
-                    <img src="./img/anh3.png" id="img3">
-                </li>
-                <li class="slide-item">
-                    <img src="./img/anh4.png" id="img4">
-                </li>
-                <li class="slide-item">
-                    <img src="./img/anh5.png" id="img5">
-
-                </li>
+   <div class="line"> </div>
+   <br>
+   <div class="question">
+        <h3>Câu hỏi thường gặp về quy nhơn</h3>
+        <a>Những điểm du lịch hàng đầu tại quy nhơn?</a>
+        <br>
+        <a>Những hoạt động ngoài trời thú vị?</a>
+        <br>
+        <a>Những hoạt động phổ biến dành cho cha mẹ cùng trẻ nhỏ là gì?</a>
+   </div>        `
 
 
-            </ul>
-
-        </div>
-    </div>
-    <!----------------------->
-    <?php require_once 'footer.php'; ?>
-    <script type="text/javascript" src="./javascript/index.js"></script>
-    <script>
-        var result = document.getElementById("json-result");
-        var iresult = document.getElementById("myLocation");
-        const Http = new XMLHttpRequest();
-
-        function getLocation() {
-            console.log("getLocation Called");
-            var bdcApi = "https://api.bigdatacloud.net/data/reverse-geocode-client"
-
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    bdcApi = bdcApi +
-                        "?latitude=" + position.coords.latitude +
-                        "&longitude=" + position.coords.longitude +
-                        "&localityLanguage=en";
-                    getApi(bdcApi);
-
-                },
-                (err) => {
-                    getApi(bdcApi);
-                }, {
-                    enableHighAccuracy: true,
-                    timeout: 5000,
-                    maximumAge: 0
-                });
-        }
-
-        function getApi(bdcApi) {
-            Http.open("GET", bdcApi);
-            Http.send();
-            Http.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var myJson = this.responseText
-                    const myObj = JSON.parse(myJson)
-                    var location = myObj.principalSubdivision
-                    result.innerHTML = location;
-                    iresult.value = location;
-                }
-            };
-        }
-    </script>
-
+   <?php require_once './footer.php';?>
 </body>
-
 </html>

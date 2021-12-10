@@ -369,44 +369,87 @@ $averageratestarnotodd =floor($row14[0]);
 <!--Handle Code-->
 <form action="" method="post" enctype="multipart/form-data">
                 <div class="stars">
- 
-    <input class="star star-5" id="star-5" type="radio" name="star" value="5" />
-    <label class="star star-5" for="star-5"></label>
-    <input class="star star-4" id="star-4" type="radio" name="star"  value="4"/>
-    <label class="star star-4" for="star-4"></label>
-    <input class="star star-3" id="star-3" type="radio" name="star"  value="3"/>
-    <label class="star star-3" for="star-3"></label>
-    <input class="star star-2" id="star-2" type="radio" name="star"  value="2"/>
-    <label class="star star-2" for="star-2"></label>
-    <input class="star star-1" id="star-1" type="radio" name="star"  value="1"/>
-    <label class="star star-1" for="star-1"></label>
- 
+               
+ <input class="star star-5" id="star-51" type="radio" name="star" value="5" />
+ <label class="star star-5" for="star-51"></label>
+ <input class="star star-4" id="star-41" type="radio" name="star"  value="4"/>
+ <label class="star star-4" for="star-41"></label>
+ <input class="star star-3" id="star-31" type="radio" name="star"  value="3"/>
+ <label class="star star-3" for="star-31"></label>
+ <input class="star star-2" id="star-21" type="radio" name="star"  value="2"/>
+ <label class="star star-2" for="star-21"></label>
+ <input class="star star-1" id="star-11" type="radio" name="star"  value="1"/>
+ <label class="star star-1" for="star-11"></label>  
+  
 </div>
-                <div class="cmt-input">
+<div class="cmt-input">
                     <input type="text" placeholder="Viết đánh giá(Bắt buộc)" name="txt-rate">
                     <br>
                     <br>
                      <input type="text" placeholder="Đặt tiêu đề cho bài đánh giá của bạn(Bắt buộc)" name="txt-rate-title">
                      <br>
                     <br>
-                    <h5>Bạn đi khi nào(Bắt buộc)</h5>
+                    <h5>Địa điểm</h5>
                 
-                    <input type="date" name="bday" min="2000-01-02" placeholder="Bạn đi khi nào" ><br><br>
-                    <h5>Bạn đi cùng ai</h5>
-               
-                       
-<select class="browser-default custom-select" name="gowithwho" style="width: 595px;
-    height: 50px;
-    border-radius:10px;">
-                                    <option value="Gia đình(Trẻ nhỏ)" selected ><span>Gia đình(Trẻ nhỏ)</span></option>
-                                    <option value="Cặp đôi" ><span>Cặp đôi</span></option>
-                                    <option value="Gia đình(Thanh thiếu niên)"  >Gia đình(Thanh thiếu niên)<span></span></option>
-                                    <option value="Bạn bè"  >Bạn bè<span></span></option>
-                                    <option value="Doanh nghiệp"  >Doanh nghiệp<span></span></option>
-                                    <option value="Một Mình"  >Một Mình<span></span></option>
-</select>
+                    <div class="stars">
+ 
+ <input class="star star-5" id="star-5" type="radio" name="place" value="5" />
+ <label class="star star-5" for="star-5"></label>
+ <input class="star star-4" id="star-4" type="radio" name="place"  value="4"/>
+ <label class="star star-4" for="star-4"></label>
+ <input class="star star-3" id="star-3" type="radio" name="place"  value="3"/>
+ <label class="star star-3" for="star-3"></label>
+ <input class="star star-2" id="star-2" type="radio" name="place"  value="2"/>
+ <label class="star star-2" for="star-2"></label>
+ <input class="star star-1" id="star-1" type="radio" name="place"  value="1"/>
+ <label class="star star-1" for="star-1"></label>
 
-                
+</div>
+<h5>Sự sạch sẽ</h5>
+<div class="stars">
+ 
+<input class="star star-5" id="star-56" type="radio" name="cleanly" value="5" />
+    <label class="star star-5" for="star-56"></label>
+    <input class="star star-4" id="star-46" type="radio" name="cleanly"  value="4"/>
+    <label class="star star-4" for="star-46"></label>
+    <input class="star star-3" id="star-36" type="radio" name="cleanly"  value="3"/>
+    <label class="star star-3" for="star-36"></label>
+    <input class="star star-2" id="star-26" type="radio" name="cleanly"  value="2"/>
+    <label class="star star-2" for="star-26"></label>
+    <input class="star star-1" id="star-16" type="radio" name="cleanly"  value="1"/>
+    <label class="star star-1" for="star-16"></label>
+ 
+</div>
+<h5>Dịch vụ</h5>
+<div class="stars">
+ 
+ <input class="star star-5" id="star-57" type="radio" name="service" value="5" />
+ <label class="star star-5" for="star-57"></label>
+ <input class="star star-4" id="star-47" type="radio" name="service"  value="4"/>
+ <label class="star star-4" for="star-47"></label>
+ <input class="star star-3" id="star-37" type="radio" name="service"  value="3"/>
+ <label class="star star-3" for="star-37"></label>
+ <input class="star star-2" id="star-27" type="radio" name="service"  value="2"/>
+ <label class="star star-2" for="star-27"></label>
+ <input class="star star-1" id="star-17" type="radio" name="service"  value="1"/>
+ <label class="star star-1" for="star-17"></label>
+
+</div>
+<h5>Giá cả</h5>
+<div class="stars">
+ 
+ <input class="star star-5" id="star-58" type="radio" name="price" value="5" />
+ <label class="star star-5" for="star-58"></label>
+ <input class="star star-4" id="star-48" type="radio" name="price"  value="4"/>
+ <label class="star star-4" for="star-48"></label>
+ <input class="star star-3" id="star-38" type="radio" name="price"  value="3"/>
+ <label class="star star-3" for="star-38"></label>
+ <input class="star star-2" id="star-28" type="radio" name="price"  value="2"/>
+ <label class="star star-2" for="star-28"></label>
+ <input class="star star-1" id="star-18" type="radio" name="price"  value="1"/>
+ <label class="star star-1" for="star-18"></label>
+
+</div>
 <br><br>
                     <h5>Chọn ảnh bạn muốn chia sẻ</h5>
                
@@ -422,6 +465,8 @@ $averageratestarnotodd =floor($row14[0]);
 
 <?php 
 
+
+
     $checkfile = 0;
 
 
@@ -434,13 +479,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-
- if (empty($_POST['star'])  ){
-               echo '<p class="star-input">Bạn có thể tặng tôi vài ngôi sao<p/>';
+    if (empty($_POST['star'])  ){
+        echo '<p class="star-input">Bạn có thể cho tôi biết địa điểm như thế nào?<p/>';
+     }
+ if (empty($_POST['place'])  ){
+               echo '<p class="star-input">Bạn có thể cho tôi biết địa điểm như thế nào?<p/>';
             }
 
 
-if (empty(@$_POST['txt-rate-title']&&@$_POST['bday']&&@$_POST['txt-rate'] )  ){
+            if (empty($_POST['service'])  ){
+                echo '<p class="star-input">Bạn có thể cho toi biết dịch vụ ở đây ?<p/>';
+             }
+             if (empty($_POST['cleanly'])  ){
+                echo '<p class="star-input">Bạn có thể cho tôi biết mức độ sạch sẽ ở đây?<p/>';
+             }
+             if (empty($_POST['price'])  ){
+                echo '<p class="star-input">Bạn có thể cho toi biết giá ở đây<p/>';
+             }
+
+
+
+
+
+
+
+
+
+
+
+if (empty(@$_POST['txt-rate-title']&&@$_POST['txt-rate'] )  ){
                echo '<p class="star-input">Vui lòng điền đầy đủ thông tin<p/>';
             }
 
@@ -466,7 +533,7 @@ if (empty(@$_POST['txt-rate-title']&&@$_POST['bday']&&@$_POST['txt-rate'] )  ){
 
   ///IMG
 
-if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-rate-title']&&$_POST['bday']&&$_POST['txt-rate'] )&&$checkfile!=1){
+if(!empty($_POST['place']) &&!empty($_POST['service']) &&!empty($_POST['cleanly']) &&!empty($_POST['price']) && @$_SESSION['username']!=null&&!empty($_POST['txt-rate-title'] &&$_POST['txt-rate'] )&&$checkfile!=1){
 
 
  
@@ -476,12 +543,12 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
               if ($row6 = mysqli_fetch_assoc($query6)) {
                   
                    $userid = $row6['userid'] ;
-                 
+                    
 
               }
              
 
-   $lenhsql = "INSERT INTO rate VALUES ('".$userid."', '".@$_GET['id']."', '".@$_POST['txt-rate']."','".@$_POST['star']."', '".@$_POST['txt-rate-title']."', '".@$_POST['gowithwho']."', '".@$_POST['bday']."', '".@$_FILES['fileUpload']['name']."', '', '', '', '')";
+   $lenhsql = "INSERT INTO rate VALUES ('".$userid."', '".@$_GET['id']."', '".@$_POST['txt-rate']."','".@$_POST['star']."', '".@$_POST['txt-rate-title']."', '".@$_POST['gowithwho']."', '".@$_POST['bday']."', '".@$_FILES['fileUpload']['name']."','".@$_POST['place']."','".@$_POST['clearly']."','".@$_POST['service']."','".@$_POST['price']."')";
     $thucthi=mysqli_query($conn,$lenhsql) or die ("Khong them duoc");
     if (!$thucthi) {
         echo " Không bình luận được !";
@@ -529,6 +596,20 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
     }
 </script>
 
+                
+                    <input type="date" name="bday" min="2000-01-02" placeholder="Bạn đi khi nào" hidden="true">
+                   
+                 
+                       
+<select class="browser-default custom-select" name="gowithwho" style="width: 595px;
+    height: 50px;
+    border-radius:10px;" hidden="true">
+                                 
+                                    <option value="Một Mình"  >Một Mình<span></span></option>
+</select>
+
+                
+<br><br>
 
 </form>
 
@@ -628,8 +709,8 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
                                       <h5 class="text-cmt"><?php echo $row8['title'];  ?> </h5>
                                     <p class="text-cmt"><?php echo $row8['comment'];  ?> </p>
                                     <div class="time">
-                                        <strong>Ngày đến thăm : </strong>
-                                        <span> <?php echo $row8['times'];  ?></span>
+                                        <br>
+                                      
 
 
 

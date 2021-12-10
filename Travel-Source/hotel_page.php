@@ -503,7 +503,7 @@
                             <div class="starHotel"><span><?php  echo  $row2['star']    ?>sao</span></div>
                             <div class="btn-price">
                                 <button>
-                                <a href="restaurant_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>" >Chi tiết</a>
+                                <a href="hotel_details.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>" >Chi tiết</a>
                                 </button>
                             </div>
                             
