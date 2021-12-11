@@ -38,6 +38,7 @@ $idservice="";
 $numberrate = 0;
 $averageratestar = 0;
 $averageratestarnotodd = 0;
+$hotelservice="";
 $map = "";
 
 
@@ -55,6 +56,7 @@ $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%
                    $price = $row['price'] ;
                    $idimage = $row['idimage'] ;
                    $map = $row['map'];
+                   $hotelservice=$row['hotelservice'];
                  
 
               }
@@ -230,7 +232,7 @@ $averageratestarnotodd =floor($row14[0]);
                         <b> <?php echo $numberrate ?> đánh giá</b>  
                     </div>
                     <span> <?php echo $address; ?> </span>
-                    <span> Giá : <?php echo $price; ?> VND </span>
+                    <span> Dịch vụ đặc biệt: <?php echo $hotelservice; ?></span>
                 </div>
                 <div class="border"></div>
                 <div class="xephang">
