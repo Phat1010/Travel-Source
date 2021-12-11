@@ -18,7 +18,7 @@ nav{
     text-align: center;
     position: fixed;
     top: 0;
-    
+    height: 70px; 
     z-index: 1;
     border-bottom: 1px solid #000;
 }
@@ -162,10 +162,10 @@ nav .login{
     padding-bottom: 30px;
 }
 .box{
-    padding:10% 75px;
+    padding:6% 75px;
+    height: 200px;
     margin:0  auto;
     width: 85%;
-    height: 230px;
     background:no-repeat center  url("../img/img1.jpg");
     background-size: cover;
     position: relative;

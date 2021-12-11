@@ -9,7 +9,6 @@
 </head>
 <body>
 <?php require_once 'header.php';?>
-
     <form id="Form" action="#" method="post">
     <div class="container">
         <div class="head">
@@ -24,8 +23,7 @@
             </div>
             <div class="head-name">
                 <div class="name-txt">
-                    <h2>Kết quả tìm kiếm khách sạn
-                    </h2>
+                    <h2>Kết quả tìm kiếm khách sạn</h2>
                 </div>
                 <div class="name-select">
                     <div class="select-colum1">
@@ -47,11 +45,10 @@
                 <div class="select-item">
                     <span>Giá từ:</span>
                     <div class="check">
-                        <input id="rd_price" type="radio" name="rd_price" value="1" <?php if(isset($_POST['rd_price']) && $_POST['rd_price']== '1') echo "checked='checked'"; ?>>  <span>Dưới 1 triệu vnd</span><br>
-                        <input id="rd_price" type="radio" name="rd_price" value="2" <?php if(isset($_POST['rd_price']) && $_POST['rd_price']== '2') echo "checked='checked'"; ?>> <span>Dưới 2 triệu vnd </span><br>
-                        <input id="rd_price" type="radio" name="rd_price" value="3" <?php if(isset($_POST['rd_price']) && $_POST['rd_price']== '3'    ) echo "checked='checked'"; ?>>  <span >Dưới 3 triệu</span><br>
-                        <input id="rd_price" type="radio" name="rd_price" value="0" <?php if(isset($_POST['rd_price']) && $_POST['rd_price']== '0'    ) echo "checked='checked'"; ?>>  <span >Tất cả</span><br>
-                        
+                        <input id="rd_price" type="radio" name="rd_price" value="1" <?php if(isset($_POST['rd_price']) && $_POST['rd_price']== '1') echo "checked='checked'"; ?>><span>Dưới 1 triệu vnd</span><br>
+                        <input id="rd_price" type="radio" name="rd_price" value="2" <?php if(isset($_POST['rd_price']) && $_POST['rd_price']== '2') echo "checked='checked'"; ?>><span>Dưới 2 triệu vnd </span><br>
+                        <input id="rd_price" type="radio" name="rd_price" value="3" <?php if(isset($_POST['rd_price']) && $_POST['rd_price']== '3') echo "checked='checked'"; ?>><span >Dưới 3 triệu</span><br>
+                        <input id="rd_price" type="radio" name="rd_price" value="0" <?php if(isset($_POST['rd_price']) && $_POST['rd_price']== '0'    ) echo "checked='checked'"; ?>><span >Tất cả</span><br>
                     </div>
                     <div class="border"></div>
                 </div>
@@ -79,7 +76,7 @@
                 </div> 
                 
                 <div class="select-item">
-                    <button class="btn" type="submit" name="submit">Tìm kiếm</button>
+                    <button class="btn btn-primary text-white" type="submit" name="submit">Tìm kiếm</button>
                 </div>
                 
                 <div class="select-item">

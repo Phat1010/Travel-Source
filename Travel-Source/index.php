@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
     <link rel="stylesheet" href="./css/index.css">
 
-    <!--bootstraplongin-->
-    <!--bootstraplongin-->
-    <!--bootstraplongin-->
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -27,9 +23,6 @@
     <!-- Plugin file -->
     <script src="./js/addons/datatables.min.js"></script>
 
-    <!--bootstraplongin-->
-    <!--bootstraplongin-->
-    <!--bootstraplongin-->
 </head>
 
 <body onload="javascript:getLocation()">
@@ -44,8 +37,7 @@
             </div>
         </form>
         </div>
-        <form name="form" action="suggestion.php" method="get">
-            <h3>Các dịch vụ gần tôi</h3>
+        <form name="form" action="suggestion.php" method="get"> 
             <h3>Bạn đang ở <span id="json-result"></span></h3>
             <input type="hidden" id="myLocation" name="myLocation">
             <div class="mx-auto" style="width: 200px;">
