@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./css/comment.fix.css">
     <link rel="stylesheet" href="./css/star.css">
        <link rel="stylesheet" href="./css/commentadded.css">
+       <link rel="stylesheet" href="./css/commendfix2.css">
        <link rel="stylesheet" href="./css/zoom.css">
        <style>
 
@@ -37,7 +38,7 @@ $idservice="";
 $numberrate = 0;
 $averageratestar = 0;
 $averageratestarnotodd = 0;
-
+$map = "";
 
 
 
@@ -52,6 +53,7 @@ $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%
                    $close = $row['closee'] ;
                    $price = $row['price'] ;
                    $idimage = $row['idimage'] ;
+                   $map = $row['map'];
                  
 
               }
@@ -308,9 +310,8 @@ $averageratestarnotodd =floor($row14[0]);
                             <div>
                                 <div>
                                     <h2>Địa điểm và thông tin liên hệ</h2>
-                                    <span>
-                                        <span>
-                                            <img alt="" src="https://maps.google.com/maps/api/staticmap?&amp;channel=ta.desktop.restaurant_review&amp;zoom=15&amp;size=347x137&amp;scale=1&amp;client=gme-tripadvisorinc&amp;format=jpg&amp;sensor=false&amp;language=vi_VN&amp;center=21.033688,105.854881&amp;maptype=roadmap&amp;&amp;markers=icon:http%3A%2F%2Fc1.tacdn.com%2F%2Fimg2%2Fmaps%2Ficons%2Fcomponent_map_pins_v1%2FR_Pin_Small.png|21.033688,105.854881&amp;signature=Q0tnXrfTAL6Y-TfJfkih_iF7iYE="></span></span><div class="cSPba bKBJS Me"><span class="ui_icon map-pin-fill bPFFU">
+                                        <span class="map">
+                                        <?php echo $map; ?>
                                         </span>
                                         <span>
                                             <a>
@@ -318,35 +319,6 @@ $averageratestarnotodd =floor($row14[0]);
                                                 <span></span>
                                             </a>
                                         </span>
-                                    </div>
-                                    <div>
-                                        <span></span>
-                                        <span>
-                                            <div>
-                                                <b>0,2 km</b>
-                                                <div class="map">
-</div>
-                                                </div>
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <div>
-                                            <span>
-                                                <a href="mailto:hiddengemcoffee@gmail.com?subject=?">
-                                                    <span></span>
-                                                    <span>E-mail:</span>
-                                                    <span></span>
-                                                </a></span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div>
-                                                <a href="tel:+84 343 90 10 40"><span>
-                                                    <span></span>
-                                                    <span>+84 343 90 10 40</span>
-                                                </a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -661,10 +633,7 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
                                 </div>
                             </div>
                             <div class="dropdown open">
-                                <a href="#!" class="px-2" id="triggerId1" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        <i class="fa fa-ellipsis-v"></i>
-                                </a>
+                                
                                 <div class="dropdown-menu" aria-labelledby="triggerId1">
                                     <a class="dropdown-item" href="#">
                                         <i class="fa fa-pencil mr-1"></i>
