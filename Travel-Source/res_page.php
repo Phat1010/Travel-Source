@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>Danh sách nhà hàng</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
     <link rel="stylesheet" href="./css/res.css">
@@ -75,10 +75,10 @@
                         
 
 
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=1" ><span>Dưới 1.000.000đ</span></a><br>
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=2" ><span>Dưới 2.000.000đ</span></a><br>
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=3" ><span>Dưới 3.000.000đ</span></a><br>
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=" ><span>Tất cả</span></a><br>
+                        <a style="font-size:13px;" class="btn btn-primary" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=1" >Dưới 1.000.000đ</a>
+                        <a style="font-size:13px;" class="btn btn-primary" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=2" >Dưới 2.000.000đ</a>
+                        <a style="font-size:13px;" class="btn btn-primary" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=3" >Dưới 3.000.000đ</a>
+                        <a style="font-size:13px;" class="btn btn-primary" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=" >Tất cả</a><br>
                     
                     </div>
                     <div class="border"></div>
@@ -89,9 +89,9 @@
                     <span>Kiểu món:</span>
                     <div class="check">
                         
-                      <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=1"><span>Món Việt</span></a><br>
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=2"><span>Món Á</span></a><br>
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=3"><span>Món Âu</span></a><br>
+                        <a style="font-size:13px;" class="btn btn-danger" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=1">Món Việt</a>
+                        <a style="font-size:13px;" class="btn btn-danger" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=2">Món Á</a>
+                        <a style="font-size:13px;" class="btn btn-danger" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=3">Món Âu</a>
                        
 
                     </div>
@@ -100,9 +100,9 @@
                 <div class="select-item">
                     <span>Tiện nghi:</span>
                     <div class="check">
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=2"><span>Bãi đậu xe</span></a><br>
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=3"><span>Bể bơi</span></a><br>
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice="><span>Đồ ăn Nhanh</span></a><br>
+                        <a style="font-size:13px;" class="btn btn-warning" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=2">Bãi đậu xe</a>
+                        <a style="font-size:13px;" class="btn btn-warning" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=3">Bể bơi</a>
+                        <a style="font-size:13px;" class="btn btn-warning" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=">Đồ ăn Nhanh</a>
 
                     </div>
                     <div class="border"></div>
@@ -111,9 +111,9 @@
                     <span>Hạng khách sạn:</span>
                     <div class="check">
 
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=1"><span>5 <i class="fas fa-star" style="font-size: 10px;"></i></span></a><br>
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=2"><span>4 <i class="fas fa-star" style="font-size: 10px;"></i></span></a><br>
-                        <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=3"><span>3 <i class="fas fa-star" style="font-size: 10px;"></i></span></a><br>
+                    <i class="fas fa-star" style="font-size: 30px;"></i><a style="font-size:13px;" class="btn btn-success" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=1">5 sao</a><br>
+                    <i class="fas fa-star" style="font-size: 25px;"></i><a style="font-size:13px;" class="btn btn-success" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=2">4 sao</a><br>
+                    <i class="fas fa-star" style="font-size: 20px;"></i><a style="font-size:13px;" class="btn btn-success" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=3">3 sao</a>
 
                     </div>
                     <div class="border"></div>
