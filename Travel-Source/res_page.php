@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
     <link rel="stylesheet" href="./css/res.css">
-    <link rel="stylesheet" href="./css/res.fix.css">
 </head>
 <body>
 <?php require_once 'header.php';?>
@@ -34,22 +33,32 @@
 		       $id="";
 
 				  $query = mysqli_query($conn, 'SELECT proviceid,provice FROM `province` WHERE `provice` LIKE "%'.$_GET['findingtravel'].'%"');
+                  $query2 = mysqli_query($conn, 'SELECT servicename FROM `service` WHERE `servicename` LIKE "%'.$_GET['findingtravel'].'%" AND `idtype`="H2"');
 
 
-                 if ($row = mysqli_fetch_assoc($query)) {
+                 if ($row = mysqli_fetch_assoc($query2)) {
                         
-				$id=$row['proviceid'] ;
+				$id=$_GET['findingtravel'];
                
                  ?>
 
-                    <h2>Nhà hàng  <?php echo $row['provice'] ?>
+                    <h2> Kết quả tìm kím nhà hàng '    <?php echo $id ?>    '
                     </h2>
 
 
                     
-         <?php 
- 	;}
- ?>
+                <?php 
+                 }else if($row1 = mysqli_fetch_assoc($query)){
+                    $id = $row1['provice'];
+            ?>
+             <h2> Các nhà hàng tại  <?php echo $id ?></h2>
+             <?php
+                 }else{
+                 ?>
+                <h2> Không tìm thấy kết quả '   <?php echo $_GET['findingtravel'] ?>    '</h2>
+            <?php
+                 }
+                 ?>
                 </div>
                 <div class="name-select">
                     <div class="select-colum1">
@@ -129,112 +138,193 @@
 
 
             <div class="right">
-                <div class="right-item row">
-                 
-                
-
-
-
-
-
-
-                    <ul >
-                        
-                        
-                <?php 
-		$id="";
+                <div class="all-content">
+    <section class="main-entertain">
+		<div class="main-container" style="padding:0;">
+        <div> 
+        <?php
+        $id="";
         $check="";
-        $averageratestar = 0;
-        $averageratestarnotodd = 0;
+        $query3 = mysqli_query($conn, 'SELECT Count(*) FROM `province` WHERE provice LIKE "%'.$_GET['findingtravel'].'%"');
+            if($row4 = mysqli_fetch_array($query3)) {
+                $check = $row4[0];
+                if ($check!=0){
+                    $query4 = mysqli_query($conn, 'SELECT * FROM `province` WHERE provice LIKE "%'.$_GET['findingtravel'].'%"');
+                    if($row5 = mysqli_fetch_array($query4)) {
+                        $id = $row5['proviceid'];
+                        $query2 = mysqli_query($conn, 'SELECT Count(*) FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H2"');
+                        if($row6 = mysqli_fetch_array($query2)) { 
+                            $check5 = $row6[0];
+                            if($check5==1){   
+                                echo '  <h5 class="text-center text-uppercase">Các nhà hàng tại "'.$_GET['findingtravel'].'" </h5>';
+                                echo '<br>';                
+                            }
+                        }
+                    }
+                }
+            }
+        
+        ?> 
+            </div>    
+			
+    		<div class="row">
+            <?php 	
+            $id="";
+            $check="";     
+            $query = mysqli_query($conn, 'SELECT proviceid,provice FROM province WHERE provice LIKE "%'.$_GET['findingtravel'].'%"');
+            while ($row = mysqli_fetch_assoc($query)) {     
+                $id=$row['proviceid'] ;
+                if($_GET['idprice']){
+                    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H2" AND `price` = "'.$_GET['idprice'].'"');
+                }
+                else{
+                    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H2"');
+                }
+		   	    while ($row2 = mysqli_fetch_assoc($query2)) {
+                    $query14 = mysqli_query($conn, 'SELECT AVG(ratestar) FROM `rate` WHERE `idservice` = "'. $row2['idservice'].'"');
+                    if ($row14 = mysqli_fetch_array($query14)) {
+                        $averageratestar =round($row14[0], 1);
+                        $averageratestarnotodd =floor($row14[0]);
+                }
+		    ?>
+				<div class="col-sm-4">
+					<div class="place-card">
+						<div class="place-card__img">
+                            <a href="" class="thumb">
+						        <img src="img/<?php echo $row2['avatar'] ?>"   width="400" height="270">
+                            </a>
+                            <a class="go" href="restaurant_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>">
+                                <h6>Chi tiết</h6>
+                            </a>
+						</div>
+						<div class="place-card__content">
+                            <div class="name">
+                                <h6><?php  echo $row2['servicename']   ?></h6>
+                            </div>
+                            <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>         
+                            </div>
+                            <div class="price">
+                                <h6>Giá từ <?php  echo $row2['prices'] ?> VNĐ</h6>
+                            </div>
+							<div class="flex-center">
+								<p class="mb-0"><i class="fa fa-map-marker"></i> 
+                                <span class="text-muted"><?php echo $row['provice'] ?></span></p>
+							</div>
+						</div>
+					</div>
+				
+                 
 
-				  $query = mysqli_query($conn, 'SELECT proviceid,provice FROM `province` WHERE `provice` LIKE "%'.$_GET['findingtravel'].'%"');
-
-
-                 while ($row = mysqli_fetch_assoc($query)) {
-                        
-				$id=$row['proviceid'] 
-                     ?>
-
-
-
-<?php 
-
-
-if($_GET['idprice']){
-    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H2" AND `price`= "'.$_GET['idprice'].'"');
-}
-else{
-    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H2"');
-}
-if($_GET['idprice']){
-    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H2" AND `price`= "'.$_GET['idprice'].'"');
-}
- 
-   while ($row2 = mysqli_fetch_assoc($query2)) {
-
- 
-             $query14 = mysqli_query($conn, 'SELECT AVG(ratestar) FROM `rate` WHERE `idservice` = "'. $row2['idservice'].'"');
-   if ($row14 = mysqli_fetch_array($query14)) {
-$averageratestar =round($row14[0], 1);
-
-$averageratestarnotodd =floor($row14[0]);
-
+				</div>
+				<?php 
+ 	;}
+             
+     }
  ?>
-
-
-
-
-
-
-                        <li class="slide-item " >
-                            <div class="img">
-                            <img src="img/<?php echo $row2['avatar'] ?>">
+				</div>
+                 <!--timtheten-->
+                 <div>
+        <?php
+        $id="";
+        $check="";
+        if($_GET['findingtravel']){    
+        $query3 = mysqli_query($conn, 'SELECT Count(*) FROM `service` WHERE servicename LIKE "%'.$_GET['findingtravel'].'%" AND `idtype`="H2"');
+            if($row4 = mysqli_fetch_array($query3)) {
+                $check = $row4[0];
+                if ($check!=0){
+                    $query4 = mysqli_query($conn, 'SELECT * FROM `service` WHERE servicename LIKE "%'.$_GET['findingtravel'].'%" AND `idtype`="H2"');
+                    if($row5 = mysqli_fetch_array($query4)) {
+                        $id = $row5['servicename'];
+                        $query2 = mysqli_query($conn, 'SELECT Count(*) FROM `service` WHERE `servicename` LIKE "%'.$id.'%" AND `idtype`="H2"');
+                        if($row6 = mysqli_fetch_array($query2)) { 
+                            $check5 = $row6[0];
+                            if ($check5!=0){   
+                                echo '  <h5 class="text-center text-uppercase">Nhà hàng "'.$_GET['findingtravel'].'" </h5>';
+                                echo '<br>';                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ?>  
+            </div>    
+			
+    		<div class="row">
+            <?php 	
+            $id="";
+            $check="";
+            $address="";     
+            $query = mysqli_query($conn, 'SELECT * FROM `service` WHERE servicename LIKE "%'.$_GET['findingtravel'].'%" AND `idtype`="H2"');
+            while ($row = mysqli_fetch_assoc($query)) {     
+                $id=$row['servicename'] ;
+                if($_GET['idprice']){
+                    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `servicename` LIKE "%'.$id.'%" AND `idtype`="H2" AND `price` = "'.$_GET['idprice'].'"');
+                }
+                else{
+                    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `servicename` LIKE "%'.$id.'%" AND `idtype`="H2"');
+                }
+		   	    while ($row2 = mysqli_fetch_assoc($query2)) {
+                    $query14 = mysqli_query($conn, 'SELECT AVG(ratestar) FROM `rate` WHERE `idservice` = "'. $row2['idservice'].'"');
+                    if ($row14 = mysqli_fetch_array($query14)) {
+                        $averageratestar =round($row14[0], 1);
+                        $averageratestarnotodd =floor($row14[0]);   
+                    }
+                    $query15 = mysqli_query($conn, 'SELECT provice FROM province WHERE proviceid = "'. $row2['proviceid'].'"');
+                    if($row4 = mysqli_fetch_array($query15)){
+                        $address = $row4['provice'];
+                    }
+		    ?>
+				<div class="col-sm-4">
+					<div class="place-card">
+						<div class="place-card__img">
+                            <a href="" class="thumb">
+						        <img src="img/<?php echo $row2['avatar'] ?>"   width="400" height="270">
+                            </a>
+                            <a class="go" href="restaurant_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>">
+                                <h6>Chi tiết</h6>
+                            </a>
+						</div>
+						<div class="place-card__content">
+                            <div class="name">
+                                <h6><?php  echo $row2['servicename']   ?></h6>
                             </div>
-                            <div class="row1">
-                                <span><?php  echo $row2['servicename']   ?></span>
+                            <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>         
                             </div>
-                            <div class="row1">
+                            <div class="price">
+                                <h6>Giá từ <?php  echo $row2['prices'] ?> VNĐ</h6>
+                            </div>
+							<div class="flex-center">
+								<p class="mb-0"><i class="fa fa-map-marker"></i> 
+                                <span class="text-muted"><?php echo $address ?></span></p>
+							</div>
+						</div>
+					</div>
+				
+                 
 
-                            <i class="cv-rate" style="font-size: 20px;"><span> <?php echo $averageratestar; ?> /5<i class="fas fa-star" style="font-size: 15px;"></i></span></i>
-                                <b> Giá  <?php  echo $row2['prices'] ?> VNĐ</b>  
-                            </div>
-                            <div class="row3">
-                                <span><?php  echo $row2['typefood']   ?></span>
-                            </div>
-                            <div class="row4">
-                                <a href="restaurant_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>" ><button>Chi tiết</button></a>
-                            </div>
-                            
-                        </li>
-                                    
-
-                    
-                        <?php 
+				</div>
+				<?php 
  	;}
   
      }
- ?>           
+ ?>
+				</div>
    
-                        
-                        <?php 
- 	
-  
-     }
- ?>           
-                           </ul>
+                <!--timtheten-->
+			
+
+			</div>
+		</div>
+        
+	</section>
+    </div>
 
 
 
-
-
-
-
-
-                    
-                </div>
             </div>
         </div>
     </div>
-    <?php require_once 'footer.php';?>
+    </div>
 </body>
 </html>
