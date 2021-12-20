@@ -7,6 +7,12 @@ session_start();
 <head>
   <title></title>
 
+
+
+  <!--bootstraplongin-->
+  <!--bootstraplongin-->
+  <!--bootstraplongin-->
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -21,6 +27,10 @@ session_start();
   <script type="text/javascript" src="bootstrap/js/mdb.min.js"></script>
   <!-- Plugin file -->
   <script src="./js/addons/datatables.min.js"></script>
+
+  <!--bootstraplongin-->
+  <!--bootstraplongin-->
+  <!--bootstraplongin-->
 
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -70,7 +80,9 @@ session_start();
 <body>
   <?php require_once './Connect/Connection.php'; ?>
   <nav>
-    <span><a href="./index.php">VIVUVN</a></span>
+    <span><a href="./index.php">VIVU .VN</a></span>
+
+
 
     <form action="">
       <div class="input">
@@ -101,23 +113,23 @@ session_start();
       <?php
       if (isset($_SESSION['username'])) {
         $_SESSION['username'] . "<br/>";
-      ?>
-        <li>
-          <i class="fas fa-user"></i>
-          <a>
-            <?php echo $_SESSION['name']; ?>
-          </a>
+       ?>
+            <li>
+            <i class="fas fa-user"></i>
+            <a>
+              <?php echo $_SESSION['name'] ; ?>
+            </a>
         </li>
         <?php
         ?>
         <li>
-          <i class="fas fa-sign-out-alt"></i>
-          <a>
-            <?php echo '<a href="logout.php">Logout</a> '; ?>
-          </a>
-        </li>
-      <?php
-        // echo '<a href="logout.php">Logout</a>';
+        <i class="fas fa-sign-out-alt"></i>
+        <a>
+          <?php echo '<a href="logout.php">Logout</a> '; ?>
+        </a>
+      </li>
+    <?php
+       // echo '<a href="logout.php">Logout</a>';
       } else {
 
         echo '<a href="" class="login" data-toggle="modal" data-target="#modalLRForm">Đăng Nhập</a>';
@@ -132,10 +144,10 @@ session_start();
 
   <div class="content">
     <div class="menu">
-      <ul>
+      <ul style="">
         <li class="menu-item ">
           <a href="index.php">
-            <span><i class="fas fa-home"></i></span>
+            <span><i class="fas fa-comment-alt"></i></span>
             <span class="text">Trang chủ</span>
           </a>
         </li>
@@ -181,7 +193,7 @@ session_start();
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title ">Tìm kiếm địa điểm du lịch</h5>
+              <h4 class="modal-title ">Địa điểm du lịch</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -194,7 +206,7 @@ session_start();
 
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success text-white">
+              <button type="submit" class="btn btn-default">
                 Tìm kiếm
               </button>
 
@@ -223,20 +235,20 @@ session_start();
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Tìm kiếm khách sạn</h5>
+              <h4 class="modal-title">Khách sạn</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
 
             </div>
             <div class="modal-body">
               <div class="input">
-                <input type="text" placeholder="Nhập tên hoặc địa điểm khách sạn" name="findingtravel">
+                <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel">
                 <span>
 
                 </span>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success text-white">Tìm kiếm</button>
+              <button type="submit" class="btn btn-default">Tìm kiếm</button>
             </div>
           </div>
         </form>
@@ -256,20 +268,20 @@ session_start();
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Tìm kiếm nhà hàng</h5>
+              <h4 class="modal-title">Nhà hàng ABC</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
 
             </div>
             <div class="modal-body">
               <div class="input">
-                <input type="text" placeholder="Nhập tên hoặc địa điểm nhà hàng" name="findingtravel">
+                <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel">
                 <span>
 
                 </span>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success text-white" name="idprice">Tìm kiếm</button>
+              <button type="submit" class="btn btn-default" name="idprice">Tìm kiếm</button>
             </div>
           </div>
 
@@ -289,16 +301,19 @@ session_start();
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Hoạt động giải trí</h5>
+              <h4 class="modal-title">Hoạt động giải trí</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
               <div class="input">
-                <input type="text" placeholder="Nhập tên hoặc hoạt động giải trí cần tìm" name="findingtravel">
+                <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel" required>
+                <span>
+
+                </span>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success text-white" name="entertain">Tìm kiếm</button>
+              <button type="submit" class="btn btn-default" name="entertain">Tìm kiếm</button>
             </div>
           </div>
         </form>
