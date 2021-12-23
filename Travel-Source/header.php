@@ -36,6 +36,7 @@ session_start();
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
   <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/index2.css">
   <script type="text/javascript" src="../javascript/index.js"></script>
   <?php
   require 'database1.class.php';
@@ -63,7 +64,20 @@ session_start();
         if ($password == $arr['password']) {
           $_SESSION['username'] = $email;
           $_SESSION['name'] = $arr['username'];
-          header('location: index.php');
+          $uri = $_SERVER['REQUEST_URI'];
+
+
+          $query = $_SERVER['QUERY_STRING'];
+          
+          
+          $domain = $_SERVER['HTTP_HOST'];
+          
+          
+          $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+          
+          $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+          
+                  header('location:'.$url.'');
         } else
           echo ' <center><p style="color: red;">Sai mat khau!</p></center>';
       } else
@@ -79,8 +93,8 @@ session_start();
 
 <body>
   <?php require_once './Connect/Connection.php'; ?>
-  <nav>
-    <span><a href="./index.php">VIVU .VN</a></span>
+  <nav style =" background-color: #00aa6c;">
+    <span><a href="./index.php" style="color: #fff;">VIVU .VN</a></span>
 
 
 
@@ -125,7 +139,7 @@ session_start();
         <li>
         <i class="fas fa-sign-out-alt"></i>
         <a>
-          <?php echo '<a href="logout.php">Logout</a> '; ?>
+          <?php echo '<a href="logout.php" style="color: black;">Logout</a> '; ?>
         </a>
       </li>
     <?php
@@ -306,7 +320,7 @@ session_start();
             </div>
             <div class="modal-body">
               <div class="input">
-                <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel" required>
+                <input type="text" placeholder="Nhập địa điểm ..." name="findingtravel">
                 <span>
 
                 </span>

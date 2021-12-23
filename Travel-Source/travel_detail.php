@@ -1,3 +1,4 @@
+<?php        ob_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,80 +12,61 @@
 
   </style>
 </head>
-<body>
+<body style="background-color: #fff;">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/food.css">
     <link rel="stylesheet" href="./css/comment.css">
     <link rel="stylesheet" href="./css/comment.fix.css">
     <link rel="stylesheet" href="./css/star.css">
        <link rel="stylesheet" href="./css/commentadded.css">
-       <link rel="stylesheet" href="./css/commendfix2.css">
        <link rel="stylesheet" href="./css/zoom.css">
+       <link rel="stylesheet" href="./css/commendfix2.css">
        <style>
 
 </style>
 <?php require_once 'header.php';?>
 
 <?php 
-   $userid = 0;
-$servicename = "";
-$address="";
-$description="";
-$open= "";
-$close="";
-$price="";
-$idimage="";
-$idservice="";
-$numberrate = 0;
-$averageratestar = 0;
-$averageratestarnotodd = 0;
-$map = "";
-
-
-
-
-$query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%'. @$_GET['id'].'%"');
-            
-              if ($row = mysqli_fetch_assoc($query2)) {
-                   $servicename = $row['servicename'] ;
-                   $address = $row['address'] ;
-                   $description = $row['description'] ;
-                   $open = $row['openn'] ;
-                   $close = $row['closee'] ;
-                   $price = $row['price'] ;
-                   $idimage = $row['idimage'] ;
-                   $map = $row['map'];
-                 
-
-              }
-
-$query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'. @$_GET['idimg'].'%"');
-            
-              if ($row = mysqli_fetch_assoc($query3)) {
-                   $picture1 = $row['picture1'] ;
-                   $picture2 = $row['picture2'] ;
-                   $picture3 = $row['picture3'] ;
-                   $picture4 = $row['picture4'] ;
-    
-                 
-
-              }
-
-
-$query14 = mysqli_query($conn, 'SELECT AVG(ratestar) FROM `rate` WHERE `idservice` = "'. $_GET['id'].'"');
-              if ($row14 = mysqli_fetch_array($query14)) {
-$averageratestar =round($row14[0], 1);
-
-$averageratestarnotodd =floor($row14[0]);
-
-
-
-              }
-
-
- ?>
-    <div class="container">
-    <div class="header">
+    $userid = 0;
+    $servicename = "";
+    $address="";
+    $description="";
+    $open= "";
+    $close="";
+    $price="";
+    $idimage="";
+    $idservice="";
+    $numberrate = 0;
+    $averageratestar = 0;
+    $averageratestarnotodd = 0;
+    $map = "";
+    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%'. @$_GET['id'].'%"');
+        if ($row = mysqli_fetch_assoc($query2)) {
+        $servicename = $row['servicename'] ;
+        $address = $row['address'] ;
+        $description = $row['description'] ;
+        $open = $row['openn'] ;
+        $close = $row['closee'] ;
+        $price = $row['price'] ;
+        $idimage = $row['idimage'] ;
+        $map = $row['map'];
+        }
+    $query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'. @$_GET['idimg'].'%"');
+        if ($row = mysqli_fetch_assoc($query3)) {
+            $picture1 = $row['picture1'] ;
+            $picture2 = $row['picture2'] ;
+            $picture3 = $row['picture3'] ;
+            $picture4 = $row['picture4'] ;
+    }
+    $query14 = mysqli_query($conn, 'SELECT AVG(ratestar) FROM `rate` WHERE `idservice` = "'. $_GET['id'].'"');
+        if ($row14 = mysqli_fetch_array($query14)) {
+            $averageratestar =round($row14[0], 1);
+            $averageratestarnotodd =floor($row14[0]);
+        }
+?>
+<div class="line" style="border: 1px solid   black;"></div>
+    <div class="container" style="background-color: #fff;">
+    <div class="header" style="background-color: #fff;">
             <div class="row1">
                 <h2> <?php echo $servicename;?> </h2>
                 <div class="confirm">
@@ -105,19 +87,12 @@ $averageratestarnotodd =floor($row14[0]);
 
             <div class="row2">
                 <div class="rate">
-                
                     <?php 
-                               $query10 = mysqli_query($conn, 'SELECT Count(*) FROM `rate` WHERE `idservice` =  "'.@$_GET['id'].'"');
-            
-              if ($row10 = mysqli_fetch_array($query10)) {
-                  
-
-                $numberrate=$row10['Count(*)'];
-
-              
-
-              }
-                     ?>
+                        $query10 = mysqli_query($conn, 'SELECT Count(*) FROM `rate` WHERE `idservice` =  "'.@$_GET['id'].'"');
+                        if ($row10 = mysqli_fetch_array($query10)) {
+                            $numberrate=$row10['Count(*)'];
+                        }
+                    ?>
                    <b>   <?php echo $numberrate?> đánh giá</b>
                 </div>
                 <div class="type">
@@ -143,26 +118,21 @@ $averageratestarnotodd =floor($row14[0]);
 
         <!------------------------------------>
         
-        <div class="main">
+        <div class="main" style="padding:0">
             <div class="rating">
                 <h3>Đánh giá </h3>
                 <div class="danhgia">
                     <div class="icon">
                         <b class="rate-total"><?php echo $averageratestar; ?></b>
-                  <?php 
+                    <?php 
                     if($averageratestarnotodd==4){
-
-                   ?>  
+                    ?>  
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
-
-
-
-
-                        <?php } ?>
+                    <?php } ?>
 
                      <?php 
                     if($averageratestarnotodd==5){
@@ -173,13 +143,7 @@ $averageratestarnotodd =floor($row14[0]);
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-
-
-
-
                         <?php } ?>
-
-
  <?php 
                     if($averageratestarnotodd==3){
 
@@ -189,13 +153,7 @@ $averageratestarnotodd =floor($row14[0]);
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
-
-
-
-
-                        <?php } ?>
-
-
+                    <?php } ?>
  <?php 
                     if($averageratestarnotodd==2){
 
@@ -205,26 +163,27 @@ $averageratestarnotodd =floor($row14[0]);
                        <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                          <i class="far fa-star"></i>
-
-
-
-
                         <?php } ?>
                          <?php 
                     if($averageratestarnotodd==1){
 
                    ?>  
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
                        <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                          <i class="far fa-star"></i>
-
-
-
-
                         <?php } ?>
+                        <?php 
+                    if($averageratestarnotodd==0){
 
+                   ?>  
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
 
                         <b> <?php echo $numberrate ?> đánh giá</b>  
                     </div>
@@ -270,19 +229,14 @@ $averageratestarnotodd =floor($row14[0]);
                 </div>
             </div>
             <div class="info">
-                <div class="img">
+                <div class="img" style="background-color: #fff;">
                     <img src="img/<?php echo $picture1; ?>" alt="" class="img-container">
                     <div>
                         <img src="img/<?php echo $picture2; ?>" alt="" class="img-small">
                         <img src="img/<?php echo $picture3; ?>" alt="" class="img-small">
                         <img src="img/<?php echo $picture4; ?>" alt="" class="img-small">
                     </div>
-                    <div class="photo-librari">
-                        <span>
-                            <i class="fas fa-camera"></i>
-                        </span>
-                        Xem tất cả các ảnh
-                    </div>
+                    
                 </div>
                 
                 <div class="xyzz">
@@ -305,15 +259,16 @@ $averageratestarnotodd =floor($row14[0]);
                             </div>
                         </div>
                     </div>
-                    <div class="address">
+                    <div class="address" style="overflow: hidden">
                         <div>
                             <div>
                                 <div>
                                     <h2>Địa điểm và thông tin liên hệ</h2>
+                                    <span>
                                         <span class="map">
-                                        <?php echo $map; ?>
+                                            <?php echo $map; ?>
                                         </span>
-                                        <span>
+                                    <span>
                                             <a>
                                                 <span> <?php echo $address; ?> </span>
                                                 <span></span>
@@ -327,7 +282,6 @@ $averageratestarnotodd =floor($row14[0]);
             </div>
         </div>
     </div>
-        
         
     <!--comment --> <!--comment --> <!--comment --> <!--comment -->
     <section >
@@ -467,7 +421,21 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
         //echo '<p>Loại file: ' . $_FILES['fileUpload']['type'] . '<br><p>';
         //echo '<p>Dung lượng: ' . ((int)$_FILES['fileUpload']['size'] / 1024) . 'KB<p>';
     
-       
+        $uri = $_SERVER['REQUEST_URI'];
+
+
+        $query = $_SERVER['QUERY_STRING'];
+        
+        
+        $domain = $_SERVER['HTTP_HOST'];
+        
+        
+        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        
+        $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        
+                header('location:'.$url.'');
+                ob_end_flush();
        
       
             echo " <h3><a href='index.php'>Đánh giá của bạn đã được ghi lại.</a></h3>";
@@ -633,7 +601,7 @@ if(!empty($_POST['star']) && @$_SESSION['username']!=null&&!empty($_POST['txt-ra
                                 </div>
                             </div>
                             <div class="dropdown open">
-                                
+                               
                                 <div class="dropdown-menu" aria-labelledby="triggerId1">
                                     <a class="dropdown-item" href="#">
                                         <i class="fa fa-pencil mr-1"></i>

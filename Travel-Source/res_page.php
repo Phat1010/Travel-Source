@@ -6,8 +6,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
     <link rel="stylesheet" href="./css/res.css">
+    <link rel="stylesheet" href="./css/index2.css">
 </head>
 <body>
+<style>
+    .place-card__content:hover{
+    background-color:  #00aa6c;
+}
+
+</style>
 <?php require_once 'header.php';?>
 
     <div class="container">
@@ -27,7 +34,7 @@
             
 
             <div class="head-name">
-                <div class="name-txt">
+                <div class="name-txt" style=" background-color: rgb(187 227 199);">
 
                 <?php 
 		       $id="";
@@ -61,10 +68,10 @@
                  ?>
                 </div>
                 <div class="name-select">
-                    <div class="select-colum1">
+                    <div class="select-colum1" style=" background-color: rgb(187 227 199);">
                         <span>Không có cơ sở kinh doanh nào khác tại Bình Định. Xem kết quả gần đó bên dưới:</span>  
                     </div>
-                    <div class="select-colum2">
+                    <div class="select-colum2" style=" background-color: rgb(187 227 199);">
                         
                     </div>
                 </div>
@@ -72,7 +79,7 @@
 
             </div>
         </div>
-        <div class="content">
+        <div class="content1" style="display: flex;" >
 
 
             <div class="left">
@@ -84,9 +91,9 @@
                         
 
 
-                        <a style="font-size:13px;" class="btn btn-primary" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=1" >Dưới 1.000.000đ</a>
-                        <a style="font-size:13px;" class="btn btn-primary" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=2" >Dưới 2.000.000đ</a>
-                        <a style="font-size:13px;" class="btn btn-primary" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=3" >Dưới 3.000.000đ</a>
+                        <a style="font-size:13px;" class="btn btn-primary" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=1" >Từ 100.000đ-1000.000đ</a>
+                        <a style="font-size:13px;" class="btn btn-primary" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=2" >từ 1000.000đ-2000.000đ</a>
+                        <a style="font-size:13px;" class="btn btn-primary" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=3" >Trên 2000.000đ</a>
                         <a style="font-size:13px;" class="btn btn-primary" href="?findingtravel=<?php echo $_GET['findingtravel']?>&idprice=" >Tất cả</a><br>
                     
                     </div>
@@ -137,37 +144,11 @@
 
 
 
-            <div class="right">
+            <div class="right" style="margin: 0;">
                 <div class="all-content">
     <section class="main-entertain">
 		<div class="main-container" style="padding:0;">
-        <div> 
-        <?php
-        $id="";
-        $check="";
-        $query3 = mysqli_query($conn, 'SELECT Count(*) FROM `province` WHERE provice LIKE "%'.$_GET['findingtravel'].'%"');
-            if($row4 = mysqli_fetch_array($query3)) {
-                $check = $row4[0];
-                if ($check!=0){
-                    $query4 = mysqli_query($conn, 'SELECT * FROM `province` WHERE provice LIKE "%'.$_GET['findingtravel'].'%"');
-                    if($row5 = mysqli_fetch_array($query4)) {
-                        $id = $row5['proviceid'];
-                        $query2 = mysqli_query($conn, 'SELECT Count(*) FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H2"');
-                        if($row6 = mysqli_fetch_array($query2)) { 
-                            $check5 = $row6[0];
-                            if($check5==1){   
-                                echo '  <h5 class="text-center text-uppercase">Các nhà hàng tại "'.$_GET['findingtravel'].'" </h5>';
-                                echo '<br>';                
-                            }
-                        }
-                    }
-                }
-            }
-        
-        ?> 
-            </div>    
-			
-    		<div class="row">
+    		<div class="row" style="margin: 0;">
             <?php 	
             $id="";
             $check="";     
@@ -187,17 +168,17 @@
                         $averageratestarnotodd =floor($row14[0]);
                 }
 		    ?>
-				<div class="col-sm-4">
+				<div class="col-sm-4" style="padding: 0 5px;">
 					<div class="place-card">
 						<div class="place-card__img">
-                            <a href="" class="thumb">
+                            <a href="" class="thumb" style="height: 250px;">
 						        <img src="img/<?php echo $row2['avatar'] ?>"   width="400" height="270">
                             </a>
                             <a class="go" href="restaurant_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>">
                                 <h6>Chi tiết</h6>
                             </a>
 						</div>
-						<div class="place-card__content">
+						<div class="place-card__content"  style="padding: 15px;">
                             <div class="name">
                                 <h6><?php  echo $row2['servicename']   ?></h6>
                             </div>
@@ -208,7 +189,7 @@
                             </div>
 							<div class="flex-center">
 								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted"><?php echo $row['provice'] ?></span></p>
+                                <span class="text-add"><?php echo $row['provice'] ?></span></p>
 							</div>
 						</div>
 					</div>
@@ -238,7 +219,8 @@
                         $query2 = mysqli_query($conn, 'SELECT Count(*) FROM `service` WHERE `servicename` LIKE "%'.$id.'%" AND `idtype`="H2"');
                         if($row6 = mysqli_fetch_array($query2)) { 
                             $check5 = $row6[0];
-                            if ($check5!=0){   
+                            if ($check5!=0){  
+                                echo '<div class="line" style="border: 1px solid   #dcdde1;"></div>'; 
                                 echo '  <h5 class="text-center text-uppercase">Nhà hàng "'.$_GET['findingtravel'].'" </h5>';
                                 echo '<br>';                
                             }
@@ -246,7 +228,7 @@
                     }
                 }
             }
-        }
+        
         ?>  
             </div>    
 			
@@ -275,17 +257,17 @@
                         $address = $row4['provice'];
                     }
 		    ?>
-				<div class="col-sm-4">
+				<div class="col-sm-4" style="padding: 0 5px;">
 					<div class="place-card">
 						<div class="place-card__img">
-                            <a href="" class="thumb">
+                            <a href="" class="thumb" style="height: 250px;">
 						        <img src="img/<?php echo $row2['avatar'] ?>"   width="400" height="270">
                             </a>
                             <a class="go" href="restaurant_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>">
                                 <h6>Chi tiết</h6>
                             </a>
 						</div>
-						<div class="place-card__content">
+						<div class="place-card__content" style="padding: 15px;">
                             <div class="name">
                                 <h6><?php  echo $row2['servicename']   ?></h6>
                             </div>
@@ -295,8 +277,8 @@
                                 <h6>Giá từ <?php  echo $row2['prices'] ?> VNĐ</h6>
                             </div>
 							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted"><?php echo $address ?></span></p>
+								<p class="p"><i class="fa fa-map-marker"></i> 
+                                <span class="text-add"><?php echo $address ?></span></p>
 							</div>
 						</div>
 					</div>
@@ -306,7 +288,7 @@
 				</div>
 				<?php 
  	;}
-  
+                }
      }
  ?>
 				</div>

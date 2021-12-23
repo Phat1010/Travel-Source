@@ -6,7 +6,7 @@ body{
     background-color: #f2f2f2;
     font-size: medium;
     font-family: Arial,Tahoma,Bitstream Vera Sans,sans-serif;
-    width: 80%;
+    width: 100%;
 }
 
 .fa-star,.fa-check-circle{
@@ -19,7 +19,7 @@ body{
 .header{
     width: 100%;
     min-height: auto;
-    background-color: #f3f3f3;
+    background-color: #fff;
     padding: 0 30px;
 }
 .row1{
@@ -110,7 +110,7 @@ body{
     width: 30%;
     padding: 20px;
     background-color: #fff;
-    border: 1px solid #c3c3c3;
+    filter: drop-shadow(0 0 5px rgb(31, 31, 32));
 }
 .main .rating h3{
     text-align: center;
@@ -176,16 +176,18 @@ body{
     padding: 5px;
     position: relative;
     display: flex;
+    padding: 0;
 }
 .main .img img{
     padding: 2px;
-    opacity: 0.7;
+    padding-top: 0;
+    opacity: 1;
     image-rendering: pixelated;
     filter: drop-shadow(0 0 5px rgb(31, 31, 32));
 }
 .main .img img:hover{
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 .main .img .img-container{
     float: left;
@@ -239,8 +241,6 @@ body{
 
 
 @media only screen and (max-width: 800px) {
-    .header{
-    }
     .row1 .option span {
       display: none;
     }

@@ -11,9 +11,6 @@
 
     <body>
 <footer class="text-center text-white">
-    <div class="container p-4 pb-0">
-   
-    </div>
     <div class="text-center p-3">
     © 2020 Copyright
     </div>

@@ -20,25 +20,36 @@
     
 <!-----Link Design----->
     <link rel="stylesheet" href="./css/entertainstyle.css">
-        <link rel="stylesheet" href="css/travels.css">
+        <link rel="stylesheet" href="./css/travels.css">
     <script src="./javascript/a.js"></script>
 </head>
-
 <body>  
     <?php require_once './header.php';?>
-        <?php require_once './header.php';?>
-
-    <span class="infor">
-        <h3>Kết quả bạn tìm <?php echo $_GET['findingtravel'] ?> </h3>
-        <div class="map">
-            <button type="button" class="btn-map" onclick="myFunction()">
-                <i class="fas fa-map-marker-alt"></i>
-                <a>&nbsp;Bản đồ</a>
-            </button>
-        </div>     
-    </span>
-    <br>
-    <br>
+    <div class="head">
+                <div class="head-map">
+                    <div class="box-map">
+                        <a href="https://www.google.com/maps/@14.1053708,108.4191312,9z">
+                        <button class="btn-map">
+                            <i class="fas fa-map-marker-alt"></i> Xem bản đồ
+                        </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="head-name">
+                    <div class="name-txt">
+                        <h2>Kết quả tìm kiếm du lịch "  <?php echo $_GET['findingtravel']?>  "
+                        </h2>
+                    </div>
+                    <div class="name-select">
+                        <div class="select-colum1">
+                            <span>Không có cơ sở kinh doanh nào khác. Xem kết quả gần đó bên dưới:</span>  
+                        </div>
+                        <div class="select-colum2">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
 <!----------------------------------MapFunction---------------------------------------> 
     
 <!----------------------------------Advertisement---------------------------------------> 
@@ -47,23 +58,14 @@
 
 <!----------------------------------Entertain 2--------------------------------------->
 
-
+<div class="container">
                 
 <?php 
         $id="";
         $check="";
     $averageratestar = 0;
     $averageratestarnotodd = 0;
-
-
-
-
-
-
-
-
-
-                  $query = mysqli_query($conn, 'SELECT proviceid,provice FROM province WHERE provice LIKE "%'.$_GET['findingtravel'].'%"');
+                $query = mysqli_query($conn, 'SELECT proviceid,provice FROM province WHERE provice LIKE "%'.$_GET['findingtravel'].'%"');
 
 
                  while ($row = mysqli_fetch_assoc($query)) {
@@ -73,7 +75,7 @@
 
                  ?>
                  
-                  </div>
+                  
                   <?php 
                   
                   $query3 = mysqli_query($conn, 'SELECT Count(*) FROM service WHERE proviceid LIKE "%'.$id.'%" AND `idtype`="h4"');
@@ -83,7 +85,7 @@
                   
                       if ($check!=0)
                       {
-                          echo '<br>';     
+                          
                           echo '  <div class="line"></div>';
                           echo '<br>';
                           echo '  <h1 class="text-center text-uppercase">Các điểm du lịch hàng đầu tại  '.$row['provice'].'  </h1>';
@@ -123,25 +125,29 @@ $averageratestarnotodd =floor($row14[0]);
          
            
                 <!-- next-->
-                <div class="col-sm-4 hotel">
-                <a href="travel_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?> " class="place-card">
-                        <div class="place-card__img">
-                            <img src="img/<?php echo $row2['avatar'] ?>" class="place-card__img-thumbnail" alt="Thumbnail">
-                        </div>
-                        <div class="place-card__content">
-                            <h5 class="place-card__content_header">
-                            <a href="travel_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?> " class="text-dark"> <?php echo  $row2['servicename']  ?></a> 
-                            <div class="rating-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>
-                                   
-                                </div>
-                            <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
-                            <div class="flex-center">
-                                <p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted"><?php  echo    $row2['address'] ?></span></p>
-                                
+                <div class="col-sm-4 hotel" style="padding: 0;">
+                <div class="place-card" style=" height: 420px;">
+						<div class="place-card__img">
+                        <a href="" class="thumb">
+                            <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
+                        </a>
+                        <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"       class="go">
+                            <h6>Chi tiết</h6>
+                        </a>
+						</div>
+						<div class="place-card__content">
+                            <div>
+							    <h5 class="" style="text-align: center;"><?php  echo $row2['servicename']   ?>
                             </div>
-                        </div>
-                    </a>
+                            <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>         
+                            </div>
+                            </h5>
+							<div class="flex-center">
+								<p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i> 
+                                <span class="text-add"><?php echo $row2['address'];?></span></p>
+							</div>
+						</div>
+					</div>
      </div>
    <!-- next-->
                
@@ -157,24 +163,20 @@ $averageratestarnotodd =floor($row14[0]);
  echo '</div> ';
      }
  ?>  
+ </div>
 
  
 <!----------------------------------timtheoten--------------------------------------->
-
+<?php 
+    if($_GET['findingtravel'])
+    {
+?>
+<div class="container">
 <?php 
         $id="";
         $check="";
     $averageratestar = 0;
-    $averageratestarnotodd = 0;
-
-
-
-
-
-
-
-    
-                  
+    $averageratestarnotodd = 0;       
     $query12 = mysqli_query($conn, 'SELECT Count(*) FROM service WHERE servicename LIKE "%'.$_GET['findingtravel'].'%" AND `idtype`="h4" ');
     
     while ($row13 = mysqli_fetch_array($query12)) {
@@ -185,7 +187,7 @@ $averageratestarnotodd =floor($row14[0]);
             echo '<br>';     
             echo '  <div class="line"></div>';
             echo '<br>';
-            echo '  <h1 class="text-center text-uppercase">Các điểm du lịch khác</h1>';
+            echo '  <h1 class="text-center text-uppercase">Điểm du lịch "'.$_GET['findingtravel'].'"</h1>';
             echo '<br>';
             
     }
@@ -203,8 +205,7 @@ $averageratestarnotodd =floor($row14[0]);
                     $id=$row9['idservice'] ;
 
                  ?>
-                 
-                  </div>
+                
                   
                   
                   <div class="row2" style="float: none;">
@@ -235,25 +236,29 @@ $averageratestarnotodd =floor($row16[0]);
          
            
                 <!-- next-->
-                <div class="col-sm-4 hotel">
-                <a href="travel_detail.php?id=<?php echo $row15['idservice'] ?>&idimg=<?php echo $row15['idimage']?> " class="place-card">
-                        <div class="place-card__img">
-                            <img src="img/<?php echo $row15['avatar'] ?>" class="place-card__img-thumbnail" alt="Thumbnail">
-                        </div>
-                        <div class="place-card__content">
-                            <h5 class="place-card__content_header">
-                            <a href="travel_detail.php?id=<?php echo $row15['idservice'] ?>&idimg=<?php echo $row15['idimage']?> " class="text-dark"> <?php echo  $row15['servicename']  ?></a> 
-                            <div class="rating-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>
-                                   
-                                </div>
-                            <a href="travel_detail.php"><i class="fa fa-heart-o"></i></a></h5>
-                            <div class="flex-center">
-                                <p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted"><?php  echo    $row15['address'] ?></span></p>
-                                
+                <div class="col-sm-4 hotel" style="padding: 0;">
+                <div class="place-card">
+						<div class="place-card__img">
+                        <a href="" class="thumb">
+                            <img src="img/<?php echo $row15['avatar'] ?>" style="width: 100%;">
+                        </a>
+                        <a href="entertain_detail.php?id=<?php echo $row15['idservice'] ?>&idimg=<?php echo $row15['idimage']?>"       class="go">
+                            <h6>Chi tiết</h6>
+                        </a>
+						</div>
+						<div class="place-card__content">
+                            <div>
+							    <h5 class="" style="text-align: center;"><?php  echo $row15['servicename']   ?>
                             </div>
-                        </div>
-                    </a>
+                            <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>         
+                            </div>
+                            </h5>
+							<div class="flex-center">
+								<p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i> 
+                                <span class="text-add"><?php echo $row15['address'];?></span></p>
+							</div>
+						</div>
+					</div>
      </div>
    <!-- next-->
                
@@ -269,19 +274,16 @@ $averageratestarnotodd =floor($row16[0]);
  echo '</div> ';
      }
  ?>  
-
+</div>
+<?php
+}
+?>
 <!----------------------------------Questions--------------------------------------->
 
    <div class="line"> </div>
    <br>
-   <div class="question">
-        <h3>Câu hỏi thường gặp về quy nhơn</h3>
-        <a>Những điểm du lịch hàng đầu tại quy nhơn?</a>
-        <br>
-        <a>Những hoạt động ngoài trời thú vị?</a>
-        <br>
-        <a>Những hoạt động phổ biến dành cho cha mẹ cùng trẻ nhỏ là gì?</a>
-   </div>        `
+    <br>
+    <br>
 
 
    <?php require_once './footer.php';?>

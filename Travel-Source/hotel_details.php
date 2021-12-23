@@ -1,3 +1,4 @@
+<?php        ob_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 
   </style>
 </head>
-<body>
+<body style="background-color: #fff;">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/food.css">
     <link rel="stylesheet" href="./css/comment.css">
@@ -26,65 +27,61 @@
 <?php require_once 'header.php';?>
 
 <?php 
-   $userid = 0;
-$servicename = "";
-$address="";
-$description="";
-$open= "";
-$close="";
-$price="";
-$idimage="";
-$idservice="";
-$numberrate = 0;
-$averageratestar = 0;
-$averageratestarnotodd = 0;
-$map = "";
-
-
-
-
-$query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%'. @$_GET['id'].'%"');
+    $userid = 0;
+    $servicename = "";
+    $address="";
+    $description="";
+    $open= "";
+    $close="";
+    $price="";
+    $idimage="";
+    $idservice="";
+    $numberrate = 0;
+    $averageratestar = 0;
+    $averageratestarnotodd = 0;
+    $map = "";
+    $star=0;
+    $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%'. @$_GET['id'].'%"');
+        if ($row = mysqli_fetch_assoc($query2)) {
+        $servicename = $row['servicename'] ;
+        $address = $row['address'] ;
+        $description = $row['description'] ;
+        $open = $row['openn'] ;
+        $close = $row['closee'] ;
+        $price = $row['price'] ;
+        $idimage = $row['idimage'] ;
+        $map = $row['map'];
+        }
+    $query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'. @$_GET['idimg'].'%"');
+        if ($row = mysqli_fetch_assoc($query3)) {
+            $picture1 = $row['picture1'] ;
+            $picture2 = $row['picture2'] ;
+            $picture3 = $row['picture3'] ;
+            $picture4 = $row['picture4'] ;
+    }
+    $query14 = mysqli_query($conn, 'SELECT AVG(ratestar),AVG(place),AVG(clearly),AVG(rate.service),AVG(price) FROM `rate` WHERE `idservice` = "'. $_GET['id'].'"');
+        if ($row14 = mysqli_fetch_array($query14)) {
+            $averageratestar =round($row14[0], 1);
+            $averageratestarnotodd =floor($row14[0]);
             
-              if ($row = mysqli_fetch_assoc($query2)) {
-                   $servicename = $row['servicename'] ;
-                   $address = $row['address'] ;
-                   $description = $row['description'] ;
-                   $open = $row['openn'] ;
-                   $close = $row['closee'] ;
-                   $price = $row['price'] ;
-                   $idimage = $row['idimage'] ;
-                   $map = $row['map'] ;
-                 
-
-              }
-
-$query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'. @$_GET['idimg'].'%"');
+            $averagerplace =round($row14[1], 1);
+            $averageplacenotodd =floor($row14[1]);
             
-              if ($row = mysqli_fetch_assoc($query3)) {
-                   $picture1 = $row['picture1'] ;
-                   $picture2 = $row['picture2'] ;
-                   $picture3 = $row['picture3'] ;
-                   $picture4 = $row['picture4'] ;
-    
-                 
+            $averageclearly =round($row14[2], 1);
+            $averageclearlynotodd =floor($row14[2]);
+            
+            $averageservice =round($row14[3], 1);
+            $averageservicenotodd =floor($row14[3]);
+            
+            $averageprice =round($row14[4], 1);
+            $averagepricenotodd =floor($row14[4]);
+           
 
-              }
-
-
-$query14 = mysqli_query($conn, 'SELECT AVG(ratestar) FROM `rate` WHERE `idservice` = "'. $_GET['id'].'"');
-              if ($row14 = mysqli_fetch_array($query14)) {
-$averageratestar =round($row14[0], 1);
-
-$averageratestarnotodd =floor($row14[0]);
-
-
-
-              }
-
-
- ?>
-    <div class="container">
-    <div class="header">
+        }
+?>
+<div class="line" style="border: 1px solid   black;"></div>
+    <div class="container" style="background-color: #fff;">
+    <div class="header" style="background-color: #fff;">
             <div class="row1">
                 <h2> <?php echo $servicename;?> </h2>
                 <div class="confirm">
@@ -105,19 +102,12 @@ $averageratestarnotodd =floor($row14[0]);
 
             <div class="row2">
                 <div class="rate">
-                
                     <?php 
-                               $query10 = mysqli_query($conn, 'SELECT Count(*) FROM `rate` WHERE `idservice` =  "'.@$_GET['id'].'"');
-            
-              if ($row10 = mysqli_fetch_array($query10)) {
-                  
-
-                $numberrate=$row10['Count(*)'];
-
-              
-
-              }
-                     ?>
+                        $query10 = mysqli_query($conn, 'SELECT Count(*) FROM `rate` WHERE `idservice` =  "'.@$_GET['id'].'"');
+                        if ($row10 = mysqli_fetch_array($query10)) {
+                            $numberrate=$row10['Count(*)'];
+                        }
+                    ?>
                    <b>   <?php echo $numberrate?> đánh giá</b>
                 </div>
                 <div class="type">
@@ -143,26 +133,21 @@ $averageratestarnotodd =floor($row14[0]);
 
         <!------------------------------------>
         
-        <div class="main">
+        <div class="main" style="padding:0">
             <div class="rating">
                 <h3>Đánh giá </h3>
                 <div class="danhgia">
                     <div class="icon">
                         <b class="rate-total"><?php echo $averageratestar; ?></b>
-                  <?php 
+                    <?php 
                     if($averageratestarnotodd==4){
-
-                   ?>  
+                    ?>  
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
-
-
-
-
-                        <?php } ?>
+                    <?php } ?>
 
                      <?php 
                     if($averageratestarnotodd==5){
@@ -173,13 +158,7 @@ $averageratestarnotodd =floor($row14[0]);
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-
-
-
-
                         <?php } ?>
-
-
  <?php 
                     if($averageratestarnotodd==3){
 
@@ -189,13 +168,7 @@ $averageratestarnotodd =floor($row14[0]);
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
-
-
-
-
-                        <?php } ?>
-
-
+                    <?php } ?>
  <?php 
                     if($averageratestarnotodd==2){
 
@@ -205,26 +178,27 @@ $averageratestarnotodd =floor($row14[0]);
                        <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                          <i class="far fa-star"></i>
-
-
-
-
                         <?php } ?>
                          <?php 
                     if($averageratestarnotodd==1){
 
                    ?>  
                         <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
                        <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                          <i class="far fa-star"></i>
-
-
-
-
                         <?php } ?>
+                        <?php 
+                    if($averageratestarnotodd==0){
 
+                   ?>  
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
 
                         <b> <?php echo $numberrate ?> đánh giá</b>  
                     </div>
@@ -235,54 +209,281 @@ $averageratestarnotodd =floor($row14[0]);
                 <div class="xephang">
                     <h4>Xếp hạng</h4>
                     <div class="row">
-                        <span><i class="fas fa-hamburger"></i></span>
-                        &nbsp Đồ ăn
+                        <span><i class="fas fa-map-marker"></i></span>
+                        &nbsp Vị trí
                         <span class="xyz">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                        <?php 
+                    if($averageplacenotodd==4){
+                    ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    <?php } ?>
+
+                     <?php 
+                    if($averageplacenotodd==5){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <?php } ?>
+ <?php 
+                    if($averageplacenotodd==3){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    <?php } ?>
+ <?php 
+                    if($averageplacenotodd==2){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
+                         <?php 
+                    if($averageplacenotodd==1){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
+                        <?php 
+                    if($averageplacenotodd==0){
+
+                   ?>  
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
                         </span>
                     </div>
                     <div class="row">
                         <span><i class="fas fa-concierge-bell"></i></span>
                         &nbsp  Dịch vụ
                         <span class="xyz">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </span>
+                        <?php 
+                    if($averageservicenotodd==4){
+                    ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    <?php } ?>
+
+                     <?php 
+                    if($averageservicenotodd==5){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <?php } ?>
+ <?php 
+                    if($averageservicenotodd==3){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    <?php } ?>
+ <?php 
+                    if($averageservicenotodd==2){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
+                         <?php 
+                    if($averageservicenotodd==1){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
+                        <?php 
+                    if($averageservicenotodd==0){
+
+                   ?>  
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php }  ?>
+                        <h4><?php ?> </h4>    
+                    </span>
                     </div>
                     <div class="row">
                         <span><i class="far fa-gem"></i></span>
                         &nbsp Giá trị
                         <span class="xyz">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                        <?php 
+                    if($averagepricenotodd==4){
+                    ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    <?php } ?>
+
+                     <?php 
+                    if($averagepricenotodd==5){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <?php } ?>
+ <?php 
+                    if($averagepricenotodd==3){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    <?php } ?>
+ <?php 
+                    if($averagepricenotodd==2){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
+                         <?php 
+                    if($averagepricenotodd==1){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
+                        <?php 
+                    if($averagepricenotodd==0){
+
+                   ?>  
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
+                        </span>
+                    </div>
+                    <div class="row">
+                        <span><i class="fas fa-broom"></i></span>
+                        &nbsp Sự sạch sẽ
+                        <span class="xyz">
+                        <?php 
+                    if($averageclearlynotodd==4){
+                    ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    <?php } ?>
+
+                     <?php 
+                    if($averageclearlynotodd==5){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <?php } ?>
+ <?php 
+                    if($averageclearlynotodd==3){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    <?php } ?>
+ <?php 
+                    if($averageclearlynotodd==2){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
+                         <?php 
+                    if($averageclearlynotodd==1){
+
+                   ?>  
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
+                        <?php 
+                    if($averageclearlynotodd==0){
+
+                   ?>  
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                       <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                         <i class="far fa-star"></i>
+                        <?php } ?>
                         </span>
                     </div>
                 </div>
             </div>
             <div class="info">
-                <div class="img">
+                <div class="img" style="background-color: #fff;">
                     <img src="img/<?php echo $picture1; ?>" alt="" class="img-container">
                     <div>
                         <img src="img/<?php echo $picture2; ?>" alt="" class="img-small">
                         <img src="img/<?php echo $picture3; ?>" alt="" class="img-small">
                         <img src="img/<?php echo $picture4; ?>" alt="" class="img-small">
                     </div>
-                    <div class="photo-librari">
-                        <span>
-                            <i class="fas fa-camera"></i>
-                        </span>
-                        Xem tất cả các ảnh
-                    </div>
+                    
                 </div>
                 
                 <div class="xyzz">
@@ -305,23 +506,22 @@ $averageratestarnotodd =floor($row14[0]);
                             </div>
                         </div>
                     </div>
-                    <div class="address">
+                    <div class="address" style="overflow: hidden">
                         <div>
                             <div>
                                 <div>
                                     <h2>Địa điểm và thông tin liên hệ</h2>
                                     <span>
                                         <span class="map">
-                                        <?php echo $map; ?>
+                                            <?php echo $map; ?>
                                         </span>
-                                        <span>
+                                    <span>
                                             <a>
                                                 <span> <?php echo $address; ?> </span>
                                                 <span></span>
                                             </a>
                                         </span>
                                     </div>
-                                    
                                 </div>
                             </div>
                     </div>
@@ -538,7 +738,21 @@ if(!empty($_POST['place']) &&!empty($_POST['service']) &&!empty($_POST['cleanly'
     
        
        
-      
+        $uri = $_SERVER['REQUEST_URI'];
+
+
+        $query = $_SERVER['QUERY_STRING'];
+        
+        
+        $domain = $_SERVER['HTTP_HOST'];
+        
+        
+        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        
+        $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        
+                header('location:'.$url.'');
+                ob_end_flush();
             echo " <h3><a href='index.php'>Đánh giá của bạn đã được ghi lại.</a></h3>";
 
         

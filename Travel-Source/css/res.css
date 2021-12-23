@@ -45,11 +45,13 @@ body{
 .head-name{
     width: 70%;
     height: 100%;
+    background-color: rgb(187 227 199);
 }
 .name-txt{
     width: 100%;
     height: 75px;
     float: left;
+    background-color: rgb(187 227 199);
 }
 .name-txt h2{
     float: left;
@@ -61,6 +63,7 @@ body{
     height: 75px;
     margin-top: 75px;
     display: flex;
+    background-color: rgb(187 227 199);
 }
 .select-colum1{
     width: 60%;
@@ -89,7 +92,7 @@ body{
     margin-left: 22px;
     margin-top: 20px;
 }
-.content{
+.content1{
     width: 100%;
     height: 200px;
     display: flex;
@@ -125,10 +128,11 @@ body{
     border-color:#c3c3c3 ;
 }
 .right{
-    width: 68%;
+    width: 70%;
     height: auto;
     /* background-color: #f2f2f2; */
     margin-left: 2%;
+    float: right;
 }
 .fa-star{
     color: #00aa6c;
@@ -148,6 +152,7 @@ body{
 }
 .row{
     width: 100%;
+    margin: 0;
 }
 .col-sm-4{
     width: 30,33%;
@@ -164,14 +169,16 @@ body{
     cursor: pointer;
 }
 .place-card__img {
-	height: 250px;
-	width: 100%;
-	object-fit: cover;
+    width: 100%;
     position: relative;
     overflow: hidden;
 }
 .place-card__img .thumb{
     display: block;
+}
+.place-card__img .thumb img{
+    width: 100%;
+    margin: 0;
 }
 .place-card__img:hover .thumb img{
     filter:opacity(70%);
@@ -189,7 +196,7 @@ body{
     padding: 10px 0;
     position: absolute;
     width: 100%;
-    bottom: -px;
+    bottom: -47px;
     transition: 0.25s ease-in-out;
     opacity: 0.85;
 }
@@ -200,17 +207,29 @@ body{
 	padding: 25px;
     text-align: center;
 }
+.text-add{
+    color: #6c757d;
+}
+.rate-box i{
+    color: #00aa6c;
+}
+.place-card__content:hover{
+    background-color:  #00aa6c;
+    color: #fff;
+}
+.place-card__content:hover .rate-box i{
+    color: yellow;
+}
+.place-card__content:hover .text-add{
+    color: #fff;
+}
 .name{
-	display: flex;
 	align-items: center;
 	justify-content: space-between;
     height: auto;
 }
 .rate-box{
     text-align: center;
-}
-.rate-box i{
-    color: #00aa6c;
 }
 .btn-content{
     width: 100%;
@@ -230,9 +249,17 @@ body{
 	text-align: center;
 	
 }
+.flex-center i{
+    color:#ea4132;
+}
 
 
-
+.container{
+    padding: 0;
+}
 .container.p-4.pb-0 {
     height: auto;
+}
+.col-sm-4 {
+    padding: 0 5px;
 }

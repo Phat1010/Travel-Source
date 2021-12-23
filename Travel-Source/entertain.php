@@ -26,55 +26,89 @@
     <?php require_once './header.php';?>
 	
 	
-    <span class="infor">
-        <h3>Hoạt động giải trí <?php echo $_GET['findingtravel'] ?></h3>
-        <div class="map">
-            <button type="button" class="btn-map" onclick="myFunction()">
-                <i class="fas fa-map-marker-alt"></i>
-                <a>&nbsp;Bản đồ</a>
-            </button>
-        </div>     
-    </span>
-    <br>
-    <br>
+    <div class="head">
+                <div class="head-map">
+                    <div class="box-map">
+                        <a href="https://www.google.com/maps/@14.1053708,108.4191312,9z">
+                        <button class="btn-map">
+                            <i class="fas fa-map-marker-alt"></i> Xem bản đồ
+                        </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="head-name">
+                    <div class="name-txt">
+                        <h2>Kết quả tìm kiếm hoạt động giải trí "  <?php echo $_GET['findingtravel']?>  "
+                        </h2>
+                    </div>
+                    <div class="name-select">
+                        <div class="select-colum1">
+                            <span>Không có cơ sở kinh doanh nào khác. Xem kết quả gần đó bên dưới:</span>  
+                        </div>
+                        <div class="select-colum2">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
 <!----------------------------------MapFunction---------------------------------------> 
 	
 <!----------------------------------Advertisement---------------------------------------> 
     
     
-    
 <!----------------------------------Entertain--------------------------------------->
 
 	
 <!----------------------------------Entertain--------------------------------------->
 
-<!----------------------------------Entertain--------------------------------------->
-
-
-
-    <section class="main-entertain">
+<!----------------------------------Entertain--------------------------------------->  
+        <section class="main-entertain">
 		<div class="container">
-        <div class="tt" style="text-aglin: center;">
+        <?php 
+        $id="";
+        $check="";
+    $averageratestar = 0;
+    $averageratestarnotodd = 0;
+                $query = mysqli_query($conn, 'SELECT proviceid,provice FROM province WHERE provice LIKE "%'.$_GET['findingtravel'].'%"');
+
+
+                if($row = mysqli_fetch_assoc($query)) {
+                        
+                     
+                $id=$row['proviceid'] ;
+
+                 ?>
+                  <?php 
+                  
+                  $query3 = mysqli_query($conn, 'SELECT Count(*) FROM service WHERE proviceid LIKE "%'.$id.'%" AND `idtype`="h3"');
+                  
+                  if($row4 = mysqli_fetch_array($query3)) {
+                      $check=$row4[0];
+                  
+                      if ($check!=0)
+                      {
+                          
+                          echo '<div class="line"></div>';
+                          echo '  <h1 class="text-center text-uppercase">Dịch vụ giải trí tại "'.$_GET['findingtravel'].'"  </h1>';
+                          echo '<br>';
+                          
+                  }
+                  
+                  
+                  }
+                }
+                  ?>
+        <div class="row">
         <?php
         $id="";
-        $check="";     
-        $query = mysqli_query($conn, 'SELECT proviceid,provice FROM province WHERE provice LIKE "%'.$_GET['findingtravel'].'%"');
-        while ($row = mysqli_fetch_assoc($query)) {     
-            $id=$row['proviceid'] ;
-            $query3 = mysqli_query($conn, 'SELECT Count(*) FROM service WHERE proviceid LIKE "%'.$id.'%" AND `idtype`="h3"');
-            while ($row4 = mysqli_fetch_array($query3)) {
-                $check=$row4[0];        
-                if ($check!=0)
-                {
-                    echo '  <h1 class="text-center text-uppercase">Các dịch vụ giải trí tại '.$row['provice'].'  </h1>';
-                    echo '<br>';               
-                }
-            }
+        $check=""; 
+        $address="";    
+        $query = mysqli_query($conn, 'SELECT * FROM province WHERE provice LIKE "%'.$_GET['findingtravel'].'%"');
+        while($row4 = mysqli_fetch_array($query)) {
+            $id=$row4['proviceid'];
         
-        ?>    
-            </div>    
-			
-    		<div class="row">
+        ?>
             <?php 	
                 if($_GET['entertain']){
                     $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `proviceid` LIKE "%'.$id.'%" AND `idtype`="H3" AND `entertain` = "'.$_GET['entertain'].'"');
@@ -87,24 +121,33 @@
                     if ($row14 = mysqli_fetch_array($query14)) {
                         $averageratestar =round($row14[0], 1);
                         $averageratestarnotodd =floor($row14[0]);
-                }
+                    }
+                    $query15 = mysqli_query($conn, 'SELECT provice FROM province WHERE proviceid = "'. $row2['proviceid'].'"');
+                    if($row15 = mysqli_fetch_array($query15)){
+                        $address = $row15['provice'];
+                    }
+                
 		    ?>
 				<div class="col-sm-4">
 					<div class="place-card">
 						<div class="place-card__img">
-                        <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"       class="text-dark">
-						<img src="img/<?php echo $row2['avatar'] ?>"   width="400" height="270">
+                        <a href="" class="thumb">
+                            <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
+                        </a>
+                        <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"       class="go">
+                            <h6>Chi tiết</h6>
+                        </a>
 						</div>
 						<div class="place-card__content">
-							<h5 class="place-card__content_header">
-                            <?php  echo $row2['servicename']   ?>
+                            <div>
+							    <h5 class="" style="text-align: center;"><?php  echo $row2['servicename']   ?>
+                            </div>
                             <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>         
                             </div>
-                            </a> 
                             </h5>
 							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted"><?php echo $row['provice'] ?></span></p>
+								<p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i> 
+                                <span class="text-add"><?php echo $address;?></span></p>
 							</div>
 						</div>
 					</div>
@@ -115,7 +158,7 @@
                 <div class="line"></div>
 				<?php 
  	;}
-  
+                
      }
  ?>
 				</div>
@@ -123,10 +166,15 @@
 
 			</div>
 		</div>
+        </div>
 	</section>
 
 
 <!-- tim kiem theo tên -->
+<?php 
+    if($_GET['findingtravel'])
+    {
+?>
 <div class="line"></div>
     <section class="main-entertain">
 		<div class="container">
@@ -134,11 +182,11 @@
         $id="";
         $check="";     
         $query3 = mysqli_query($conn, 'SELECT Count(*) FROM service WHERE servicename LIKE "%'.$_GET['findingtravel'].'%" AND `idtype`="h3"');
-        while ($row4 = mysqli_fetch_array($query3)) {
+        if($row4 = mysqli_fetch_array($query3)) {
             $check=$row4[0];        
             if ($check!=0)
             {
-                echo '  <h1 class="text-center text-uppercase">Tất cả các dịch vụ giải trí "'.$_GET['findingtravel'].'" </h1>';
+                echo '  <h1 class="text-center text-uppercase">Dịch vụ giải trí "'.$_GET['findingtravel'].'" </h1>';
                 echo '<br>';               
             }
         }
@@ -172,21 +220,25 @@
                         
 		    ?>
 				<div class="col-sm-4">
-					<div class="place-card">
+                <div class="place-card">
 						<div class="place-card__img">
-                        <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"       class="text-dark">
-						<img src="img/<?php echo $row2['avatar'] ?>"   width="400" height="270">
+                        <a href="" class="thumb">
+                            <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
+                        </a>
+                        <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"       class="go">
+                            <h6>Chi tiết</h6>
+                        </a>
 						</div>
 						<div class="place-card__content">
-							<h5 class="place-card__content_header">
-                            <?php  echo $row2['servicename']   ?>
+                            <div>
+							    <h5 class="" style="text-align: center;"><?php  echo $row2['servicename']   ?>
+                            </div>
                             <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>         
                             </div>
-                            </a> 
                             </h5>
 							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker"></i> 
-                                <span class="text-muted"><?php echo $address ?></span></p>
+								<p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i> 
+                                <span class="text-add"><?php echo $address;?></span></p>
 							</div>
 						</div>
 					</div>
@@ -196,7 +248,7 @@
 				</div>
 				<?php 
  	;}
-                    
+                }           
      }
  ?>
 				</div>
@@ -207,48 +259,39 @@
 	</section>
 <!----------------------------------menu--------------------------------------->
 
-
-                 
-	<section class="menu-opion">
+<section class="menu-opion">
 		<ul class="list-option">
-            <li class="list active" data-filter="all">
-                <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=">
+            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain="> 
+            <li class="list" data-filter="all">
                     All
-                </a>
             </li>
-            <li class="list" data-filter="park">
-                <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=park">    
+            </a>
+            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=park"> 
+            <li class="list" data-filter="park">   
                     Park
-                </a>
             </li>
-            <li class="list" data-filter="museum">
-                <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=beach">    
+            </a>
+            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=beach">
+            <li class="list" data-filter="museum">    
                     Beach
-                </a>
             </li>
-            <li class="list" data-filter="beach">
-                <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=film">    
+            </a>
+            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=film"> 
+            <li class="list" data-filter="beach">   
                     Film
-                </a>
             </li>
-			<li class="list" data-filter="hotel">
-                <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=play">    
+            </a>
+            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=play">
+			<li class="list" data-filter="hotel">    
                     Play
-                </a>
             </li>
+            </a>
         </ul>
 	</section>
+                 
+
 
 <!----------------------------------Questions--------------------------------------->
-
-   <div class="line"> </div>
-   <br>
-   <div class="question">
-        <br>
-        <a>Những hoạt động ngoài trời thú vị?</a>
-        <br>
-        <a>Những hoạt động phổ biến dành cho cha mẹ cùng trẻ nhỏ là gì?</a>
-   </div>        
 
 
    <?php require_once './footer.php';?>

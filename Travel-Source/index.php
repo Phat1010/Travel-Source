@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
     <link rel="stylesheet" href="./css/index.css">
 
+    <!--bootstraplongin-->
+    <!--bootstraplongin-->
+    <!--bootstraplongin-->
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -23,13 +27,15 @@
     <!-- Plugin file -->
     <script src="./js/addons/datatables.min.js"></script>
 
+    <!--bootstraplongin-->
+    <!--bootstraplongin-->
+    <!--bootstraplongin-->
 </head>
 
 <body onload="javascript:getLocation()">
     <?php require_once 'header.php'; ?>
-    <div class="container">
-        <h3>Tìm kiếm địa điểm</h3>
-        <div class="box">
+    <div class="container" style="padding:0; padding-top:20px" >
+        <div class="box" style="background-color: #fff;">
         <form name="form" action="search.php" method="get">
             <div class="search">
                 <input type="text" placeholder="Địa điểm" name="search">
@@ -37,18 +43,18 @@
             </div>
         </form>
         </div>
-        <form name="form" action="suggestion.php" method="get"> 
-            <h3>Bạn đang ở <span id="json-result"></span></h3>
+        <form name="form" action="suggestion.php" method="get" style="margin-top:20px">
+            <h3>Bạn đang ở <span id="json-result"></span> ?</h3>
             <input type="hidden" id="myLocation" name="myLocation">
             <div class="mx-auto" style="width: 200px;">
-                <input style="width: 200px" type="submit" class="btn btn-success" value="Gợi ý địa điểm">
+                <input style="width: 200px" type="submit" class="btn btn-success" value="Địa điểm gần bạn">
             </div>
             
         </form>
 
 
 
-        <h3>Điểm du lịch nổi bật</h3>
+        <h3>Các điểm du lịch hàng đầu</h3>
 
         <div class="slide">
             <button class="btn btn-prev" onclick="next_slide()">
@@ -85,6 +91,7 @@
 
         </div>
     </div>
+    <br><br><br>
     <!----------------------->
     <?php require_once 'footer.php'; ?>
     <script type="text/javascript" src="./javascript/index.js"></script>
