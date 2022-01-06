@@ -29,9 +29,11 @@
     <div class="head">
                 <div class="head-map">
                     <div class="box-map">
-                        <a href="https://www.google.com/maps/@14.1053708,108.4191312,9z">
+                        <a href="https://www.google.com/maps/place/ <?php echo $_GET['findingtravel']?>">
                         <button class="btn-map">
-                            <i class="fas fa-map-marker-alt"></i> Xem bản đồ
+                            <span>
+                                <i class="fas fa-map-marker-alt"></i> Xem bản đồ
+                            </span>
                         </button>
                         </a>
                     </div>
@@ -56,7 +58,35 @@
 	
 <!----------------------------------Advertisement---------------------------------------> 
     
-    
+<section class="menu-opion">
+		<ul class="list-option">
+            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain="> 
+            <li class="list" data-filter="all">
+                    All
+            </li>
+            </a>
+            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=park"> 
+            <li class="list" data-filter="park">   
+                    Park
+            </li>
+            </a>
+            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=beach">
+            <li class="list" data-filter="museum">    
+                    Beach
+            </li>
+            </a>
+            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=film"> 
+            <li class="list" data-filter="beach">   
+                    Film
+            </li>
+            </a>
+            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=play">
+			<li class="list" data-filter="hotel">    
+                    Play
+            </li>
+            </a>
+        </ul>
+	</section>
 <!----------------------------------Entertain--------------------------------------->
 
 	
@@ -259,35 +289,7 @@
 	</section>
 <!----------------------------------menu--------------------------------------->
 
-<section class="menu-opion">
-		<ul class="list-option">
-            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain="> 
-            <li class="list" data-filter="all">
-                    All
-            </li>
-            </a>
-            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=park"> 
-            <li class="list" data-filter="park">   
-                    Park
-            </li>
-            </a>
-            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=beach">
-            <li class="list" data-filter="museum">    
-                    Beach
-            </li>
-            </a>
-            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=film"> 
-            <li class="list" data-filter="beach">   
-                    Film
-            </li>
-            </a>
-            <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=play">
-			<li class="list" data-filter="hotel">    
-                    Play
-            </li>
-            </a>
-        </ul>
-	</section>
+
                  
 
 

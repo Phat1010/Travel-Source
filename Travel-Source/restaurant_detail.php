@@ -39,6 +39,7 @@
     $numberrate = 0;
     $averageratestar = 0;
     $averageratestarnotodd = 0;
+    $prices="";
     $map = "";
     $query2 = mysqli_query($conn, 'SELECT * FROM `service` WHERE `idservice` LIKE "%'. @$_GET['id'].'%"');
         if ($row = mysqli_fetch_assoc($query2)) {
@@ -50,6 +51,7 @@
         $price = $row['price'] ;
         $idimage = $row['idimage'] ;
         $map = $row['map'];
+        $prices = $row['prices'];
         }
     $query3 = mysqli_query($conn, 'SELECT * FROM `picture` WHERE `idimage` LIKE "%'. @$_GET['idimg'].'%"');
         if ($row = mysqli_fetch_assoc($query3)) {
@@ -187,8 +189,8 @@
 
                         <b> <?php echo $numberrate ?> đánh giá</b>  
                     </div>
-                    <span> <?php echo $address; ?> </span>
-                    <span> Giá : <?php echo $price; ?> VND </span>
+                    <span> Địa chỉ:  <?php echo $address; ?> </span>
+                    <span> Giá từ: <?php echo $prices; ?> VND </span>
                 </div>
                 <div class="border"></div>
                 <div class="xephang">

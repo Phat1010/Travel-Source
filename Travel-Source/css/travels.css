@@ -67,4 +67,11 @@
     float: left;
     margin-left: 22px;
     margin-top: 20px;
+}.place-card__content {
+    height: 170px;
+}
+
+.flex-center {
+    width: auto;
+    height: auto;
 }

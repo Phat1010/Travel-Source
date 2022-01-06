@@ -21,10 +21,12 @@
         <div class="head">
             <div class="head-map">
                 <div class="box-map">
-                    <a href="https://www.google.com/maps/@14.1053708,108.4191312,9z">
-                    <button class="btn-map">
-                        <i class="fas fa-map-marker-alt"></i> Xem bản đồ
-                    </button>
+                    <a href="https://www.google.com/maps/place/ <?php echo $_GET['findingtravel']?>">
+                        <button class="btn-map">
+                            <span>
+                                <i class="fas fa-map-marker-alt"></i> Xem bản đồ
+                            </span>
+                        </button>
                     </a>
                 </div>
             </div>
@@ -49,7 +51,7 @@
                
                  ?>
 
-                    <h2> Kết quả tìm kím nhà hàng '    <?php echo $id ?>    '
+                    <h2> Kết quả tìm kiếm nhà hàng '    <?php echo $id ?>    '
                     </h2>
 
 

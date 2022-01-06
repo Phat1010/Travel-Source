@@ -38,7 +38,7 @@
         <div class="box" style="background-color: #fff;">
         <form name="form" action="search.php" method="get">
             <div class="search">
-                <input type="text" placeholder="Địa điểm" name="search">
+                <input type="text" placeholder="Địa điểm" name="search" required>
                 <button type="submit"  class="hiddenbutton" style="width: 0;height: 0;"><i class="fa fa-search" aria-hidden="true" ></i></button>
             </div>
         </form>
@@ -65,25 +65,35 @@
             </button>
 
             <ul>
-                <li class="slide-item ">
-
-                    <a href="travel_detail.php?id=S1&idimg=Img1"><img alt="Qries" src="./img/anh1.png">
-                              </a>
-
+                <li class="slide-item">
+                    <a href="entertain_detail.php?id=S19&idimg=Img19"><img alt="Qries" src="./img/ky_co_3.png" class="thumb"></a>
+                    <a href="entertain_detail.php?id=S19&idimg=Img19"       class="go">
+                        <h6>Chi tiết</h6>
+                    </a>
                 </li>
                 <li class="slide-item">
-                 
-                    <a href="travel_detail.php?id=S8&idimg=Img8"><img alt="Qries" src="./img/anh8.png">
+                    <a href="hotel_details.php?id=S15&idimg=Img14"><img alt="Qries" src="./img/flc_luxury_3.png" class="thumb"></a>
+                    <a href="hotel_details.php?id=S15&idimg=Img14"       class="go">
+                        <h6>Chi tiết</h6>
+                    </a>
                 </li>
                 <li class="slide-item">
-                <a href="hotel_details.php?id=S6&idimg=Img6"><img alt="Qries" src="./img/anh6.png">
+                    <a href="entertain_detail.php?id=S1&idimg=Img1"><img alt="Qries" src="./img/chua_mot_cot_1.png" class="thumb"></a>
+                    <a href="entertain_detail.php?id=S1&idimg=Img1"       class="go">
+                        <h6>Chi tiết</h6>
+                    </a>
                 </li>
                 <li class="slide-item">
-                <a href="entertain_detail.php?id=S4&idimg=Img4"><img alt="Qries" src="./img/anh4.png">
+                    <a href="entertain_detail.php?id=S30&idimg=Img30"><img alt="Qries" src="./img/hoguom_4.png" class="thumb"></a>
+                    <a href="entertain_detail.php?id=S30&idimg=Img30"       class="go">
+                        <h6>Chi tiết</h6>
+                    </a>
                 </li>
                 <li class="slide-item">
-                <a href="travel_detail.php?id=S7&idimg=Img7"><img alt="Qries" src="./img/anh7.png">
-
+                    <a href="entertain_detail.php?id=S3&idimg=Img3"><img alt="Qries" src="./img/anh3.png" class="thumb"></a>
+                    <a href="entertain_detail.php?id=S3&idimg=Img3"       class="go">
+                        <h6>Chi tiết</h6>
+                    </a>
                 </li>
 
 

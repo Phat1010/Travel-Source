@@ -41,14 +41,21 @@ body{
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    background-color:white;
+    border: 1px solid #00aa6c;
+    background-color:#fff;
+}
+.btn-map:hover{
+    background-color: #00aa6c;
 }
 .btn-map i{
     font-size: 18px;
     color: rgb(199, 52, 52);
 }
-.btn-map :hover{
-    opacity: 0.6;
+.btn-map span{
+    color: #00aa6c;
+}
+.btn-map:hover span{
+    color: #fff;
 }
 .head-name{
     width: 70%;

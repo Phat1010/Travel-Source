@@ -28,9 +28,11 @@
     <div class="head">
                 <div class="head-map">
                     <div class="box-map">
-                        <a href="https://www.google.com/maps/@14.1053708,108.4191312,9z">
+                        <a href="https://www.google.com/maps/place/ <?php echo $_GET['findingtravel']?>">
                         <button class="btn-map">
-                            <i class="fas fa-map-marker-alt"></i> Xem bản đồ
+                            <span>
+                                <i class="fas fa-map-marker-alt"></i> Xem bản đồ
+                            </span>
                         </button>
                         </a>
                     </div>
@@ -126,7 +128,7 @@ $averageratestarnotodd =floor($row14[0]);
            
                 <!-- next-->
                 <div class="col-sm-4 hotel" style="padding: 0;">
-                <div class="place-card" style=" height: 420px;">
+                <div class="place-card">
 						<div class="place-card__img">
                         <a href="" class="thumb">
                             <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
@@ -246,7 +248,7 @@ $averageratestarnotodd =floor($row16[0]);
                             <h6>Chi tiết</h6>
                         </a>
 						</div>
-						<div class="place-card__content">
+						<div class="place-card__content" >
                             <div>
 							    <h5 class="" style="text-align: center;"><?php  echo $row15['servicename']   ?>
                             </div>
