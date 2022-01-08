@@ -64,25 +64,35 @@ session_start();
         if ($password == $arr['password']) {
           $_SESSION['username'] = $email;
           $_SESSION['name'] = $arr['username'];
-          $uri = $_SERVER['REQUEST_URI'];
+          // $uri = $_SERVER['REQUEST_URI'];
 
 
-          $query = $_SERVER['QUERY_STRING'];
+          // $query = $_SERVER['QUERY_STRING'];
           
           
-          $domain = $_SERVER['HTTP_HOST'];
+          // $domain = $_SERVER['HTTP_HOST'];
           
           
-          $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+          // $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
           
-          $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+          // $url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
           
-                  header('location:'.$url.'');
-        } else
+                  // header('location:'.$url.'');
+        } else {
+          $message = "Đăng nhập thất bại";
+          echo "<script type='text/javascript'>alert('$message');</script>";
           echo ' <center><p style="color: red;">Sai mat khau!</p></center>';
-      } else
+        }
+          
+      } else {
+        $message = "Đăng nhập thất bại";
+        echo "<script type='text/javascript'>alert('$message');</script>";
         echo ' <center><p style="color: red;">Tai khoang chua ton tai!</p></center>';
+      }
+    
+        
     }
+    
   }
   ob_end_flush();
   ?>

@@ -25,31 +25,31 @@
 
 
     <div class="head">
-                <div class="head-map">
-                    <div class="box-map">
-                        <a href="https://www.google.com/maps/@14.1053708,108.4191312,9z">
-                        <button class="btn-map">
-                            <i class="fas fa-map-marker-alt"></i> Xem bản đồ
-                        </button>
-                        </a>
-                    </div>
+        <div class="head-map">
+            <div class="box-map">
+                <a href="https://www.google.com/maps/@14.1053708,108.4191312,9z">
+                    <button class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Xem bản đồ
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="head-name">
+            <div class="name-txt">
+                <h2>Các dịch vụ tại " <?php echo $_GET['myLocation']; ?> "
+                </h2>
+            </div>
+            <div class="name-select">
+                <div class="select-colum1">
+                    <span>Không có cơ sở kinh doanh nào khác. Xem kết quả gần đó bên dưới:</span>
                 </div>
-                <div class="head-name">
-                    <div class="name-txt">
-                        <h2>Các dịch vụ tại "  <?php echo $_GET['myLocation'] ;?> "
-                        </h2>
-                    </div>
-                    <div class="name-select">
-                        <div class="select-colum1">
-                            <span>Không có cơ sở kinh doanh nào khác. Xem kết quả gần đó bên dưới:</span>  
-                        </div>
-                        <div class="select-colum2">
-                            
-                        </div>
-                    </div>
+                <div class="select-colum2">
+
                 </div>
             </div>
-            <br>
+        </div>
+    </div>
+    <br>
 
     <div class="line"></div>
     <section class="main-entertain">
@@ -61,7 +61,7 @@
                 $id = "";
 
                 $query = mysqli_query($conn, 'SELECT proviceid,provice FROM `province` WHERE `provice` LIKE "%' . $_GET['myLocation'] . '%"');
-   
+
                 while ($row = mysqli_fetch_assoc($query)) {
 
                     $id = $row['proviceid'];
@@ -87,33 +87,33 @@
                         }
                     ?>
 
-                <div class="col-sm-4">
-					<div class="place-card">
-						<div class="place-card__img">
-                        <a href="" class="thumb">
-                            <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
-                        </a>
-                        <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"       class="go">
-                            <h6>Chi tiết</h6>
-                        </a>
-						</div>
-						<div class="place-card__content">
-                            <div>
-							    <h5 class="" style="text-align: center;"><?php  echo $row2['servicename']   ?>
+                        <div class="col-sm-4">
+                            <div class="place-card">
+                                <div class="place-card__img">
+                                    <a href="" class="thumb">
+                                        <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
+                                    </a>
+                                    <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage'] ?>" class="go">
+                                        <h6>Chi tiết</h6>
+                                    </a>
+                                </div>
+                                <div class="place-card__content">
+                                    <div>
+                                        <h5 class="" style="text-align: center;"><?php echo $row2['servicename']   ?>
+                                    </div>
+                                    <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>
+                                    </div>
+                                    </h5>
+                                    <div class="flex-center">
+                                        <p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i>
+                                            <span class="text-add"><?php echo $row['provice']; ?></span></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>         
-                            </div>
-                            </h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i> 
-                                <span class="text-add"><?php echo $row['provice'];?></span></p>
-							</div>
-						</div>
-					</div>
-				
-                 
 
-				</div>
+
+
+                        </div>
                 <?php
                     }
                 }
@@ -129,8 +129,7 @@
     <!-- nha hang -->
     <section class="main-entertain">
         <div class="container">
-            <h1 class="text-center text-uppercase">Nha hang</h1>
-            <a class="show text-center" href="#">Xem tất cả</a><br>
+            <h1 class="text-center text-uppercase">Nhà hàng</h1>
             <div class="row">
                 <?php
                 $id = "";
@@ -166,33 +165,33 @@
                         }
                     ?>
 
-<div class="col-sm-4">
-					<div class="place-card">
-						<div class="place-card__img">
-                        <a href="" class="thumb">
-                            <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
-                        </a>
-                        <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"       class="go">
-                            <h6>Chi tiết</h6>
-                        </a>
-						</div>
-						<div class="place-card__content">
-                            <div>
-							    <h5 class="" style="text-align: center;"><?php  echo $row2['servicename']   ?>
+                        <div class="col-sm-4">
+                            <div class="place-card">
+                                <div class="place-card__img">
+                                    <a href="" class="thumb">
+                                        <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
+                                    </a>
+                                    <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage'] ?>" class="go">
+                                        <h6>Chi tiết</h6>
+                                    </a>
+                                </div>
+                                <div class="place-card__content">
+                                    <div>
+                                        <h5 class="" style="text-align: center;"><?php echo $row2['servicename']   ?>
+                                    </div>
+                                    <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>
+                                    </div>
+                                    </h5>
+                                    <div class="flex-center">
+                                        <p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i>
+                                            <span class="text-add"><?php echo $row['provice']; ?></span></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>         
-                            </div>
-                            </h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i> 
-                                <span class="text-add"><?php echo $row['provice'];?></span></p>
-							</div>
-						</div>
-					</div>
-				
-                 
 
-				</div>
+
+
+                        </div>
                 <?php
                     }
                 }
@@ -208,8 +207,7 @@
 
     <section class="main-entertain">
         <div class="container">
-            <h1 class="text-center text-uppercase">Khach san</h1>
-            <a class="show text-center" href="#">Xem tất cả</a><br>
+            <h1 class="text-center text-uppercase">Khách sạn</h1>
             <div class="row">
                 <?php
                 $id = "";
@@ -240,33 +238,33 @@
                         }
                     ?>
 
-<div class="col-sm-4">
-					<div class="place-card">
-						<div class="place-card__img">
-                        <a href="" class="thumb">
-                            <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
-                        </a>
-                        <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"       class="go">
-                            <h6>Chi tiết</h6>
-                        </a>
-						</div>
-						<div class="place-card__content">
-                            <div>
-							    <h5 class="" style="text-align: center;"><?php  echo $row2['servicename']   ?>
+                        <div class="col-sm-4">
+                            <div class="place-card">
+                                <div class="place-card__img">
+                                    <a href="" class="thumb">
+                                        <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
+                                    </a>
+                                    <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage'] ?>" class="go">
+                                        <h6>Chi tiết</h6>
+                                    </a>
+                                </div>
+                                <div class="place-card__content">
+                                    <div>
+                                        <h5 class="" style="text-align: center;"><?php echo $row2['servicename']   ?>
+                                    </div>
+                                    <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>
+                                    </div>
+                                    </h5>
+                                    <div class="flex-center">
+                                        <p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i>
+                                            <span class="text-add"><?php echo $row['provice']; ?></span></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>         
-                            </div>
-                            </h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i> 
-                                <span class="text-add"><?php echo $row['provice'];?></span></p>
-							</div>
-						</div>
-					</div>
-				
-                 
 
-				</div>
+
+
+                        </div>
                 <?php
                     }
                 }
@@ -281,8 +279,7 @@
     <!-- du lich -->
     <section class="main-entertain">
         <div class="container">
-            <h1 class="text-center text-uppercase">Du lich</h1>
-            <a class="show text-center" href="#">Xem tất cả</a><br>
+            <h1 class="text-center text-uppercase">Du lịch</h1>
             <div class="row">
                 <?php
                 $id = "";
@@ -314,33 +311,33 @@
                         }
                     ?>
 
-<div class="col-sm-4">
-					<div class="place-card">
-						<div class="place-card__img">
-                        <a href="" class="thumb">
-                            <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
-                        </a>
-                        <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage']?>"       class="go">
-                            <h6>Chi tiết</h6>
-                        </a>
-						</div>
-						<div class="place-card__content">
-                            <div>
-							    <h5 class="" style="text-align: center;"><?php  echo $row2['servicename']   ?>
+                        <div class="col-sm-4">
+                            <div class="place-card">
+                                <div class="place-card__img">
+                                    <a href="" class="thumb">
+                                        <img src="img/<?php echo $row2['avatar'] ?>" style="width: 100%;">
+                                    </a>
+                                    <a href="entertain_detail.php?id=<?php echo $row2['idservice'] ?>&idimg=<?php echo $row2['idimage'] ?>" class="go">
+                                        <h6>Chi tiết</h6>
+                                    </a>
+                                </div>
+                                <div class="place-card__content">
+                                    <div>
+                                        <h5 class="" style="text-align: center;"><?php echo $row2['servicename']   ?>
+                                    </div>
+                                    <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>
+                                    </div>
+                                    </h5>
+                                    <div class="flex-center">
+                                        <p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i>
+                                            <span class="text-add"><?php echo $row['provice']; ?></span></p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="rate-box"> <?php echo $averageratestar; ?> <i class="fas fa-star"></i>         
-                            </div>
-                            </h5>
-							<div class="flex-center">
-								<p class="mb-0"><i class="fa fa-map-marker" style="color: #ea4131"></i> 
-                                <span class="text-add"><?php echo $row['provice'];?></span></p>
-							</div>
-						</div>
-					</div>
-				
-                 
 
-				</div>
+
+
+                        </div>
                 <?php
                     }
                 }

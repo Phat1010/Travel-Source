@@ -58,31 +58,31 @@
 	
 <!----------------------------------Advertisement---------------------------------------> 
     
-<section class="menu-opion">
-		<ul class="list-option">
+<section class="menu-opion d-flex">
+		<ul class="list-inline mx-auto justify-content-center">
             <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain="> 
             <li class="list" data-filter="all">
-                    All
+                    Tất cả
             </li>
             </a>
             <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=park"> 
             <li class="list" data-filter="park">   
-                    Park
+                    Công viên
             </li>
             </a>
             <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=beach">
             <li class="list" data-filter="museum">    
-                    Beach
+                    Bãi biển
             </li>
             </a>
             <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=film"> 
             <li class="list" data-filter="beach">   
-                    Film
+                    Rạp phim
             </li>
             </a>
             <a href="?findingtravel=<?php echo $_GET['findingtravel']?>&entertain=play">
 			<li class="list" data-filter="hotel">    
-                    Play
+                    Trò chơi
             </li>
             </a>
         </ul>
